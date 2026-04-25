@@ -12,7 +12,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (() => {
+                try {
+                  const storedTheme = window.localStorage.getItem("theme");
+                  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                  const theme = storedTheme ?? (prefersDark ? "dark" : "light");
+                  document.documentElement.dataset.theme = theme;
+                } catch {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

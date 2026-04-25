@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { toPascalCase } from "@/lib/format";
 import { getPrimaryMood, getPrimaryNutritionFocus } from "@/lib/recipe-classification";
 import type { Recipe } from "@/lib/recipes";
@@ -16,6 +17,14 @@ export function FourWeekPlan({ recipes }: FourWeekPlanProps) {
     <div className={styles.page}>
       <main className={styles.main}>
         <section className={styles.hero}>
+          <div className={styles.heroTop}>
+            <div className={styles.heroActions}>
+              <Link href="/" className={styles.homeLink}>
+                Home
+              </Link>
+              <ThemeToggle className={styles.themeToggle} />
+            </div>
+          </div>
           <p className={styles.eyebrow}>Fibre Fueled Foods</p>
           <h1>Four Week Plan</h1>
           <p className={styles.summary}>
@@ -116,9 +125,17 @@ export function FourWeekExtras({ recipes, week }: FourWeekExtrasProps) {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Link href="/four-week-plan" className={styles.backLink}>
-          Back to calendar
-        </Link>
+        <div className={styles.topNav}>
+          <Link href="/four-week-plan" className={styles.backLink}>
+            Back to calendar
+          </Link>
+          <div className={styles.topNavActions}>
+            <Link href="/" className={styles.homeLink}>
+              Home
+            </Link>
+            <ThemeToggle className={styles.themeToggle} />
+          </div>
+        </div>
 
         <section className={styles.hero}>
           <div className={styles.dayPageHeader}>
@@ -183,9 +200,17 @@ export function FourWeekDay({ recipes, week, day }: FourWeekDayProps) {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Link href="/four-week-plan" className={styles.backLink}>
-          Back to calendar
-        </Link>
+        <div className={styles.topNav}>
+          <Link href="/four-week-plan" className={styles.backLink}>
+            Back to calendar
+          </Link>
+          <div className={styles.topNavActions}>
+            <Link href="/" className={styles.homeLink}>
+              Home
+            </Link>
+            <ThemeToggle className={styles.themeToggle} />
+          </div>
+        </div>
 
         <section className={styles.hero}>
           <div className={styles.dayPageHeader}>

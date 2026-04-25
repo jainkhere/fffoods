@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { Suspense } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { RecipeLibraryClient } from "@/components/recipe-library-client";
 import {
   moodOptions,
@@ -58,6 +60,14 @@ export default async function RecipesPage() {
     <div className={styles.page}>
       <main className={styles.main}>
         <section className={styles.hero}>
+          <div className={styles.heroTop}>
+            <div className={styles.heroActions}>
+              <Link href="/" className={styles.homeLink}>
+                Home
+              </Link>
+              <ThemeToggle className={styles.themeToggle} />
+            </div>
+          </div>
           <p className={styles.eyebrow}>Fibre Fueled Foods</p>
           <h1>Recipe Library</h1>
           <p className={styles.subheading}>

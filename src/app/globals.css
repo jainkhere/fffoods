@@ -1,8 +1,65 @@
 :root {
   --background: #f6efe6;
   --foreground: #26170f;
+  --background-tint: #fff8ef;
+  --surface: rgba(255, 255, 255, 0.82);
+  --surface-strong: #fffaf4;
+  --surface-muted: rgba(255, 251, 243, 0.72);
+  --surface-subtle: rgba(255, 251, 243, 0.52);
+  --border: rgba(122, 89, 57, 0.14);
+  --border-strong: rgba(114, 67, 36, 0.28);
+  --shadow-card: 0 18px 45px rgba(53, 32, 12, 0.08);
+  --shadow-card-hover: 0 22px 50px rgba(53, 32, 12, 0.12);
+  --shadow-floating: 0 12px 35px rgba(53, 32, 12, 0.08);
+  --text-muted: rgba(38, 23, 15, 0.78);
+  --text-soft: rgba(38, 23, 15, 0.62);
+  --text-accent: #724324;
+  --hero-text: #2f1609;
+  --hero-subtle: rgba(47, 22, 9, 0.86);
+  --hero-glow: rgba(255, 244, 214, 0.9);
+  --hero-grad-start: rgba(248, 225, 170, 0.95);
+  --hero-grad-end: rgba(229, 122, 68, 0.9);
+  --hero-shadow: 0 24px 60px rgba(102, 43, 8, 0.15);
+  --control-bg: rgba(255, 251, 243, 0.78);
+  --control-border: rgba(47, 22, 9, 0.14);
+  --button-bg: #26170f;
+  --button-text: #f9f1e3;
+  --pill-bg: #f7ede0;
+  --pill-text: #724324;
+  --link-accent: #724324;
   --font-sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+html[data-theme="dark"] {
+  --background: #17110d;
+  --foreground: #f3e7d7;
+  --background-tint: #211914;
+  --surface: rgba(38, 28, 22, 0.92);
+  --surface-strong: #2b201a;
+  --surface-muted: rgba(55, 42, 33, 0.9);
+  --surface-subtle: rgba(67, 51, 41, 0.58);
+  --border: rgba(223, 187, 145, 0.14);
+  --border-strong: rgba(247, 189, 120, 0.36);
+  --shadow-card: 0 22px 52px rgba(0, 0, 0, 0.34);
+  --shadow-card-hover: 0 26px 58px rgba(0, 0, 0, 0.42);
+  --shadow-floating: 0 14px 40px rgba(0, 0, 0, 0.28);
+  --text-muted: rgba(243, 231, 215, 0.84);
+  --text-soft: rgba(243, 231, 215, 0.62);
+  --text-accent: #f0b97d;
+  --hero-text: #fff3e4;
+  --hero-subtle: rgba(255, 243, 228, 0.84);
+  --hero-glow: rgba(255, 178, 94, 0.18);
+  --hero-grad-start: rgba(85, 53, 27, 0.96);
+  --hero-grad-end: rgba(152, 73, 35, 0.9);
+  --hero-shadow: 0 28px 64px rgba(0, 0, 0, 0.42);
+  --control-bg: rgba(44, 33, 26, 0.9);
+  --control-border: rgba(255, 225, 194, 0.12);
+  --button-bg: #f3e7d7;
+  --button-text: #23170f;
+  --pill-bg: rgba(102, 75, 54, 0.52);
+  --pill-text: #ffd7af;
+  --link-accent: #f0b97d;
 }
 
 html {
@@ -21,8 +78,8 @@ body {
   flex-direction: column;
   color: var(--foreground);
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.7), transparent 35%),
-    linear-gradient(180deg, #f9f1e3 0%, var(--background) 100%);
+    radial-gradient(circle at top, color-mix(in srgb, var(--background-tint) 55%, white 45%) 0%, transparent 35%),
+    linear-gradient(180deg, color-mix(in srgb, var(--background) 82%, var(--background-tint) 18%) 0%, var(--background) 100%);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -37,4 +94,11 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
 }

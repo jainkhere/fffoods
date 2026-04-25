@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BackButton } from "@/components/back-button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { toPascalCase } from "@/lib/format";
 import type { Recipe } from "@/lib/recipes";
 import styles from "./recipe-detail.module.css";
@@ -76,7 +77,15 @@ export function RecipeDetail({ recipe, recipes }: RecipeDetailProps) {
   return (
     <div className={styles.shell}>
       <main className={styles.main}>
-        <BackButton className={styles.backLink} fallbackHref="/recipes" label="Back" />
+        <div className={styles.topNav}>
+          <BackButton className={styles.backLink} fallbackHref="/recipes" label="Back" />
+          <div className={styles.topNavActions}>
+            <Link href="/" className={styles.homeLink}>
+              Home
+            </Link>
+            <ThemeToggle className={styles.themeToggle} />
+          </div>
+        </div>
 
         <section className={styles.hero}>
           <p className={styles.eyebrow}>Fibre Fueled Foods</p>

@@ -6,7 +6,7 @@ import {
   useState,
   useTransition,
 } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { toPascalCase } from "@/lib/format";
 import { getPrimaryMood, getPrimaryNutritionFocus } from "@/lib/recipe-classification";
 import { filterRecipes } from "@/lib/recipe-filters";
@@ -96,6 +96,25 @@ function buildSearch(filters: FilterState) {
   return search ? `?${search}` : "";
 }
 
+function parseFilters(searchParams: URLSearchParams): FilterState {
+  const week = searchParams.get("week");
+  const mealType = searchParams.get("mealType");
+  const ingredientTheme = searchParams.get("ingredientTheme");
+  const nutritionFocus = searchParams.get("nutritionFocus");
+  const mood = searchParams.get("mood");
+
+  return {
+    query: searchParams.get("q")?.trim() ?? "",
+    week: week && /^\d+$/.test(week) ? Number(week) : undefined,
+    mealType: mealType?.trim() || undefined,
+    lowFodmap: searchParams.get("lowFodmap") === "true" ? true : undefined,
+    makeAhead: searchParams.get("makeAhead") === "true" ? true : undefined,
+    ingredientTheme: ingredientTheme?.trim() || undefined,
+    nutritionFocus: nutritionFocus?.trim() || undefined,
+    mood: mood?.trim() || undefined,
+  };
+}
+
 export function RecipeLibraryClient({
   recipes,
   availableWeeks,
@@ -107,12 +126,29 @@ export function RecipeLibraryClient({
 }: RecipeLibraryClientProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [, startTransition] = useTransition();
-  const [filters, setFilters] = useState<FilterState>(initialFilters);
-  const [searchDraft, setSearchDraft] = useState(initialFilters.query);
+  const urlFilters = useMemo(
+    () => parseFilters(new URLSearchParams(searchParams.toString())),
+    [searchParams],
+  );
+  const filters = urlFilters.query ||
+    urlFilters.week ||
+    urlFilters.mealType ||
+    urlFilters.lowFodmap ||
+    urlFilters.makeAhead ||
+    urlFilters.ingredientTheme ||
+    urlFilters.nutritionFocus ||
+    urlFilters.mood
+    ? urlFilters
+    : initialFilters;
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(
     Boolean(
-      initialFilters.week ||
+      urlFilters.week ||
+        urlFilters.lowFodmap ||
+        urlFilters.makeAhead ||
+        urlFilters.ingredientTheme ||
+        initialFilters.week ||
         initialFilters.lowFodmap ||
         initialFilters.makeAhead ||
         initialFilters.ingredientTheme,
@@ -144,8 +180,6 @@ export function RecipeLibraryClient({
 
   function updateFilters(overrides: Partial<FilterState>) {
     const nextFilters = { ...filters, ...overrides };
-
-    setFilters(nextFilters);
     syncUrl(nextFilters);
   }
 
@@ -160,8 +194,6 @@ export function RecipeLibraryClient({
 
   function clearFilters() {
     const resetFilters: FilterState = { query: "" };
-    setSearchDraft("");
-    setFilters(resetFilters);
     syncUrl(resetFilters);
   }
 
@@ -182,7 +214,10 @@ export function RecipeLibraryClient({
         className={styles.searchForm}
         onSubmit={(event) => {
           event.preventDefault();
-          updateFilters({ query: searchDraft.trim() });
+          const formData = new FormData(event.currentTarget);
+          updateFilters({
+            query: String(formData.get("q") ?? "").trim(),
+          });
         }}
       >
         <label htmlFor="recipe-search" className={styles.searchLabel}>
@@ -191,11 +226,12 @@ export function RecipeLibraryClient({
         <div className={styles.searchRow}>
           <input
             id="recipe-search"
+            name="q"
             type="search"
-            value={searchDraft}
+            key={filters.query}
+            defaultValue={filters.query}
             placeholder="Search title, ingredients, or tags"
             className={styles.searchInput}
-            onChange={(event) => setSearchDraft(event.currentTarget.value)}
           />
           <button type="submit" className={styles.searchButton}>
             Search

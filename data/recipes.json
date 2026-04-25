@@ -1,0 +1,1168 @@
+[
+  {
+    "id": "super-seedy-breakfast-porridge",
+    "title": "Super Seedy Breakfast Porridge",
+    "week": 1,
+    "day": 1,
+    "mealType": "breakfast",
+    "plantPoints": 6,
+    "tags": [
+      "breakfast",
+      "week-1",
+      "porridge",
+      "seeds",
+      "low-fodmap"
+    ],
+    "lowFodmap": true,
+    "ingredients": [
+      "70 grams jumbo oats",
+      "120 ml unsweetened almond milk",
+      "2 tablespoons raw pumpkin seeds, roughly chopped",
+      "Pinch ground ginger",
+      "Pinch ground cinnamon",
+      "Pinch ground nutmeg",
+      "2 tablespoons hemp seeds",
+      "1 tablespoon almond butter, plus more for serving",
+      "2 teaspoons chia seeds",
+      "1/2 teaspoon vanilla extract",
+      "100% maple syrup (optional)",
+      "Berries, to serve"
+    ],
+    "instructions": [
+      "Bring the oats and 160 ml water to the boil in a medium saucepan over medium-high heat.",
+      "Reduce the heat to low and stir in the almond milk, pumpkin seeds, ginger, cinnamon, and nutmeg. Cook, stirring occasionally, for about 5 minutes, until the oats are tender.",
+      "Remove from the heat and stir in the hemp seeds, almond butter, chia seeds, and vanilla. Taste, adding maple syrup as desired for a sweeter porridge.",
+      "Serve with berries and an additional almond butter drizzle, if desired."
+    ],
+    "notes": [
+      "Makes 2 servings.",
+      "Packed with ALA-rich hemp and chia seeds.",
+      "Pumpkin pie spice can be used instead of the ginger, cinnamon, and nutmeg.",
+      "For a sweeter porridge, add maple syrup as desired."
+    ],
+    "fibrePercent": 80,
+    "carbPercent": 80,
+    "proteinPercent": 60
+  },
+  {
+    "id": "creamy-coconut-pudding-with-pineapple",
+    "title": "Creamy Coconut Pudding with Pineapple",
+    "week": 1,
+    "day": 2,
+    "mealType": "breakfast",
+    "plantPoints": 4,
+    "tags": [
+      "breakfast",
+      "week-1",
+      "pudding",
+      "coconut",
+      "pineapple",
+      "chia"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "480 ml unsweetened almond milk",
+      "40 grams chia seeds",
+      "2 tablespoons ground flaxseed",
+      "1 tablespoon 100% maple syrup (optional)",
+      "1 teaspoon vanilla extract",
+      "2 tablespoons shredded, unsweetened coconut",
+      "450 grams sliced pineapple",
+      "1 date, chopped"
+    ],
+    "instructions": [
+      "Place the almond milk, chia seeds, ground flax, maple syrup, if using, and vanilla in a large kilner jar with a lid and shake vigorously to combine.",
+      "Place in the fridge for 20 minutes, then remove and shake again.",
+      "Place back in the fridge for at least 30 minutes or up to overnight.",
+      "When ready to serve, divide into two bowls, stir in the coconut, and top with pineapple and chopped date."
+    ],
+    "notes": [
+      "Serves 2.",
+      "Other Week 1-friendly topping options include 30 raspberries or 45 grams of blueberries.",
+      "Low FODMAP option: decrease the total quantity of pineapple to 225 grams.",
+      "Dates are a high FODMAP food, so in Week 1 limit to 1/3 chopped date per serving; in Week 2 increase to 1/2 date; after Week 3, if dates are not a trigger food, a full date can be consumed.",
+      "Packing tip: make this in a glass container with a lid in the evening, add the toppings in the morning, and pack it for busy mornings."
+    ],
+    "fibrePercent": 80,
+    "carbPercent": 60,
+    "proteinPercent": 40
+  },
+  {
+    "id": "superfood-smoothie-with-bowl-option",
+    "title": "Superfood Smoothie, with Bowl Option",
+    "week": 1,
+    "day": 3,
+    "mealType": "breakfast",
+    "plantPoints": 6,
+    "tags": [
+      "breakfast",
+      "week-1",
+      "smoothie",
+      "smoothie-bowl",
+      "berries",
+      "low-fodmap"
+    ],
+    "lowFodmap": true,
+    "ingredients": [
+      "240 ml almond milk",
+      "2 tablespoons hemp seeds",
+      "15 grams spinach leaves",
+      "Small handful broccoli sprouts",
+      "1 kiwi, skin removed",
+      "5 medium strawberries",
+      "2 tablespoons peanut butter",
+      "1/2 frozen banana",
+      "1 to 2 teaspoons 100% maple syrup (optional)"
+    ],
+    "instructions": [
+      "Place all ingredients in a blender and puree until very smooth and creamy.",
+      "Depending on the power of your blender, you may need to add more liquid.",
+      "To make a smoothie bowl, reduce the liquid by half and use 120 ml almond milk, then blend as directed.",
+      "For the bowl option, divide the contents into two bowls and drizzle with peanut butter and top with more berries, if desired.",
+      "Garnish with more fresh fruit, seeds, nut butter, and Crispy Oat Granola."
+    ],
+    "notes": [
+      "Serves 1.",
+      "If you prefer your smoothie on the sweeter side, you may need a touch of maple syrup for Weeks 1 and 2.",
+      "From Week 3 onward, feel free to add more berries or kiwi and omit the sweetener altogether.",
+      "Packing tip: place the smoothie or bowl in a glass jar or leak-proof container with a lid. For the bowl, pack toppings separately and combine once ready to eat.",
+      "Low FODMAP option: unripe bananas are lower in FODMAPs than ripe bananas. Half a ripe banana or 1 medium unripe banana are both low FODMAP. Use 1/2 banana if you are sensitive to fructose."
+    ],
+    "fibrePercent": 60,
+    "carbPercent": 40,
+    "proteinPercent": 60
+  },
+  {
+    "id": "berry-good-sweet-potato-toast",
+    "title": "Berry Good Sweet Potato Toast",
+    "week": 1,
+    "day": 3,
+    "mealType": "breakfast",
+    "plantPoints": 3,
+    "tags": [
+      "breakfast",
+      "week-1",
+      "sweet-potato-toast",
+      "blueberries",
+      "make-ahead"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "1 large sweet potato, washed and dried",
+      "2 tablespoons almond butter",
+      "20 blueberries"
+    ],
+    "instructions": [
+      "Preheat the oven to 180 C. Place a wire rack on a large rimmed baking tray and set aside.",
+      "Trim both ends from the sweet potato using a knife, then slice the potato lengthwise into 6 mm thick slabs using a knife or mandoline.",
+      "Place the slices onto the wire rack, or directly onto the baking sheet, in a single layer and place in the middle of the oven.",
+      "Cook for 15 to 20 minutes, until the potatoes are tender but not fully cooked, checking every 5 minutes to make sure they do not burn. If you are not using a wire rack, flip the potatoes halfway through.",
+      "Remove from the oven and allow to cool completely on the wire rack, then transfer to an airtight container and store in the fridge for up to 4 days.",
+      "When ready to serve, place about 2 sweet potato slices in a toaster or toaster oven on the medium setting and toast until hot and the edges are crispy.",
+      "Serve with almond butter and blueberries."
+    ],
+    "notes": [
+      "Makes 10 or 11 slices.",
+      "A sharp knife or mandoline helps create uniform slices.",
+      "Low FODMAP option: for the first week, limit your sweet potato portion size to 115 grams.",
+      "Supercharge it with a dash of cinnamon, unsweetened coconut flakes, or hemp seeds for more plant points and nutrients.",
+      "This works well as make-ahead prep: par-bake the sweet potatoes ahead of time and toast when ready to eat."
+    ],
+    "fibrePercent": 60,
+    "carbPercent": 60,
+    "proteinPercent": 40
+  },
+  {
+    "id": "crispy-oat-granola",
+    "title": "Crispy Oat Granola",
+    "week": 1,
+    "mealType": "topping",
+    "plantPoints": 6,
+    "tags": [
+      "topping",
+      "week-1",
+      "granola",
+      "make-ahead",
+      "low-fodmap"
+    ],
+    "lowFodmap": true,
+    "ingredients": [
+      "200 grams jumbo oats",
+      "95 grams unsweetened, shredded coconut",
+      "115 grams chopped walnuts",
+      "2 tablespoons chia seeds",
+      "2 tablespoons hemp seeds",
+      "2 tablespoons ground flaxseed",
+      "1 teaspoon ground cinnamon",
+      "3/4 teaspoon salt",
+      "2 tablespoons organic sunflower oil",
+      "60 ml 100% maple syrup",
+      "1 teaspoon vanilla extract",
+      "50 grams dried cranberries (optional)"
+    ],
+    "instructions": [
+      "Preheat the oven to 125 C. Line a rimmed baking tray with baking parchment.",
+      "In a large bowl, combine the oats, coconut, walnuts, chia seeds, hemp seeds, flaxseed, cinnamon, and salt.",
+      "In a small saucepan over medium heat, whisk the sunflower oil into the maple syrup. Bring to a simmer, then remove from the heat and add the vanilla.",
+      "Add the syrup mixture to the oat ingredients and mix thoroughly.",
+      "Spread the granola in a single layer on the prepared baking tray.",
+      "Bake for 90 minutes, stirring every 15 minutes, until golden brown.",
+      "Cool completely, then stir in the dried cranberries, if using.",
+      "Transfer to an airtight container and store for several weeks in the fridge, or in the freezer for up to 3 months."
+    ],
+    "notes": [
+      "Makes about 500 grams.",
+      "This granola is a great topper for smoothies and smoothie bowls, and also works with plant-based milk or on its own.",
+      "Make-ahead tip: make this at the start of Week 1 and enjoy it throughout the meal plan.",
+      "Store in an airtight container to prevent it from drying out.",
+      "Low FODMAP option: 1 tablespoon dried cranberries per serving is low FODMAP."
+    ],
+    "fibrePercent": 60,
+    "carbPercent": 80,
+    "proteinPercent": 60
+  },
+  {
+    "id": "the-daily-salad",
+    "title": "The Daily Salad",
+    "week": 1,
+    "day": 1,
+    "mealType": "lunch",
+    "plantPoints": 9,
+    "tags": [
+      "lunch",
+      "week-1",
+      "salad",
+      "greens",
+      "chickpeas",
+      "low-fodmap"
+    ],
+    "lowFodmap": true,
+    "ingredients": [
+      "300 grams chopped leafy greens",
+      "55 grams Quick-Pickled Beetroot, or shop-bought",
+      "85 grams cooked chickpeas",
+      "30 grams sunflower seeds",
+      "Handful broccoli sprouts",
+      "1 medium carrot, grated",
+      "10 cherry tomatoes, sliced",
+      "60 ml freshly squeezed orange juice",
+      "2 tablespoons apple cider vinegar",
+      "2 tablespoons tahini",
+      "1/4 teaspoon salt, plus more to taste",
+      "1/4 teaspoon freshly ground black pepper, plus more to taste",
+      "Water, as needed for dressing consistency",
+      "170 grams Supercharged Roasted Roots (optional), for serving",
+      "Chopped parsley (optional)",
+      "Cubed, baked tofu (optional)",
+      "1/2 avocado (optional, after Week 2)",
+      "270 grams steamed, sliced beetroot",
+      "60 ml plus 2 tablespoons red wine vinegar",
+      "1 tablespoon 100% maple syrup",
+      "1 tablespoon pickling spice"
+    ],
+    "instructions": [
+      "Make the quick-pickled beetroot by placing the cooked beetroot, red wine vinegar, maple syrup, and pickling spice in a small saucepan and bringing to the boil over high heat.",
+      "Reduce the heat to a simmer, cover, and cook for 3 minutes. Remove from the heat and let sit for 30 minutes, then refrigerate until needed.",
+      "To make the salad, toss together the greens, pickled beetroot, chickpeas, sunflower seeds, broccoli sprouts, carrot, tomatoes, and any optional supercharge toppings in a large bowl.",
+      "To make the dressing, whisk together the orange juice, apple cider vinegar, tahini, salt, and pepper in a small bowl or glass jar until smooth.",
+      "Whisk in water 1 tablespoon at a time until the dressing is pourable but not runny, then adjust salt and pepper to taste.",
+      "When ready to serve, drizzle each salad with half the dressing, or to taste, toss well, and season with more salt and pepper if needed."
+    ],
+    "notes": [
+      "Serves 2.",
+      "Pickled beetroot is used here because it is low FODMAP even though plain beetroot is fairly high.",
+      "The dressing will keep in the fridge for up to 5 days.",
+      "Supercharge it with 170 grams Supercharged Roasted Roots, chopped parsley, and cubed baked tofu. After Week 2, you can top with 1/2 avocado.",
+      "Quick-pickled beetroot will keep in the fridge for up to 1 week.",
+      "If you do not have pickling spice, use a pinch of mustard seeds, 2 or 3 whole cloves, and a pinch of whole peppercorns instead."
+    ],
+    "fibrePercent": 100,
+    "carbPercent": 60,
+    "proteinPercent": 60
+  },
+  {
+    "id": "supercharged-roasted-roots",
+    "title": "Supercharged Roasted Roots",
+    "week": 1,
+    "mealType": "topping",
+    "plantPoints": 3,
+    "tags": [
+      "topping",
+      "week-1",
+      "roasted-vegetables",
+      "roots",
+      "make-ahead"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "260 grams cubed sweet potato",
+      "2 parsnips, chopped",
+      "6 large radishes, chopped",
+      "1 tablespoon olive oil, or garlic-infused olive oil",
+      "2 tablespoons vegetable stock",
+      "1/2 teaspoon salt",
+      "1/2 teaspoon freshly ground pepper"
+    ],
+    "instructions": [
+      "Preheat the oven to 220 C.",
+      "Toss the sweet potato, parsnips, radishes, olive oil, stock, salt, and pepper together in a large bowl until well combined.",
+      "Place on a rimmed baking tray or roasting tin in a single layer, using two trays if needed, and cover with foil.",
+      "Roast for 35 minutes, or until mostly soft.",
+      "Remove from the oven, remove the foil, and stir.",
+      "Return to the oven for 10 more minutes, or until the edges become lightly crisp."
+    ],
+    "notes": [
+      "Serves 4.",
+      "Designed to add a fibre boost to meals.",
+      "Add a handful to salads, Nourishing Buddha Bowls, or Tofu Scramble Bowls, or enjoy on its own.",
+      "This mix is perfect for Week 1, but the same technique works on many vegetables with adjusted cooking times."
+    ],
+    "fibrePercent": 60,
+    "carbPercent": 60,
+    "proteinPercent": 20
+  },
+  {
+    "id": "wild-biome-super-soup",
+    "title": "Wild Biome Super Soup",
+    "week": 1,
+    "day": 2,
+    "mealType": "lunch",
+    "plantPoints": 7,
+    "tags": [
+      "lunch",
+      "week-1",
+      "soup",
+      "wild-rice",
+      "chickpeas",
+      "kale"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "1 teaspoon olive oil",
+      "2 carrots, chopped",
+      "1 celery stick, chopped",
+      "2 tablespoons fresh chives, chopped",
+      "1/4 teaspoon salt, plus more to taste",
+      "1/8 teaspoon freshly ground black pepper, plus more to taste",
+      "600 ml Biome Broth",
+      "60 grams wild rice",
+      "85 grams chickpeas",
+      "70 grams kale, stems removed and roughly chopped",
+      "120 ml water"
+    ],
+    "instructions": [
+      "In a medium saucepan, heat the olive oil over medium-high heat.",
+      "Add the carrots, celery, chives, salt, and pepper. Cook for 3 to 5 minutes, until the vegetables are crisp-tender.",
+      "Add the broth, wild rice, and 120 ml water. Bring the mixture to the boil.",
+      "Cover and reduce the heat to low, then simmer for about 40 minutes, until the rice has softened.",
+      "Mix in the chickpeas and kale and cook until the kale is just wilted, about 5 minutes.",
+      "Add salt and pepper to taste."
+    ],
+    "notes": [
+      "Makes 2 servings.",
+      "This is especially comforting on a cold or rainy day.",
+      "Packing tip: pack in a thermos to enjoy warm at work, or place in a leak-proof container and warm through before serving.",
+      "Supercharge it with a side of sourdough bread, Muhammara Dip, and freshly chopped spring onions."
+    ],
+    "fibrePercent": 80,
+    "carbPercent": 60,
+    "proteinPercent": 40
+  },
+  {
+    "id": "muhammara-sandwich",
+    "title": "Muhammara Sandwich",
+    "week": 1,
+    "day": 3,
+    "mealType": "lunch",
+    "plantPoints": 7,
+    "tags": [
+      "lunch",
+      "week-1",
+      "sandwich",
+      "muhammara",
+      "spinach",
+      "make-ahead"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "Leftover Muhammara Dip",
+      "Leftover Roasted Italian Medley",
+      "Sourdough bread",
+      "Fresh spinach leaves"
+    ],
+    "instructions": [
+      "Right before serving, toast the bread and warm the dip and vegetables.",
+      "Spread the muhammara dip on both pieces of the bread.",
+      "Layer with the roasted vegetables and fresh spinach leaves.",
+      "Eat as an open-face sandwich, or assemble, slice, and enjoy."
+    ],
+    "notes": [
+      "Makes 1 sandwich.",
+      "To pack for lunch, pack the toast, roasted Italian vegetables, spinach, and dip separately, then combine right before eating.",
+      "This is especially good as an open-face sandwich."
+    ],
+    "fibrePercent": 60,
+    "carbPercent": 80,
+    "proteinPercent": 40
+  },
+  {
+    "id": "down-n-dirty-kale-salad",
+    "title": "Down 'n' Dirty Kale Salad",
+    "week": 1,
+    "day": 6,
+    "mealType": "lunch",
+    "plantPoints": 5,
+    "tags": [
+      "lunch",
+      "week-1",
+      "salad",
+      "kale",
+      "spinach",
+      "make-ahead"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "70 grams kale, tough stems removed and chopped",
+      "3 teaspoons low-sodium tamari",
+      "30 grams spinach",
+      "2 tablespoons chives",
+      "1/4 teaspoon salt",
+      "1/8 teaspoon freshly ground black pepper",
+      "1/4 avocado, mashed",
+      "2 tablespoons almond butter",
+      "1/2 celery stick, chopped",
+      "2 tablespoons walnuts, roughly chopped (optional)",
+      "50 grams chopped spring onions, green parts only (optional)"
+    ],
+    "instructions": [
+      "In a medium bowl, drizzle the kale with 1 teaspoon tamari and massage with your hands to soften and break down the kale.",
+      "Add the spinach, chives, salt, and pepper and toss together once more.",
+      "In a separate small bowl, mash the avocado with the almond butter and whisk in the remaining 2 teaspoons of tamari to thin.",
+      "Pour the avocado mixture over the kale and combine thoroughly with your hands or with tongs, massaging to coat every piece.",
+      "Add the celery, walnuts, and spring onions and serve."
+    ],
+    "notes": [
+      "Serves 2.",
+      "This is one of the favourite kale preparations in the meal plan and works well as a side dish across multiple meals.",
+      "FODMAP alternative suggestion: if you can tolerate a higher portion than 35 grams, increase your serving of kale, as this recipe makes a lot of dressing.",
+      "Make-ahead tip: this salad tastes good a day after making, but not much longer.",
+      "If making one portion now and saving one for later, only dress half the greens with half of the dressing and toppings, and store the remaining kale, spinach, dressing, chopped celery, walnuts, and spring onions separately until ready to enjoy."
+    ],
+    "fibrePercent": 60,
+    "carbPercent": 20,
+    "proteinPercent": 40
+  },
+  {
+    "id": "muhammara-dip",
+    "title": "Muhammara Dip",
+    "week": 1,
+    "mealType": "side",
+    "plantPoints": 3,
+    "tags": [
+      "side",
+      "week-1",
+      "dip",
+      "red-peppers",
+      "walnuts",
+      "make-ahead"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "6 large sweet red peppers",
+      "115 grams raw walnuts, chopped",
+      "2 tablespoons olive oil",
+      "60 ml freshly squeezed lemon juice",
+      "60 ml balsamic vinegar",
+      "1 teaspoon ground cumin",
+      "1 teaspoon sea salt, plus more to taste",
+      "1/2 teaspoon crushed red pepper flakes, or more for a spicy dip"
+    ],
+    "instructions": [
+      "Preheat the oven to 230 C.",
+      "Place the whole red peppers directly onto a rimmed baking tray and roast for 25 minutes, turning after 15 minutes, so that the peppers are lightly charred on each side.",
+      "Place the peppers in a large bowl and immediately cover with a kitchen towel to allow them to steam for at least 10 minutes.",
+      "Once cool, remove the skin, core, and seeds. Roughly chop and set aside.",
+      "To the base of a food processor, add the walnuts, olive oil, lemon juice, balsamic vinegar, cumin, salt, and red pepper flakes. Pulse 8 to 10 times to combine.",
+      "Add the roasted peppers and pulse a few more times to combine.",
+      "Make it into a creamy hummus-like spread or leave it chunkier, then taste and adjust with more lemon, chilli flakes, balsamic vinegar, or salt as needed."
+    ],
+    "notes": [
+      "Makes about 600 grams dip.",
+      "Muhammara is a hot pepper dip with Syrian roots made from roasted red peppers, walnuts, cumin, and red pepper flakes.",
+      "This smoky spread is great with vegetables, toasted sourdough, and in Muhammara Sandwich.",
+      "Keep covered in the fridge for up to 4 days."
+    ],
+    "fibrePercent": 40,
+    "carbPercent": 20,
+    "proteinPercent": 20
+  },
+  {
+    "id": "plant-powered-polenta-ragu",
+    "title": "Plant-Powered Polenta Ragu",
+    "week": 1,
+    "day": 1,
+    "mealType": "dinner",
+    "plantPoints": 8,
+    "tags": [
+      "dinner",
+      "week-1",
+      "polenta",
+      "ragu",
+      "lentils",
+      "italian"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "2 teaspoons olive oil, garlic-infused olive oil, or vegetable stock",
+      "200 grams chopped tomatoes",
+      "Salt and freshly ground black pepper",
+      "200 grams tinned lentils",
+      "240 grams Roasted Italian Medley",
+      "1/2 teaspoon dried oregano, plus more to taste",
+      "1/2 teaspoon dried basil, plus more to taste",
+      "Crushed red pepper flakes (optional)",
+      "360 ml plain almond milk",
+      "80 grams cornmeal",
+      "1/2 teaspoon salt",
+      "Freshly ground black pepper",
+      "Chopped parsley, to serve",
+      "Chopped basil, to serve",
+      "120 ml water"
+    ],
+    "instructions": [
+      "To make the ragu, heat a medium saucepan over medium heat and add the olive oil.",
+      "Add the tomatoes and a pinch of salt and black pepper. Cook, stirring often, for about 10 minutes, until the tomatoes have broken down.",
+      "Add the lentils, Roasted Italian Medley, oregano, basil, and red pepper flakes, if using.",
+      "Cook, stirring occasionally, for 10 minutes, or until thickened. Taste and add more salt, pepper, and dried herbs as desired.",
+      "To make the polenta, whisk together 120 ml water and the almond milk in a medium saucepan over medium heat.",
+      "When bubbles start to surface, whisk in the cornmeal and salt.",
+      "Reduce the heat to a simmer and cook for 10 to 15 minutes, until thickened. Taste and add more salt and pepper as needed.",
+      "Divide the polenta into two bowls and top with the ragu.",
+      "Garnish with freshly chopped parsley and basil."
+    ],
+    "notes": [
+      "Serves 2.",
+      "Creamy polenta is especially comforting paired with the quick ragu of Italian vegetables and lentils.",
+      "After Week 1, try this ragu with Pumpkin Seed Parmesan, which works well on pasta, polenta, and popcorn."
+    ],
+    "fibrePercent": 80,
+    "carbPercent": 80,
+    "proteinPercent": 60
+  },
+  {
+    "id": "tempeh-tacos-and-taco-salad",
+    "title": "Tempeh Tacos and Taco Salad",
+    "week": 1,
+    "day": 2,
+    "mealType": "dinner",
+    "plantPoints": 5,
+    "tags": [
+      "dinner",
+      "week-1",
+      "tacos",
+      "tempeh",
+      "lentils",
+      "salad"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "1 tablespoon olive oil",
+      "225 grams tempeh, finely chopped",
+      "1 tablespoon chilli powder",
+      "2 teaspoons smoked paprika",
+      "1/2 teaspoon salt",
+      "1/4 teaspoon ground cayenne pepper",
+      "200 grams tinned lentils, drained",
+      "1 jalapeno, roughly chopped",
+      "1/2 bunch coriander",
+      "20 grams slivered almonds",
+      "Zest and juice of 1 lime",
+      "1 teaspoon salt",
+      "120 ml water",
+      "4 corn tortillas",
+      "Shredded lettuce, black olives, chopped tomatoes, spring onions, and coriander, to serve",
+      "300 grams shredded lettuce",
+      "100 grams chopped tomatoes",
+      "50 grams sliced black olives",
+      "2 sliced spring onions, green parts only",
+      "10 grams chopped coriander"
+    ],
+    "instructions": [
+      "To make the taco filling, heat the oil in a large frying pan over medium heat.",
+      "Add the tempeh and use a wooden spoon to break it into small pieces, then add the chilli powder, smoked paprika, salt, and cayenne pepper.",
+      "Cook for about 10 minutes, until the tempeh is softened, adding a splash of stock or water if it sticks to the pan or gets too dry.",
+      "Add the lentils and stir to combine and warm through.",
+      "To make the creamy coriander sauce, place the jalapeno, coriander, almonds, lime zest, lime juice, 120 ml water, and salt into a blender and puree until creamy and smooth.",
+      "Add more water, 1 tablespoon at a time, if the dressing is too thick. The consistency should be similar to a thick salad dressing.",
+      "To assemble the tacos, warm the tortillas and add half of the tempeh filling to them.",
+      "Top the tacos with shredded lettuce, tomatoes, olives, spring onions, coriander, and dressing. Reserve the remaining half of the filling for taco salad later in the week.",
+      "To assemble the taco salad, toss together the lettuce, tomatoes, olives, spring onions, and coriander and divide into two bowls.",
+      "Top with the remaining tempeh taco filling and drizzle with the coriander dressing."
+    ],
+    "notes": [
+      "Serves 4.",
+      "The tempeh taco filling and creamy coriander sauce are designed to do double duty in both the tacos and taco salad.",
+      "Make-ahead tip: prep the tempeh taco filling and creamy coriander sauce up to 3 days before serving.",
+      "Portion half of the tempeh taco filling and creamy coriander dressing to use later in the week for Tempeh Taco Salad.",
+      "Low FODMAP option: chilli powder may contain garlic, so check the ingredient list and pay attention to how you feel after this meal.",
+      "Plant points listed as 5+ in the source."
+    ],
+    "fibrePercent": 80,
+    "carbPercent": 60,
+    "proteinPercent": 100
+  },
+  {
+    "id": "nourishing-tomato-noodle-soup",
+    "title": "Nourishing Tomato Noodle Soup",
+    "week": 1,
+    "day": 3,
+    "mealType": "dinner",
+    "plantPoints": 5,
+    "descriptiveNote": "Tomato noodle soup for this soul. This low FODMAP soup is comforting, nourishing, and just plain delicious.",
+    "tags": [
+      "dinner",
+      "week-1",
+      "soup",
+      "noodles",
+      "tofu",
+      "low-fodmap"
+    ],
+    "lowFodmap": true,
+    "ingredients": [
+      "720 ml Biome Broth, plus more as needed",
+      "1 spring onion, green part only, sliced",
+      "2 teaspoons freshly grated ginger root",
+      "1 plum tomato, finely diced",
+      "1 tablespoon tamari",
+      "170 grams firm tofu, drained, lightly pressed, and finely cubed",
+      "1/2 teaspoon ground turmeric",
+      "140 grams rice noodles",
+      "2 teaspoons miso paste",
+      "1 teaspoon toasted sesame oil (optional)",
+      "Supercharged Roasted Roots (optional), for serving"
+    ],
+    "instructions": [
+      "Heat 2 tablespoons of the broth in a medium saucepan over medium heat.",
+      "Add the spring onions, ginger root, tomato, and tamari and cook for about 10 minutes, until the tomato is well broken down. Add a splash or two of broth as needed.",
+      "Add the tofu and cook 1 to 2 more minutes, stirring occasionally to prevent sticking.",
+      "Add the turmeric and the remaining broth, then bring to a low boil. Let simmer for 10 minutes for the flavours to develop.",
+      "Reduce the heat to a simmer, then add the rice noodles. Cook for another 2 or 3 minutes, until the noodles are tender and cooked through.",
+      "Turn off the heat and stir in the miso.",
+      "Drizzle with sesame oil, if using, and top with the roasted roots to serve, if desired."
+    ],
+    "notes": [
+      "Serves 2.",
+      "Supercharge it with 1 slice toasted nori cut into strips, sesame seeds, and sliced spring onion greens.",
+      "To press tofu, slice into slabs, wrap in clean kitchen towels or paper towels, place on a rimmed baking tray, cover with a heavy object, and let sit for 10 minutes until much of the water is removed."
+    ],
+    "fibrePercent": 40,
+    "carbPercent": 80,
+    "proteinPercent": 60
+  },
+  {
+    "id": "pesto-pasta",
+    "title": "Pesto Pasta",
+    "week": 1,
+    "day": 4,
+    "mealType": "dinner",
+    "plantPoints": 6,
+    "descriptiveNote": "This hearty pasta dinner comes together quickly, using the leftover Roasted Italian Medley from earlier in the week.",
+    "tags": [
+      "dinner",
+      "week-1",
+      "pasta",
+      "pesto",
+      "rocket",
+      "italian"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "60 grams rocket",
+      "60 grams lightly toasted walnuts",
+      "2 tablespoons nutritional yeast",
+      "2 tablespoons freshly squeezed lemon juice",
+      "60 ml vegetable stock or water",
+      "1/4 teaspoon salt, plus more to taste",
+      "1/4 teaspoon freshly ground black pepper, plus more to taste",
+      "1 tablespoon olive oil (optional)",
+      "225 grams dried gluten-free pasta",
+      "340 grams Roasted Italian Medley",
+      "120 ml pasta water, reserved as needed",
+      "Crushed red pepper flakes (optional)"
+    ],
+    "instructions": [
+      "To make the pesto, place the rocket, walnuts, and nutritional yeast in the base of a food processor and blend until very finely chopped.",
+      "With the motor running, add the lemon juice, vegetable stock, salt, and pepper. Adjust salt and pepper to taste.",
+      "Drizzle in the olive oil, if using, and set aside.",
+      "Bring a large pan of salted water to a boil. Add the pasta and cook until just al dente according to packet directions.",
+      "Reserve 120 ml of pasta water and drain the pasta.",
+      "Place the pasta back into the pan along with the pesto. Toss, adding splashes of pasta water as needed to coat the pasta.",
+      "Stir in the leftover Roasted Italian Medley and serve.",
+      "If you prefer your pasta a little spicy, serve with crushed red pepper flakes."
+    ],
+    "notes": [
+      "Serves 4.",
+      "Low FODMAP option: look for pasta made with quinoa. Chickpea pasta is also good, but has moderate FODMAP over a 200 gram serving.",
+      "If tolerated after Week 3, add 1 or 2 garlic cloves to the pesto.",
+      "If tolerated after Week 2, top with Pumpkin Seed Parmesan."
+    ],
+    "fibrePercent": 60,
+    "carbPercent": 80,
+    "proteinPercent": 40
+  },
+  {
+    "id": "roasted-italian-medley",
+    "title": "Roasted Italian Medley",
+    "week": 1,
+    "mealType": "side",
+    "plantPoints": 5,
+    "descriptiveNote": "This one-pan side dish is designed to make meal prep for Week 1 even easier. It gets used across several meals and is a great way to add a variety of vegetables to your meals.",
+    "tags": [
+      "side",
+      "week-1",
+      "roasted-vegetables",
+      "italian",
+      "meal-prep",
+      "make-ahead"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "1 large aubergine, cubed",
+      "2 medium courgettes, diced",
+      "1 red pepper, seeded and cubed",
+      "2 plum tomatoes, diced",
+      "1 small fennel, fronds removed and diced",
+      "1 teaspoon dry Italian seasoning",
+      "60 ml vegetable stock",
+      "2 to 3 teaspoons olive oil",
+      "1/2 teaspoon salt",
+      "1/2 teaspoon freshly ground black pepper",
+      "1/4 teaspoon crushed red pepper flakes (optional)"
+    ],
+    "instructions": [
+      "Preheat the oven to 200 C.",
+      "In a large bowl, toss together the aubergine, courgettes, red pepper, plum tomatoes, fennel, Italian seasoning, vegetable stock, olive oil, salt, black pepper, and red pepper flakes, if using.",
+      "Place in a single layer on a rimmed baking tray or roasting tin, using two trays if needed, then place on the top rack of the oven.",
+      "Cook for 35 to 40 minutes, depending on the size of your vegetables, until the vegetables are very tender.",
+      "Keep in the fridge for up to 6 days.",
+      "Enjoy any extras as is, on salads, or combined with cooked wholegrain pasta."
+    ],
+    "notes": [
+      "Makes about a kilo.",
+      "This is designed to make Week 1 meal prep easier and gets reused across several dishes.",
+      "Low FODMAP option: fennel has moderate mannitols and fructans. Less than 45 grams is considered low FODMAP."
+    ],
+    "fibrePercent": 60,
+    "carbPercent": 40,
+    "proteinPercent": 20
+  },
+  {
+    "id": "back-pocket-stir-fry",
+    "title": "Back-Pocket Stir-Fry",
+    "week": 1,
+    "day": 5,
+    "mealType": "dinner",
+    "plantPoints": 7,
+    "descriptiveNote": "This stir-fry is made for Week 1 but simple enough to mix and match with other vegetables after the first week.",
+    "tags": [
+      "dinner",
+      "week-1",
+      "stir-fry",
+      "quinoa",
+      "vegetables",
+      "make-ahead"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "80 ml tamari",
+      "60 ml rice wine vinegar",
+      "2 tablespoons toasted sesame oil",
+      "2 teaspoons cornflour or arrowroot",
+      "60 ml Biome Broth or water",
+      "2 tablespoons freshly grated ginger root",
+      "1 red chilli, seeded and finely chopped (optional)",
+      "4 spring onions, green parts only, sliced",
+      "140 grams broccoli florets only, chopped",
+      "4 carrots, sliced on the diagonal",
+      "1 sweet red bell pepper, sliced",
+      "140 grams pak choi, sliced, leaves and stems separated",
+      "225 grams oyster mushrooms, sliced",
+      "740 grams cooked quinoa, to serve"
+    ],
+    "instructions": [
+      "In a small bowl, whisk together the tamari, vinegar, sesame oil, and cornflour until smooth. Set aside.",
+      "Heat the broth in a large frying pan or wok over medium-high heat.",
+      "Add the ginger, chilli, if using, and sliced spring onions. Cook, stirring often, until fragrant, about 1 minute.",
+      "Add the broccoli, carrots, sweet pepper, and pak choi stems and cook, stirring often, for 5 to 7 minutes, until the vegetables are bright in colour and slightly tender.",
+      "Add the pak choi leaves and oyster mushrooms and stir together for 30 seconds.",
+      "Add the tamari mixture to the wok. Cook, stirring often, until the sauce has thickened and the vegetables are cooked through.",
+      "Serve over cooked quinoa."
+    ],
+    "notes": [
+      "Serves 4.",
+      "This is made for Week 1 but is easy to adapt with other vegetables after the first week.",
+      "Instead of a traditional protein source, this is served over quinoa, which adds protein and fibre.",
+      "Enjoy leftovers for lunch later in the week.",
+      "Low FODMAP option: after Week 2, add 1 or 2 crushed garlic cloves to the tamari mixture."
+    ],
+    "fibrePercent": 80,
+    "carbPercent": 80,
+    "proteinPercent": 40
+  },
+  {
+    "id": "curry-tofu-pak-choi",
+    "title": "Curry Tofu Pak Choi",
+    "week": 1,
+    "day": 6,
+    "mealType": "dinner",
+    "plantPoints": 7,
+    "descriptiveNote": "This simple dinner combines two of our favourite plant-powered foods: calcium- and iron-rich tofu and pak choi.",
+    "tags": [
+      "dinner",
+      "week-1",
+      "curry",
+      "tofu",
+      "pak-choi",
+      "rice"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "300 ml plus 2 tablespoons vegetable stock or Biome Broth, plus more as needed",
+      "120 ml canned coconut milk",
+      "1 tablespoon yellow curry powder",
+      "1 tablespoon garam masala powder",
+      "2 spring onions, green parts only, thinly sliced",
+      "1 tablespoon freshly grated ginger root",
+      "1 tablespoon tamari",
+      "210 grams pak choi, leaves and stems separated",
+      "85 grams canned bamboo shoots, rinsed",
+      "200 grams firm tofu, pressed and cubed",
+      "1 teaspoon toasted sesame oil",
+      "250 grams cooked brown rice, for serving"
+    ],
+    "instructions": [
+      "In a medium bowl, whisk together 300 ml vegetable stock, the coconut milk, yellow curry powder, and garam masala until the spices are thoroughly mixed in. Set aside.",
+      "Heat the remaining 2 tablespoons broth in a large frying pan or wok over medium-high heat until shimmering.",
+      "Add the spring onions, ginger root, and tamari. Stir for about 1 minute, until the mixture is fragrant and the ginger is mostly broken down.",
+      "Add the pak choi stems and bamboo shoots and stir-fry for about 5 minutes, until softened. Add a splash or two of stock if needed.",
+      "Toss the tofu with the sesame oil and set aside, then add it to the wok and stir for 30 seconds to incorporate with the pak choi and bamboo shoots.",
+      "Reduce the heat to medium-low and add the coconut milk mixture and remaining pak choi leaves.",
+      "Cover and reduce the heat to low. Let simmer for about 10 minutes, until the sauce is thickened and the vegetables are tender and cooked through.",
+      "Serve over cooked rice."
+    ],
+    "notes": [
+      "Makes 2 servings.",
+      "Baby pak choi is more tender than larger pak choi, so use that if you prefer a milder vegetable.",
+      "Make-ahead tip: chop the spring onions and pak choi before cooking and store in a sealed container in the fridge.",
+      "This entire dish can be made ahead of time, cooled, stored in a sealed container in the fridge, and reheated later.",
+      "Low FODMAP option: check that your curry powder and garam masala do not contain garlic or onion.",
+      "Supercharge it with chopped fresh coriander, sesame seeds, and or bean sprouts."
+    ],
+    "fibrePercent": 60,
+    "carbPercent": 80,
+    "proteinPercent": 80
+  },
+  {
+    "id": "mushroom-risotto",
+    "title": "Mushroom Risotto",
+    "week": 1,
+    "day": 7,
+    "mealType": "dinner",
+    "plantPoints": 5,
+    "descriptiveNote": "Put on a podcast (Plant Proof and Party in My Plants are my faves!) and enjoy standing over the hob, creating a warm bowl of delicious, creamy rice.",
+    "tags": [
+      "dinner",
+      "week-1",
+      "risotto",
+      "mushrooms",
+      "rice",
+      "low-fodmap"
+    ],
+    "lowFodmap": true,
+    "ingredients": [
+      "1 litre Biome Broth or FODMAP-friendly vegetable stock",
+      "2 tablespoons garlic-infused olive oil",
+      "225 grams oyster mushrooms, chopped",
+      "Salt",
+      "275 grams arborio or other short-grain rice",
+      "1 tablespoon freshly squeezed lemon juice",
+      "3 tablespoons nutritional yeast",
+      "Fresh parsley or fresh chives, chopped, to serve"
+    ],
+    "instructions": [
+      "In a small saucepan, heat the vegetable stock over medium heat. Once simmering, reduce the heat to low to keep warm.",
+      "While the stock is heating, heat a separate large saucepan over medium heat.",
+      "Add 1 tablespoon olive oil and heat until just shimmering, then add the mushrooms and a pinch of salt. Saute for about 10 minutes, until tender and browned.",
+      "Remove the mushrooms from the pan and set aside.",
+      "Heat the remaining 1 tablespoon of oil in the saucepan and add the rice. Cook, stirring often, for 1 minute until just lightly toasted.",
+      "Using a ladle, add the warmed vegetable stock a ladleful at a time, stirring almost constantly and allowing the rice to absorb the liquid before adding more.",
+      "Keep the heat no higher than medium so the risotto stays at a slight simmer rather than boiling.",
+      "Continue adding stock a ladleful at a time for about 20 minutes, until the rice is al dente.",
+      "Add the lemon juice, nutritional yeast, and reserved mushrooms, stirring to combine.",
+      "Season to taste if needed and serve with chopped parsley or chives."
+    ],
+    "notes": [
+      "Serves 4.",
+      "Risotto takes a little more time than other meals, but the steady stirring is part of the experience.",
+      "Garlic-infused olive oil is low FODMAP because fructans are not lipid soluble, so they do not leach into the oil. Use only the oil and do not eat the garlic.",
+      "You can make garlic-infused olive oil by gently heating about 240 ml olive oil with 5 to 6 crushed garlic cloves for a few minutes, cooling it, removing the garlic, and storing the oil in the fridge.",
+      "Low FODMAP option: oyster mushrooms are recommended in Week 1 as they are low FODMAP. Substitute other mushrooms with caution in Week 1, as they contain mannitol and fructans.",
+      "After Week 2 and if okay with garlic and onions, saute 150 grams chopped onion and 2 finely chopped garlic cloves in the pan after removing the mushrooms and before adding the rice."
+    ],
+    "fibrePercent": 40,
+    "carbPercent": 80,
+    "proteinPercent": 40
+  },
+  {
+    "id": "lemon-ginger-tea",
+    "title": "Lemon-Ginger Tea",
+    "week": 1,
+    "mealType": "drinks",
+    "plantPoints": 2,
+    "descriptiveNote": "We like this lemon-ginger tea as an after-dinner drink which aids in digestion. Feel free to drink it liberally, whenever you feel it suits you.",
+    "tags": [
+      "drinks",
+      "week-1",
+      "tea",
+      "ginger",
+      "lemon",
+      "after-dinner"
+    ],
+    "lowFodmap": true,
+    "ingredients": [
+      "1 small ginger root, sliced into four 2 cm chunks",
+      "Juice of 1 large lemon",
+      "100% maple syrup or stevia, as desired",
+      "1 litre water",
+      "Ice, for serving cold (optional)"
+    ],
+    "instructions": [
+      "In a medium saucepan, simmer 1 litre of water and the ginger root chunks for 10 to 15 minutes, or longer, depending on how strong you like your tea.",
+      "Remove from the heat and stir in the lemon juice.",
+      "Strain, removing the ginger, and divide the tea between 2 large mugs.",
+      "Stir in the maple syrup and serve.",
+      "To serve cold, pour the ginger-water mixture over 2 large glasses of ice and add the lemon juice and maple syrup, as desired."
+    ],
+    "notes": [
+      "Serves 2.",
+      "Ginger aids in digestion, and lemon contains just enough pucker to satisfy dessert cravings.",
+      "This works well as an after-dinner drink, but can be enjoyed whenever it suits you."
+    ],
+    "fibrePercent": 20,
+    "carbPercent": 20,
+    "proteinPercent": 20
+  },
+  {
+    "id": "biome-broth",
+    "title": "Biome Broth",
+    "week": 1,
+    "mealType": "snacks",
+    "plantPoints": 6,
+    "descriptiveNote": "For a quick snack, warm up 240 ml or more of this stock and stir in a tablespoon of miso paste until dissolved. Throw in cubed tofu, chopped spring onions, and or roasted mushrooms and steamed kale.",
+    "tags": [
+      "snacks",
+      "week-1",
+      "broth",
+      "stock",
+      "miso",
+      "make-ahead"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "1 large piece dried kombu",
+      "130 grams chopped carrots",
+      "130 grams chopped celery",
+      "15 grams dried shiitake mushrooms or 1 teaspoon mushroom powder",
+      "2 cm piece fresh ginger root, sliced",
+      "2 tablespoons nutritional yeast",
+      "2 tablespoons olive oil",
+      "3 tablespoons tamari",
+      "1/4 teaspoon ground turmeric",
+      "2 litres water",
+      "480 ml Biome Broth",
+      "2 teaspoons freshly grated ginger root",
+      "2 teaspoons miso paste"
+    ],
+    "instructions": [
+      "Place the kombu, carrots, celery, mushrooms, ginger root, nutritional yeast, olive oil, tamari, turmeric, and 2 litres of water in a slow cooker and simmer on low for at least 6 hours.",
+      "Alternatively, place everything in a large stockpot and simmer on low for at least 2 hours, stirring occasionally.",
+      "Let cool, then strain through a fine-mesh strainer.",
+      "Divide into glass containers, storing some in the freezer for later in the week and some in the fridge for immediate use.",
+      "If freezing in glass containers, leave enough room for the liquid to expand.",
+      "To make the miso biome sipper, warm 480 ml of the broth over medium heat.",
+      "Remove from the heat and stir in the grated ginger and miso paste until dissolved, about 30 seconds.",
+      "Divide into two mugs and sip."
+    ],
+    "notes": [
+      "Makes about 2 litres.",
+      "This stock is intended to tame inflammation, nourish your gut, and provide antioxidants.",
+      "Making a batch every Sunday in a slow cooker works well for easy prep.",
+      "As the weeks progress, add more aromatics like 1 chopped onion and 2 garlic cloves for a more robust stock if tolerated.",
+      "Supercharge it by adding 1/2 teaspoon mushroom powder to the biome sipper as you warm the stock and topping with sliced spring onion greens."
+    ],
+    "fibrePercent": 20,
+    "carbPercent": 20,
+    "proteinPercent": 20
+  },
+  {
+    "id": "coconut-oat-balls",
+    "title": "Coconut Oat Balls",
+    "week": 1,
+    "mealType": "dessert",
+    "plantPoints": 4,
+    "tags": [
+      "dessert",
+      "week-1",
+      "oats",
+      "coconut",
+      "peanut-butter",
+      "make-ahead"
+    ],
+    "lowFodmap": true,
+    "ingredients": [
+      "100 grams jumbo oats, plus more as needed",
+      "25 grams unsweetened coconut flakes",
+      "85 grams peanut butter, plus more as needed",
+      "2 tablespoons 100% maple syrup",
+      "2 tablespoons chia seeds",
+      "1 teaspoon vanilla extract",
+      "1/4 teaspoon ground cinnamon",
+      "40 grams finely chopped dark chocolate"
+    ],
+    "instructions": [
+      "Place the oats, coconut flakes, peanut butter, maple syrup, chia seeds, vanilla, and cinnamon in the base of a food processor and pulse 10 to 12 times, until just combined.",
+      "You can also mix these ingredients together in a large mixing bowl until thoroughly combined.",
+      "If the mixture is too sticky to roll into balls, add some more oats. If it is too dry, add more peanut butter.",
+      "Add the dark chocolate and pulse to just combine.",
+      "Pinch off a 1-tablespoon portion using either a spoon or small scoop and roll into a ball.",
+      "Continue with the rest of the mixture.",
+      "Store in an airtight container for 1 week or in the freezer for up to 3 months."
+    ],
+    "notes": [
+      "Makes about 14 balls, depending on size.",
+      "All of the ingredients are lower FODMAP, but stick to 2 balls per serving."
+    ],
+    "fibrePercent": 60,
+    "carbPercent": 60,
+    "proteinPercent": 40
+  },
+  {
+    "id": "zesty-lemon-chia-pudding",
+    "title": "Zesty Lemon Chia Pudding",
+    "week": 1,
+    "mealType": "dessert",
+    "plantPoints": 3,
+    "descriptiveNote": "This lemon chia pudding is a Fibre Fuelled riff on lemon pudding. Who needs dairy and egg yolks when you have chia seeds?",
+    "tags": [
+      "dessert",
+      "week-1",
+      "chia-pudding",
+      "lemon",
+      "make-ahead",
+      "low-fodmap"
+    ],
+    "lowFodmap": true,
+    "ingredients": [
+      "240 ml unsweetened almond milk",
+      "1 teaspoon freshly grated lemon zest",
+      "60 ml freshly squeezed lemon juice",
+      "1 to 2 tablespoons 100% maple syrup",
+      "1/4 teaspoon ground turmeric",
+      "Pinch salt",
+      "40 grams chia seeds"
+    ],
+    "instructions": [
+      "In a medium bowl, whisk together the almond milk, lemon zest, lemon juice, maple syrup, turmeric, and salt.",
+      "Add the chia seeds and whisk until very well combined, then place in the fridge for 15 minutes.",
+      "Remove and whisk together again, then cover and place back in the fridge to gel for at least 2 hours, or overnight.",
+      "Place in an airtight container and keep in the fridge for up to 7 days."
+    ],
+    "notes": [
+      "Makes about 500 ml.",
+      "For a creamier pudding, swap in canned coconut milk after Week 3.",
+      "Make-ahead tip: this chia pudding keeps for up to 1 week in the fridge.",
+      "Supercharge it with berries and up to 35 grams unsweetened shredded coconut.",
+      "After Week 2, you can add Whipped Coconut Cream too."
+    ],
+    "fibrePercent": 80,
+    "carbPercent": 40,
+    "proteinPercent": 40
+  },
+  {
+    "id": "whipped-coconut-cream",
+    "title": "Whipped Coconut Cream",
+    "week": 1,
+    "mealType": "side",
+    "plantPoints": 1,
+    "tags": [
+      "side",
+      "week-1",
+      "coconut",
+      "whipped-cream",
+      "topping",
+      "make-ahead"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "One 400 ml can full fat coconut milk or coconut cream, placed in the fridge overnight"
+    ],
+    "instructions": [
+      "Carefully open the can and scoop out the top half of the solidified coconut.",
+      "If using coconut milk, make sure you only take the solid coconut and not the water underneath.",
+      "Discard the water or save it for another recipe.",
+      "If using coconut cream, use the whole can.",
+      "Place the solidified coconut in a bowl and whip until creamy using a hand mixer or stand mixer."
+    ],
+    "notes": [
+      "Serves 4."
+    ],
+    "fibrePercent": 20,
+    "carbPercent": 20,
+    "proteinPercent": 20
+  },
+  {
+    "id": "gluten-free-pancakes",
+    "title": "Gluten-Free Pancakes",
+    "mealType": "breakfast",
+    "plantPoints": 2,
+    "descriptiveNote": "Three cheers for pancakes! These gluten-free pancakes are perfect for lazy weekend mornings.",
+    "tags": [
+      "breakfast",
+      "pancakes",
+      "gluten-free",
+      "weekend",
+      "berries"
+    ],
+    "lowFodmap": false,
+    "ingredients": [
+      "1 tablespoon ground flaxseed",
+      "3 tablespoons water",
+      "120 grams gluten-free flour",
+      "1 teaspoon baking powder",
+      "1/4 teaspoon bicarbonate of soda",
+      "1/4 teaspoon salt",
+      "240 ml unsweetened almond milk",
+      "1 teaspoon apple cider vinegar",
+      "1 tablespoon organic sunflower oil, plus more for greasing the frying pan",
+      "1 tablespoon vanilla extract"
+    ],
+    "instructions": [
+      "Whisk together the flaxseed and 3 tablespoons water and set aside until gelled, about 5 minutes.",
+      "In a large mixing bowl, whisk together the gluten-free flour, baking powder, bicarbonate of soda, and salt.",
+      "In a separate medium bowl, add the almond milk and vinegar.",
+      "Add the sunflower oil, vanilla, and the gelled flax and whisk to incorporate.",
+      "Add the almond milk mixture into the flour mixture and whisk thoroughly until no lumps remain.",
+      "Grease and heat a large frying pan with coconut oil or cooking spray over medium-high heat.",
+      "Drop batter into the hot frying pan, using about 4 tablespoons of batter for each pancake.",
+      "Wait for large bubbles to form, then flip and cook another 60 seconds, until golden brown on both sides.",
+      "Serve with berries and maple syrup, if desired."
+    ],
+    "notes": [
+      "Makes 6 pancakes.",
+      "Supercharge it by adding chopped berries to the batter."
+    ],
+    "fibrePercent": 40,
+    "carbPercent": 80,
+    "proteinPercent": 40
+  }
+]

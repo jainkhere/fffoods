@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import { AppHeader } from "@/components/app-header";
+import styles from "./layout.module.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -29,7 +32,12 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body className={styles.body}>
+        <Suspense fallback={null}>
+          <AppHeader />
+        </Suspense>
+        <div className={styles.content}>{children}</div>
+      </body>
     </html>
   );
 }

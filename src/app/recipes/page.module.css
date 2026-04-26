@@ -89,51 +89,11 @@
   font-size: 1.02rem;
 }
 
-.searchForm {
-  margin-top: 24px;
-}
-
-.searchLabel {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.searchRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
-
-.searchInput {
-  flex: 1 1 320px;
-  min-height: 48px;
-  padding: 0 16px;
-  border: 1px solid var(--control-border);
-  border-radius: 999px;
-  background: var(--control-bg);
-  color: inherit;
-  font: inherit;
-}
-
-.searchButton,
 .clearLink {
   min-height: 48px;
   padding: 12px 18px;
   border-radius: 999px;
   font-weight: 600;
-}
-
-.searchButton {
-  border: 0;
-  background: var(--button-bg);
-  color: var(--button-text);
-  font: inherit;
-  cursor: pointer;
 }
 
 .clearLink {
@@ -147,6 +107,11 @@
   display: grid;
   gap: 16px;
   margin-top: 20px;
+}
+
+.filterActions {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .filterGroup {
@@ -253,6 +218,34 @@
   padding: 24px;
 }
 
+.landingCard {
+  grid-column: 1 / -1;
+  background:
+    radial-gradient(circle at 78% 16%, color-mix(in srgb, var(--hero-glow) 58%, transparent), transparent 30%),
+    linear-gradient(135deg, var(--hero-grad-start), var(--hero-grad-end));
+  color: var(--hero-text);
+}
+
+.cardInner {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 16px;
+  min-height: 100%;
+}
+
+.landingCardInner {
+  grid-template-rows: auto auto;
+  align-content: space-between;
+  min-height: 360px;
+}
+
+.landingCard h1 {
+  margin-top: 12px;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 0.92;
+  max-width: 8ch;
+}
+
 .emptyState {
   padding: 28px 24px;
 }
@@ -305,6 +298,18 @@
   line-height: 1.6;
 }
 
+.reelHints {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .link {
   display: inline-flex;
   align-items: center;
@@ -319,12 +324,147 @@
 
 @media (max-width: 720px) {
   .page {
-    padding: 24px 14px 40px;
+    --recipe-mobile-header-clearance: calc(120px + env(safe-area-inset-bottom, 0px));
+    --recipe-mobile-card-height: calc(100svh - var(--recipe-mobile-header-clearance));
+  }
+
+  .page {
+    padding: 20px 12px 32px;
   }
 
   .hero,
-  .card,
   .emptyState {
     padding: 20px;
+  }
+
+  .hero {
+    padding: 0;
+    border-radius: 28px;
+  }
+
+  .filterSection {
+    gap: 14px;
+  }
+
+  .filterActions {
+    justify-content: stretch;
+  }
+
+  .clearLink {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .chipRow {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .chipRow::-webkit-scrollbar {
+    display: none;
+  }
+
+  .list {
+    grid-template-columns: 1fr;
+    gap: 0;
+    height: var(--recipe-mobile-card-height);
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    overscroll-behavior-y: contain;
+    border-radius: 28px;
+  }
+
+  .card {
+    min-height: var(--recipe-mobile-card-height);
+    padding: 16px 0;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    touch-action: pan-y;
+  }
+
+  .landingCard {
+    color: var(--hero-text);
+  }
+
+  .card:first-of-type {
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    border-top: 1px solid var(--border);
+  }
+
+  .card:last-of-type {
+    border-bottom-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+  }
+
+  .cardInner {
+    min-height: calc(var(--recipe-mobile-card-height) - 32px);
+    align-content: end;
+    gap: 18px;
+    padding: 24px 20px;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface) 58%, transparent), var(--surface)),
+      radial-gradient(circle at top center, var(--hero-glow), transparent 52%);
+  }
+
+  .landingCardInner {
+    grid-template-rows: auto auto;
+    min-height: calc(var(--recipe-mobile-card-height) - 32px);
+    align-content: space-between;
+    background:
+      radial-gradient(circle at 76% 12%, color-mix(in srgb, var(--hero-glow) 60%, transparent), transparent 34%),
+      linear-gradient(180deg, rgba(47, 22, 9, 0.03), rgba(47, 22, 9, 0.18));
+  }
+
+  .landingCard h1 {
+    margin-top: 18px;
+    font-size: clamp(3.5rem, 17vw, 5rem);
+    line-height: 0.92;
+    max-width: 8ch;
+  }
+
+  .landingCard .subheading {
+    margin-top: 22px;
+    font-size: clamp(1.35rem, 5vw, 1.85rem);
+    line-height: 1.15;
+    max-width: 18ch;
+  }
+
+  .meta {
+    gap: 8px;
+  }
+
+  .pill {
+    font-size: 0.82rem;
+  }
+
+  .card h2 {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.95;
+    max-width: 10ch;
+  }
+
+  .contentLink {
+    align-content: end;
+  }
+
+  .card p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .reelHints {
+    display: flex;
+  }
+
+  .link {
+    width: 100%;
+    justify-content: center;
+    min-height: 52px;
   }
 }

@@ -110,7 +110,30 @@
   transform: translateY(-1px);
 }
 
-.searchClearButton .icon {
+.searchSubmitButton {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  cursor: pointer;
+  transition:
+    opacity 0.16s ease,
+    transform 0.16s ease;
+}
+
+.searchSubmitButton:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.searchClearButton .icon,
+.searchSubmitButton .icon {
   width: 16px;
   height: 16px;
 }
@@ -330,13 +353,22 @@
   }
 
   .filterStack {
-    top: auto;
+    top: max(24px, env(safe-area-inset-top, 0px));
     right: 24px;
     bottom: calc(104px + env(safe-area-inset-bottom, 0px));
     width: min(420px, calc(100vw - 48px));
-    flex-direction: column-reverse;
+    max-height: calc(100svh - 128px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    flex-direction: column;
     align-items: flex-start;
-    gap: 26px;
+    gap: 20px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 4px 0;
+    scrollbar-width: none;
+  }
+
+  .filterStack::-webkit-scrollbar {
+    display: none;
   }
 
   .filterBubbleGroup {
@@ -357,7 +389,8 @@
 
   .filterActions {
     width: 100%;
-    padding-top: 4px;
+    padding-top: 2px;
+    padding-bottom: 4px;
   }
 
   .filterActionSecondary,

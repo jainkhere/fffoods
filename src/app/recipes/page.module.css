@@ -329,7 +329,11 @@
   }
 
   .page {
+    height: 100svh;
+    margin-bottom: calc((88px + env(safe-area-inset-bottom, 0px)) * -1);
+    overflow: hidden;
     padding: 20px 12px 32px;
+    overscroll-behavior: none;
   }
 
   .hero,

@@ -84,6 +84,21 @@ function XIcon() {
   );
 }
 
+function ArrowRightIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.icon}>
+      <path
+        d="M5 12h14m-6-6 6 6-6 6"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
+    </svg>
+  );
+}
+
 function HomeIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.icon}>
@@ -260,7 +275,7 @@ export function AppHeader() {
     const nextSearch = nextParams.toString();
     const useRecipeReelJump = shouldUseRecipeReelJump();
     const href = `${nextSearch ? `/recipes?${nextSearch}` : "/recipes"}${
-      useRecipeReelJump ? "#first-recipe" : ""
+      useRecipeReelJump ? "#home-slide" : ""
     }`;
 
     if (pathname === "/recipes") {
@@ -322,6 +337,14 @@ export function AppHeader() {
                     <XIcon />
                   </button>
                 ) : null}
+                <button
+                  type="submit"
+                  aria-label="Search recipes"
+                  title="Search recipes"
+                  className={styles.searchSubmitButton}
+                >
+                  <ArrowRightIcon />
+                </button>
               </div>
             </form>
           ) : null}

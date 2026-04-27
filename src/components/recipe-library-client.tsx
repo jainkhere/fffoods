@@ -117,7 +117,9 @@ export function RecipeLibraryClient({
 
   useEffect(() => {
     function scrollToRequestedSlide() {
-      if (window.location.hash !== "#first-recipe") {
+      const targetHash = window.location.hash;
+
+      if (targetHash !== "#first-recipe" && targetHash !== "#home-slide") {
         return;
       }
 
@@ -133,7 +135,9 @@ export function RecipeLibraryClient({
 
       window.requestAnimationFrame(() => {
         const list = listRef.current;
-        const target = filteredRecipes.length > 0
+        const target = targetHash === "#home-slide"
+          ? landingCardRef.current
+          : filteredRecipes.length > 0
           ? firstRecipeCardRef.current
           : landingCardRef.current;
 

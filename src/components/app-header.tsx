@@ -397,68 +397,70 @@ export function AppHeader() {
             aria-label="Recipe filters"
             onClick={handleCloseFilters}
           >
-            <section className={styles.filterBubbleGroup}>
-              <p className={styles.filterLabel}>Meal Type</p>
-              <div
-                className={styles.filterChips}
-                onClick={(event) => event.stopPropagation()}
-              >
-                {mealTypeOptions.map((option) => (
-                  <button
-                    key={option}
-                    type="button"
-                    className={`${styles.filterChip} ${
-                      filterDraft.mealType === option ? styles.filterChipActive : ""
-                    }`}
-                    onClick={() => toggleFilterValue("mealType", option)}
-                  >
-                    {toPascalCase(option)}
-                  </button>
-                ))}
-              </div>
-            </section>
+            <div className={styles.filterOptions}>
+              <section className={styles.filterBubbleGroup}>
+                <p className={styles.filterLabel}>Meal Type</p>
+                <div
+                  className={styles.filterChips}
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  {mealTypeOptions.map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      className={`${styles.filterChip} ${
+                        filterDraft.mealType === option ? styles.filterChipActive : ""
+                      }`}
+                      onClick={() => toggleFilterValue("mealType", option)}
+                    >
+                      {toPascalCase(option)}
+                    </button>
+                  ))}
+                </div>
+              </section>
 
-            <section className={styles.filterBubbleGroup}>
-              <p className={styles.filterLabel}>Nutrition Fact</p>
-              <div
-                className={styles.filterChips}
-                onClick={(event) => event.stopPropagation()}
-              >
-                {nutritionFocusOptions.map((option) => (
-                  <button
-                    key={option}
-                    type="button"
-                    className={`${styles.filterChip} ${
-                      filterDraft.nutritionFocus === option ? styles.filterChipActive : ""
-                    }`}
-                    onClick={() => toggleFilterValue("nutritionFocus", option)}
-                  >
-                    {toPascalCase(option)}
-                  </button>
-                ))}
-              </div>
-            </section>
+              <section className={styles.filterBubbleGroup}>
+                <p className={styles.filterLabel}>Nutrition Fact</p>
+                <div
+                  className={styles.filterChips}
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  {nutritionFocusOptions.map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      className={`${styles.filterChip} ${
+                        filterDraft.nutritionFocus === option ? styles.filterChipActive : ""
+                      }`}
+                      onClick={() => toggleFilterValue("nutritionFocus", option)}
+                    >
+                      {toPascalCase(option)}
+                    </button>
+                  ))}
+                </div>
+              </section>
 
-            <section className={styles.filterBubbleGroup}>
-              <p className={styles.filterLabel}>What Are You In The Mood For?</p>
-              <div
-                className={styles.filterChips}
-                onClick={(event) => event.stopPropagation()}
-              >
-                {moodOptions.map((option) => (
-                  <button
-                    key={option}
-                    type="button"
-                    className={`${styles.filterChip} ${
-                      filterDraft.mood === option ? styles.filterChipActive : ""
-                    }`}
-                    onClick={() => toggleFilterValue("mood", option)}
-                  >
-                    {toPascalCase(option)}
-                  </button>
-                ))}
-              </div>
-            </section>
+              <section className={styles.filterBubbleGroup}>
+                <p className={styles.filterLabel}>What Are You In The Mood For?</p>
+                <div
+                  className={styles.filterChips}
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  {moodOptions.map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      className={`${styles.filterChip} ${
+                        filterDraft.mood === option ? styles.filterChipActive : ""
+                      }`}
+                      onClick={() => toggleFilterValue("mood", option)}
+                    >
+                      {toPascalCase(option)}
+                    </button>
+                  ))}
+                </div>
+              </section>
+            </div>
 
             <section className={styles.filterBubbleGroup}>
               <div

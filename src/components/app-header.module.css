@@ -119,16 +119,16 @@
   justify-content: center;
   border: 0;
   border-radius: 999px;
-  background: var(--button-bg);
-  color: var(--button-text);
+  background: transparent;
+  color: var(--foreground);
   cursor: pointer;
   transition:
-    opacity 0.16s ease,
+    color 0.16s ease,
     transform 0.16s ease;
 }
 
 .searchSubmitButton:hover {
-  opacity: 0.88;
+  color: var(--text-accent);
   transform: translateY(-1px);
 }
 
@@ -213,6 +213,13 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 24px;
+}
+
+.filterOptions {
+  width: 100%;
+  display: grid;
+  gap: 24px;
+  justify-items: end;
 }
 
 .filterBubbleGroup {
@@ -349,21 +356,22 @@
 
   .searchInput {
     min-height: 36px;
-    font-size: 0.94rem;
+    font-size: 16px;
   }
 
   .filterStack {
-    top: max(24px, env(safe-area-inset-top, 0px));
+    top: max(20px, env(safe-area-inset-top, 0px));
     right: 24px;
-    bottom: calc(104px + env(safe-area-inset-bottom, 0px));
+    bottom: calc(112px + env(safe-area-inset-bottom, 0px));
     width: min(420px, calc(100vw - 48px));
-    max-height: calc(100svh - 128px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    height: calc(100dvh - 136px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    max-height: calc(100dvh - 136px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
-    overflow-y: auto;
+    gap: 14px;
+    overflow: hidden;
     overscroll-behavior: contain;
-    padding: 4px 0;
+    padding: 4px 0 0;
     scrollbar-width: none;
   }
 
@@ -371,9 +379,24 @@
     display: none;
   }
 
+  .filterOptions {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-bottom: 8px;
+    gap: 30px;
+    justify-items: start;
+    scrollbar-width: none;
+  }
+
+  .filterOptions::-webkit-scrollbar {
+    display: none;
+  }
+
   .filterBubbleGroup {
     justify-items: start;
-    gap: 16px;
+    gap: 10px;
     transform: translateY(12px) scale(0.98);
     animation-name: filter-pop-mobile;
   }
@@ -389,8 +412,8 @@
 
   .filterActions {
     width: 100%;
-    padding-top: 2px;
-    padding-bottom: 4px;
+    flex-shrink: 0;
+    padding: 12px 0 4px;
   }
 
   .filterActionSecondary,

@@ -69,6 +69,18 @@
   border-color: var(--border-strong);
 }
 
+.featuredCard {
+  grid-column: 1 / -1;
+  min-height: 320px;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.72), transparent 24%),
+    linear-gradient(135deg, color-mix(in srgb, #dbe8b9 82%, var(--surface)), color-mix(in srgb, #f2c694 76%, var(--surface)));
+}
+
+.featuredCard h2 {
+  max-width: 16ch;
+}
+
 .cardLabel {
   font-size: 0.9rem;
   font-weight: 700;
@@ -103,5 +115,9 @@
 
   .card {
     min-height: 220px;
+  }
+
+  .featuredCard {
+    grid-column: auto;
   }
 }

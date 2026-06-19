@@ -15,6 +15,14 @@ export default function Home() {
         </section>
 
         <section className={styles.grid}>
+          <Link href="/minsi-weekly-meal-prep-plan" className={`${styles.card} ${styles.featuredCard}`}>
+            <p className={styles.cardLabel}>Prep with ease</p>
+            <h2>Minsi&apos;s Weekly Meal Prep Plan</h2>
+            <p>
+              Follow a practical seven-day menu with a Sunday prep timeline and shopping shortcuts.
+            </p>
+          </Link>
+
           <Link href="/four-week-plan" className={styles.card}>
             <p className={styles.cardLabel}>Guided plan</p>
             <h2>4 Week Gut Reset Plan</h2>

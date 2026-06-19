@@ -5,6 +5,7 @@ import data from "../../../data/weekly_meal_prep_seed_data.json";
 import styles from "./page.module.css";
 
 type GroceryItem = { item: string; quantity: string; use: string };
+type AvoidBuyingItem = { item: string; reason: string };
 type PrepOverview = { item: string; quantity: string; used_for: string };
 type PrepDay = { covers: string; theme: string; overview: PrepOverview[]; steps: string[] };
 type Recipe = (typeof data.recipes)[number];
@@ -29,6 +30,31 @@ const groceryIcons: Record<string, string> = {
   "Optional Convenience Items": "⏱️",
   "Avoid Buying": "✋",
 };
+
+const saturdayOnlyItems = new Set([
+  "Spinach", "Cauliflower", "Avocados", "Moong dal", "Kala chana", "Chickpeas",
+  "Black beans", "Quinoa", "Whole wheat atta", "Besan", "Tahini", "Salsa", "Corn",
+  "Pickled jalapeños", "Olive oil", "Nutritional yeast", "Amchur", "Oregano",
+  "Canned chickpeas", "Canned black beans",
+]);
+
+const tuesdayOnlyItems = new Set([
+  "Curry leaves", "Lauki / bottle gourd", "Bhindi / okra", "Green beans",
+  "Pumpkin or butternut squash", "Drumsticks / moringa pods", "Toor dal",
+  "Extra-firm tofu", "Frozen edamame", "Roasted chana dal", "Idli batter",
+  "Natural peanut butter", "Fresh or frozen coconut", "Unsweetened coconut milk",
+  "Tamarind paste or tamarind block", "Sambar powder", "Soy sauce or tamari",
+  "Sesame oil", "Mustard seeds", "Methi seeds", "Chili flakes",
+  "Frozen mixed vegetables", "Store-bought idli batter",
+]);
+
+type PrepBucket = "Saturday prep" | "Tuesday prep" | "Shared staples";
+
+function getPrepBucket(item: string): PrepBucket {
+  if (saturdayOnlyItems.has(item)) return "Saturday prep";
+  if (tuesdayOnlyItems.has(item)) return "Tuesday prep";
+  return "Shared staples";
+}
 
 function slugify(value: string) {
   return value.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -79,15 +105,28 @@ export function MealPrepPlan() {
   const normalizedQuery = query.trim().toLowerCase();
   const recipes = useMemo(() => [...data.recipes].sort((a, b) => a.name.localeCompare(b.name)), []);
 
-  const groceryGroups = useMemo(() => {
-    return Object.entries(data.grocery_list)
-      .map(([group, items]) => [
-        group,
-        (items as GroceryItem[]).filter((item) =>
-          !normalizedQuery || `${item.item} ${item.quantity} ${item.use} ${group}`.toLowerCase().includes(normalizedQuery),
-        ),
-      ] as const)
-      .filter(([, items]) => items.length > 0);
+  const grocerySections = useMemo(() => {
+    const buckets: PrepBucket[] = ["Saturday prep", "Tuesday prep", "Shared staples"];
+
+    return buckets.map((bucket) => ({
+      bucket,
+      groups: Object.entries(data.grocery_list)
+        .filter(([group]) => group !== "Avoid Buying")
+        .map(([group, items]) => [
+          group,
+          (items as GroceryItem[]).filter((item) =>
+            getPrepBucket(item.item) === bucket &&
+            (!normalizedQuery || `${item.item} ${item.quantity} ${item.use} ${group} ${bucket}`.toLowerCase().includes(normalizedQuery)),
+          ),
+        ] as const)
+        .filter(([, items]) => items.length > 0),
+    })).filter(({ groups }) => groups.length > 0);
+  }, [normalizedQuery]);
+
+  const avoidBuyingItems = useMemo(() => {
+    return (data.grocery_list["Avoid Buying"] as AvoidBuyingItem[]).filter((item) =>
+      !normalizedQuery || `${item.item} ${item.reason} avoid buying`.toLowerCase().includes(normalizedQuery),
+    );
   }, [normalizedQuery]);
 
   const filteredRecipes = useMemo(() => recipes.filter((recipe) =>
@@ -95,12 +134,15 @@ export function MealPrepPlan() {
   ), [normalizedQuery, recipes]);
 
   const uncheckedGroceryGroups = useMemo(() => {
-    return Object.entries(data.grocery_list)
-      .filter(([group]) => group !== "Avoid Buying")
-      .map(([group, items]) => ({
-        group,
-        items: (items as GroceryItem[]).filter((item) => !checkedGroceries.has(`${group}::${item.item}`)),
-      }))
+    const buckets: PrepBucket[] = ["Saturday prep", "Tuesday prep", "Shared staples"];
+
+    return buckets.map((bucket) => ({
+      group: bucket,
+      items: Object.entries(data.grocery_list)
+        .filter(([group]) => group !== "Avoid Buying")
+        .flatMap(([category, items]) => (items as GroceryItem[]).map((item) => ({ ...item, category })))
+        .filter((item) => getPrepBucket(item.item) === bucket && !checkedGroceries.has(`${item.category}::${item.item}`)),
+    }))
       .filter(({ items }) => items.length > 0);
   }, [checkedGroceries]);
 
@@ -210,30 +252,56 @@ export function MealPrepPlan() {
         <section id="groceries" className={styles.section}>
           <div className={styles.sectionHeading}>
             <div><p className={styles.kicker}>Shop on Saturday</p><h2>Grocery list</h2></div>
-            <p>{normalizedQuery ? `${groceryGroups.reduce((sum, [, items]) => sum + items.length, 0)} matching items` : "Grouped to make one weekly grocery run quick and calm."}</p>
+            <p>{normalizedQuery ? `${grocerySections.reduce((sum, section) => sum + section.groups.reduce((groupSum, [, items]) => groupSum + items.length, 0), 0) + avoidBuyingItems.length} matching items` : "Organized by the prep session each ingredient supports."}</p>
           </div>
-          <div className={styles.groceryGrid}>
-            {groceryGroups.map(([group, items]) => (
-              <article className={`${styles.groceryCard} ${group === "Avoid Buying" ? styles.avoidCard : ""}`} key={group}>
-                <header><span>{groceryIcons[group] ?? "•"}</span><div><h3>{group}</h3><p>{items.length} items</p></div></header>
-                <ul>
-                  {items.map((item) => (
-                    <li key={item.item}>
-                      <label>
-                        <input
-                          type="checkbox"
-                          checked={checkedGroceries.has(`${group}::${item.item}`)}
-                          onChange={() => toggleGroceryItem(`${group}::${item.item}`)}
-                        />
-                        <span><strong>{item.item}</strong><small>{item.quantity}</small><em>{item.use}</em></span>
-                      </label>
-                    </li>
+          <div className={styles.prepGroceryLists}>
+            {grocerySections.map(({ bucket, groups }) => (
+              <section className={styles.prepGrocerySection} key={bucket}>
+                <header className={styles.prepGroceryHeader}>
+                  <span>{bucket === "Saturday prep" ? "SAT" : bucket === "Tuesday prep" ? "TUE" : "BOTH"}</span>
+                  <div>
+                    <h3>{bucket}</h3>
+                    <p>{bucket === "Saturday prep" ? "Indian · Mediterranean · Mexican" : bucket === "Tuesday prep" ? "South Indian · Thai" : "Used across both prep sessions"}</p>
+                  </div>
+                </header>
+                <div className={styles.groceryGrid}>
+                  {groups.map(([group, items]) => (
+                    <article className={styles.groceryCard} key={`${bucket}-${group}`}>
+                      <header><span>{groceryIcons[group] ?? "•"}</span><div><h3>{group}</h3><p>{items.length} items</p></div></header>
+                      <ul>
+                        {items.map((item) => (
+                          <li key={item.item}>
+                            <label>
+                              <input
+                                type="checkbox"
+                                checked={checkedGroceries.has(`${group}::${item.item}`)}
+                                onChange={() => toggleGroceryItem(`${group}::${item.item}`)}
+                              />
+                              <span><strong>{item.item}</strong><small>{item.quantity}</small><em>{item.use}</em></span>
+                            </label>
+                          </li>
+                        ))}
+                      </ul>
+                    </article>
                   ))}
-                </ul>
-              </article>
+                </div>
+              </section>
             ))}
+            {avoidBuyingItems.length > 0 && (
+              <section className={styles.prepGrocerySection}>
+                <header className={styles.prepGroceryHeader}>
+                  <span>SKIP</span><div><h3>Avoid buying</h3><p>Dairy, added sugar, maida, and trigger foods</p></div>
+                </header>
+                <div className={styles.groceryGrid}>
+                  <article className={`${styles.groceryCard} ${styles.avoidCard}`}>
+                    <header><span>{groceryIcons["Avoid Buying"]}</span><div><h3>Keep off the list</h3><p>{avoidBuyingItems.length} items</p></div></header>
+                    <ul>{avoidBuyingItems.map((item) => <li key={item.item}><span className={styles.avoidItem}><strong>{item.item}</strong><em>{item.reason}</em></span></li>)}</ul>
+                  </article>
+                </div>
+              </section>
+            )}
           </div>
-          {groceryGroups.length === 0 && <p className={styles.empty}>No grocery items match “{query}”.</p>}
+          {grocerySections.length === 0 && avoidBuyingItems.length === 0 && <p className={styles.empty}>No grocery items match “{query}”.</p>}
           <aside className={styles.whatsAppPanel}>
             <div className={styles.whatsAppCopy}>
               <span aria-hidden="true">✓</span>

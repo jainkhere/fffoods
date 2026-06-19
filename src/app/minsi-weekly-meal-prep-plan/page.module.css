@@ -38,6 +38,21 @@
 .groceryCard em { color: var(--text-soft); font-size: .78rem; font-style: normal; line-height: 1.4; }
 .groceryCard input:checked + span { opacity: .42; text-decoration: line-through; }
 .avoidCard { border-color: color-mix(in srgb,#bd5c48 32%,var(--border)); background: color-mix(in srgb,#bd5c48 5%,var(--surface)); }
+.whatsAppPanel { margin-top:20px; padding:clamp(22px,4vw,36px); border-radius:26px; display:flex; align-items:center; justify-content:space-between; gap:28px; color:#eff8e9; background:#203d2c; box-shadow:0 22px 52px rgba(19,54,35,.2); }
+.whatsAppCopy { display:flex; align-items:flex-start; gap:16px; }
+.whatsAppCopy > span { width:44px; height:44px; flex:0 0 auto; border-radius:50%; display:grid; place-items:center; color:#203d2c; background:#a9dc92; font-size:1.25rem; font-weight:900; }
+.whatsAppPanel .kicker { margin-bottom:7px; color:#a9dc92; }
+.whatsAppPanel h3 { font-size:1.35rem; }
+.whatsAppCopy div > p:last-child { margin-top:6px; color:rgba(239,248,233,.7); font-size:.88rem; }
+.whatsAppControls { width:min(420px,100%); display:flex; align-items:flex-end; gap:10px; }
+.whatsAppControls label { flex:1; display:grid; gap:6px; }
+.whatsAppControls label > span { font-size:.72rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.whatsAppControls input { width:100%; min-height:46px; padding:0 13px; border:1px solid rgba(239,248,233,.2); border-radius:12px; outline:0; color:#fff; background:rgba(255,255,255,.08); }
+.whatsAppControls input:focus { border-color:#a9dc92; }
+.whatsAppControls input::placeholder { color:rgba(239,248,233,.48); }
+.whatsAppControls small { color:rgba(239,248,233,.58); font-size:.68rem; }
+.whatsAppControls a,.whatsAppControls button { min-height:46px; padding:0 16px; border:0; border-radius:12px; display:inline-flex; align-items:center; justify-content:center; white-space:nowrap; background:#a9dc92; color:#173322; font:inherit; font-size:.82rem; font-weight:850; }
+.whatsAppControls button:disabled { opacity:.48; cursor:not-allowed; }
 .prepGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
 .prepCard { padding: clamp(22px,3vw,34px); border: 1px solid var(--border); border-radius: 28px; background: var(--surface); box-shadow: var(--shadow-card); }
 .prepCard > header { margin-bottom: 24px; display: flex; justify-content: space-between; gap: 20px; }
@@ -110,6 +125,8 @@
   .section { scroll-margin-top:210px; }
   .sectionHeading { align-items:flex-start; flex-direction:column; gap:10px; }
   .groceryGrid { columns:1; }
+  .whatsAppPanel { align-items:stretch; flex-direction:column; }
+  .whatsAppControls { width:100%; align-items:stretch; flex-direction:column; }
   .menuTableWrap { overflow:visible; border:0; background:transparent; box-shadow:none; }
   .menuTable { min-width:0; display:block; }
   .menuTable thead { display:none; }

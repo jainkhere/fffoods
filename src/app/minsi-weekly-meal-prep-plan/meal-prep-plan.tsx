@@ -74,6 +74,8 @@ function recipesForMeal(meal: string, recipes: Recipe[]) {
 
 export function MealPrepPlan() {
   const [query, setQuery] = useState("");
+  const [checkedGroceries, setCheckedGroceries] = useState<Set<string>>(() => new Set());
+  const [whatsAppNumber, setWhatsAppNumber] = useState("");
   const normalizedQuery = query.trim().toLowerCase();
   const recipes = useMemo(() => [...data.recipes].sort((a, b) => a.name.localeCompare(b.name)), []);
 
@@ -91,6 +93,40 @@ export function MealPrepPlan() {
   const filteredRecipes = useMemo(() => recipes.filter((recipe) =>
     !normalizedQuery || `${recipe.name} ${recipe.best_for} ${Object.keys(recipe.ingredients).join(" ")}`.toLowerCase().includes(normalizedQuery),
   ), [normalizedQuery, recipes]);
+
+  const uncheckedGroceryGroups = useMemo(() => {
+    return Object.entries(data.grocery_list)
+      .filter(([group]) => group !== "Avoid Buying")
+      .map(([group, items]) => ({
+        group,
+        items: (items as GroceryItem[]).filter((item) => !checkedGroceries.has(`${group}::${item.item}`)),
+      }))
+      .filter(({ items }) => items.length > 0);
+  }, [checkedGroceries]);
+
+  const uncheckedGroceryCount = uncheckedGroceryGroups.reduce((total, group) => total + group.items.length, 0);
+  const whatsAppDigits = whatsAppNumber.replace(/\D/g, "");
+  const whatsAppMessage = [
+    "Minsi's weekly grocery list",
+    "",
+    ...uncheckedGroceryGroups.flatMap(({ group, items }) => [
+      `*${group}*`,
+      ...items.map((item) => `• ${item.item}${item.quantity ? ` — ${item.quantity}` : ""}`),
+      "",
+    ]),
+  ].join("\n").trim();
+  const whatsAppHref = whatsAppDigits && uncheckedGroceryCount > 0
+    ? `https://wa.me/${whatsAppDigits}?text=${encodeURIComponent(whatsAppMessage)}`
+    : null;
+
+  function toggleGroceryItem(key: string) {
+    setCheckedGroceries((current) => {
+      const next = new Set(current);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  }
 
   const weeklyMenu = useMemo(() => {
     const combined: Array<{
@@ -183,7 +219,14 @@ export function MealPrepPlan() {
                 <ul>
                   {items.map((item) => (
                     <li key={item.item}>
-                      <label><input type="checkbox" /><span><strong>{item.item}</strong><small>{item.quantity}</small><em>{item.use}</em></span></label>
+                      <label>
+                        <input
+                          type="checkbox"
+                          checked={checkedGroceries.has(`${group}::${item.item}`)}
+                          onChange={() => toggleGroceryItem(`${group}::${item.item}`)}
+                        />
+                        <span><strong>{item.item}</strong><small>{item.quantity}</small><em>{item.use}</em></span>
+                      </label>
                     </li>
                   ))}
                 </ul>
@@ -191,6 +234,41 @@ export function MealPrepPlan() {
             ))}
           </div>
           {groceryGroups.length === 0 && <p className={styles.empty}>No grocery items match “{query}”.</p>}
+          <aside className={styles.whatsAppPanel}>
+            <div className={styles.whatsAppCopy}>
+              <span aria-hidden="true">✓</span>
+              <div>
+                <p className={styles.kicker}>Shop what&apos;s missing</p>
+                <h3>Send unchecked items to WhatsApp</h3>
+                <p>
+                  {uncheckedGroceryCount > 0
+                    ? `${uncheckedGroceryCount} item${uncheckedGroceryCount === 1 ? "" : "s"} still on your list.`
+                    : "Everything on the shopping list is checked."}
+                </p>
+              </div>
+            </div>
+            <div className={styles.whatsAppControls}>
+              <label>
+                <span>WhatsApp number</span>
+                <input
+                  type="tel"
+                  inputMode="tel"
+                  value={whatsAppNumber}
+                  onChange={(event) => setWhatsAppNumber(event.target.value)}
+                  placeholder="Country code + number"
+                  aria-describedby="whatsapp-number-help"
+                />
+                <small id="whatsapp-number-help">Include country code, without spaces or symbols.</small>
+              </label>
+              {whatsAppHref ? (
+                <a href={whatsAppHref} target="_blank" rel="noreferrer">Send on WhatsApp ↗</a>
+              ) : (
+                <button type="button" disabled>
+                  {uncheckedGroceryCount === 0 ? "All items checked" : "Enter number to send"}
+                </button>
+              )}
+            </div>
+          </aside>
         </section>
 
         <section id="meal-prep" className={styles.section}>

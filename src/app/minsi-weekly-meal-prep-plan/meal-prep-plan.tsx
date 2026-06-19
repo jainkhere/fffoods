@@ -92,6 +92,53 @@ export function MealPrepPlan() {
     !normalizedQuery || `${recipe.name} ${recipe.best_for} ${Object.keys(recipe.ingredients).join(" ")}`.toLowerCase().includes(normalizedQuery),
   ), [normalizedQuery, recipes]);
 
+  const weeklyMenu = useMemo(() => {
+    const combined: Array<{
+      day: string;
+      breakfast: string[];
+      lunch: string[];
+      snacks: string[];
+      dinner: string[];
+    }> = [];
+
+    data.weekly_menu.forEach((entry) => {
+      const existing = combined.find((day) => day.day === entry.day);
+
+      if (!existing) {
+        combined.push({
+          day: entry.day,
+          breakfast: [entry.breakfast],
+          lunch: [entry.lunch],
+          snacks: [entry.snacks],
+          dinner: [entry.dinner],
+        });
+        return;
+      }
+
+      (["breakfast", "lunch", "snacks", "dinner"] as const).forEach((mealType) => {
+        if (!existing[mealType].includes(entry[mealType])) existing[mealType].push(entry[mealType]);
+      });
+    });
+
+    return combined;
+  }, []);
+
+  function openRecipe(recipeName: string) {
+    const recipeId = `recipe-${slugify(recipeName)}`;
+    setQuery("");
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const target = document.getElementById(recipeId);
+        if (!(target instanceof HTMLDetailsElement)) return;
+
+        target.open = true;
+        window.history.replaceState(null, "", `#${recipeId}`);
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  }
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -110,7 +157,7 @@ export function MealPrepPlan() {
           <div className={styles.heroStats}>
             <div><strong>2</strong><span>prep days</span></div>
             <div><strong>14</strong><span>recipes</span></div>
-            <div><strong>8</strong><span>menu days</span></div>
+            <div><strong>7</strong><span>menu days</span></div>
           </div>
         </section>
 
@@ -179,12 +226,35 @@ export function MealPrepPlan() {
             <table className={styles.menuTable}>
               <thead><tr><th>Day</th><th>Breakfast</th><th>Lunch</th><th>Snacks</th><th>Dinner</th></tr></thead>
               <tbody>
-                {data.weekly_menu.map((day, index) => (
-                  <tr key={`${day.day}-${index}`}>
+                {weeklyMenu.map((day, index) => (
+                  <tr key={day.day}>
                     <th><span>{String(index + 1).padStart(2, "0")}</span>{day.day}</th>
                     {(["breakfast", "lunch", "snacks", "dinner"] as const).map((mealType) => {
-                      const linkedRecipes = recipesForMeal(day[mealType], recipes);
-                      return <td key={mealType}><p>{day[mealType]}</p>{linkedRecipes.length > 0 && <div className={styles.recipeLinks}>{linkedRecipes.map((recipe) => <a key={recipe.name} href={`#recipe-${slugify(recipe.name)}`}>View recipe ↘</a>)}</div>}</td>;
+                      const meals = day[mealType];
+                      return (
+                        <td key={mealType} data-label={mealType.charAt(0).toUpperCase() + mealType.slice(1)}>
+                          <div className={styles.menuEntries}>
+                            {meals.map((meal, mealIndex) => {
+                              const linkedRecipes = recipesForMeal(meal, recipes);
+                              return (
+                                <div className={styles.menuEntry} key={meal}>
+                                  {meals.length > 1 && <span>{mealIndex === 0 ? "Week start" : "Next cycle"}</span>}
+                                  <p>{meal}</p>
+                                  {linkedRecipes.length > 0 && (
+                                    <div className={styles.recipeLinks}>
+                                      {linkedRecipes.map((recipe) => (
+                                        <button type="button" key={recipe.name} onClick={() => openRecipe(recipe.name)}>
+                                          View recipe ↘
+                                        </button>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </td>
+                      );
                     })}
                   </tr>
                 ))}

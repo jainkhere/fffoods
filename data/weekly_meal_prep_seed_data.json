@@ -1,31 +1,95 @@
 {
-  "project_title": "Weekly Meal Prep Plan Web Interface",
+  "metadata": {
+    "title": "Flexible Weekly Meal Prep Plan",
+    "version": "updated-flexible-plan-v2",
+    "created_on": "2026-06-20",
+    "purpose": "Seed data and build brief for a web interface for grocery planning, flexible meal prep, weekly meal pools, recipes, and vegetable prep guidance."
+  },
+  "codex_build_brief": {
+    "app_goal": "Build a web interface that lets the user access a flexible weekly meal prep system with grocery lists, prep-day options, meal pools, recipes, and gut-friendly vegetable prep instructions.",
+    "important_note": "This should not be a rigid fixed meal plan. The interface should let the user choose optional meal-prep combinations based on mood while still minimizing grocery time and ingredient overlap.",
+    "suggested_pages": [
+      {
+        "route": "/grocery",
+        "title": "Grocery List",
+        "purpose": "Show Saturday main grocery and Tuesday refresh grocery, grouped by ingredient family, with checkboxes."
+      },
+      {
+        "route": "/prep",
+        "title": "Meal Prep Plan",
+        "purpose": "Show flexible Saturday and Tuesday prep frameworks with optional prep combinations."
+      },
+      {
+        "route": "/menu",
+        "title": "Flexible Weekly Menu",
+        "purpose": "Show day-by-day meal option pools instead of one rigid menu."
+      },
+      {
+        "route": "/recipes",
+        "title": "Recipes",
+        "purpose": "Alphabetical recipe index with detail pages and slugs."
+      },
+      {
+        "route": "/veggie-prep",
+        "title": "Vegetable Prep Guide",
+        "purpose": "Roasting, steaming, sautéing, gut-friendly bowl ratios, and storage rules."
+      }
+    ],
+    "recommended_features": [
+      "Search recipes, grocery items, and prep tasks.",
+      "Checkbox mode for grocery shopping and prep steps.",
+      "Filter recipes by cuisine, meal type, batch, dairy-free, no-maida, quick breakfast, gut-friendly.",
+      "Meal pool UI: Saturday batch meals and Tuesday batch meals.",
+      "Allow selecting a weekly prep mode: Light Week, Comfort Week, Curry Week, Balanced Week.",
+      "Generate grocery list based on selected prep mode.",
+      "Link weekly meal option names to recipe pages using recipe slugs.",
+      "Mobile-friendly layout for grocery shopping and kitchen use.",
+      "Print-friendly export for grocery list and prep checklist.",
+      "Storage/use-by labels for cooked items."
+    ]
+  },
   "user_profile": {
-    "diet": "Indian vegetarian",
-    "avoid": [
+    "identity_and_diet": "Indian vegetarian woman",
+    "health_context": [
+      "Facial acne; dairy and sugar tend to show up on face.",
+      "Occasional bowel movement issues and constipation, sometimes leading to piles.",
+      "Occasional facial bloating.",
+      "Iron deficiency.",
+      "Vitamin D deficiency.",
+      "Regularly takes iron, vitamin D, and omega-3 supplements."
+    ],
+    "avoid_or_minimize": [
       "Dairy as much as possible",
       "Greek yogurt",
+      "Milk/cheese/butter-heavy meals",
+      "Paneer as a regular weekly protein; keep paneer optional/occasional",
+      "Added sugar",
       "Maida/refined flour",
-      "Added sugar as much as possible",
-      "Paneer/cheese/milk-based meals as routine items"
+      "Regular pav/white bread as default",
+      "Fried snacks",
+      "Huge raw salads",
+      "Too much onion/garlic if bloating occurs"
     ],
-    "health_considerations": [
-      "Facial acne triggered by dairy/sugar",
-      "Occasional bowel movement issues/constipation that can lead to piles",
-      "Occasional facial bloating",
-      "Iron deficiency",
-      "Vitamin D deficiency",
-      "Takes iron, vitamin D, and omega-3 supplements regularly"
+    "preferred_variety": [
+      "Indian vegetarian",
+      "South Indian: sambar rice, idli, coconut chutney",
+      "Mediterranean bowls",
+      "Mexican bowls",
+      "Thai peanut tofu bowls",
+      "High-veg pav bhaji for variety",
+      "Flexible pyaaz-tamatar-garlic gravy base for tofu/chana/mixed vegetables"
     ],
-    "meal_preferences": [
-      "Indian vegetarian meals",
-      "South Indian food such as sambar rice, idli, coconut chutney",
-      "Mediterranean, Mexican, and Thai dishes to reduce monotony",
-      "Mostly dairy-free, low-sugar, no maida"
+    "supplement_and_absorption_notes": [
+      "Take iron away from tea/coffee and calcium-heavy foods.",
+      "Use lemon/lime or other vitamin C foods with iron-rich plant meals.",
+      "Avoid making iron-heavy meals dairy-heavy."
     ]
   },
   "weekly_constraints": {
-    "grocery_day": "Saturday only",
+    "grocery_days": [
+      "Saturday",
+      "Tuesday"
+    ],
     "meal_prep_days": [
       "Saturday",
       "Tuesday"
@@ -42,961 +106,1410 @@
       "Friday",
       "Saturday lunch"
     ],
-    "breakfast_constraint": "Leaves home by 7 AM most days; breakfast should be no-cook/quick except Tuesday, when working from home and can cook fresh breakfast.",
-    "grain_note": "White rice is acceptable instead of brown rice when paired with dal/tofu/chana, vegetables, greens, and seeds."
+    "breakfast_constraint": "Leaves home by 7 AM most days, so breakfast should be quick/no-cook except Tuesday when working from home.",
+    "white_rice_note": "White rice is acceptable instead of brown rice. Keep portions moderate and pair with dal/tofu/chana, cooked vegetables, greens, seeds, and lemon/lime."
   },
-  "pages_for_web_interface": [
-    "Grocery List",
-    "Meal Prep Plan",
-    "Weekly Menu",
-    "Recipes"
+  "planning_principles": [
+    "Use a flexible prep framework, not a rigid fixed menu.",
+    "Each prep day should create building blocks that can become multiple meals.",
+    "Cluster similar-ingredient dishes by grocery day to reduce shopping time and waste.",
+    "Cooked/roasted vegetables should be the main vegetable base for bowls; raw vegetables should be toppings.",
+    "Keep grains, proteins, cooked vegetables, greens, and sauces separate.",
+    "Do not prep every possible dish every week; choose 1–2 mains plus supporting components.",
+    "Saturday focuses on Indian + Mediterranean + Mexican + optional pav bhaji/gravy.",
+    "Tuesday focuses on South Indian + Thai + fresh produce reset.",
+    "Use tofu as the default flexible protein; paneer only as an occasional optional swap."
   ],
-  "grocery_list": {
-    "Leafy Greens, Lettuce & Fresh Herbs": [
-      {
-        "item": "Spinach",
-        "quantity": "2 large bunches or 1 large box",
-        "use": "Spinach moong dal, sambar, bowls"
-      },
-      {
-        "item": "Romaine lettuce",
-        "quantity": "1 large head or 1 pack",
-        "use": "Mexican bowls, Mediterranean bowls"
-      },
-      {
-        "item": "Mixed greens or arugula",
-        "quantity": "1 box",
-        "use": "Mediterranean bowls, fresh side salads"
-      },
-      {
-        "item": "Microgreens",
-        "quantity": "1 small box",
-        "use": "Bowl topping, salads, extra nutrients"
-      },
-      {
-        "item": "Cilantro",
-        "quantity": "2 bunches",
-        "use": "Salsa, chutney, bowls, garnish"
-      },
-      {
-        "item": "Mint",
-        "quantity": "1 bunch",
-        "use": "Coconut chutney, digestion-friendly garnish"
-      },
-      {
-        "item": "Curry leaves",
-        "quantity": "1 small pack",
-        "use": "Sambar, South Indian tempering"
-      }
-    ],
-    "Vegetables": [
-      {
-        "item": "Broccoli",
-        "quantity": "2 heads",
-        "use": "Roasted vegetables, Thai tofu bowl"
-      },
-      {
-        "item": "Cauliflower",
-        "quantity": "1 small head",
-        "use": "Roasted vegetables"
-      },
-      {
-        "item": "Lauki / bottle gourd",
-        "quantity": "1 medium",
-        "use": "Sambar, gut-friendly cooked vegetable"
-      },
-      {
-        "item": "Bhindi / okra",
-        "quantity": "500g",
-        "use": "Bhindi sabzi or South Indian-style side"
-      },
-      {
-        "item": "Carrots",
-        "quantity": "6–8",
-        "use": "Roasted vegetables, sambar, salad"
-      },
-      {
-        "item": "Bell peppers",
-        "quantity": "4",
-        "use": "Roasted vegetables, Mexican bowls, tofu bowls"
-      },
-      {
-        "item": "Red cabbage",
-        "quantity": "1 small",
-        "use": "Thai bowls, Mexican bowls, salad crunch"
-      },
-      {
-        "item": "Cucumber",
-        "quantity": "3",
-        "use": "Salads, bowls, cooling side"
-      },
-      {
-        "item": "Tomatoes",
-        "quantity": "8–10",
-        "use": "Dal, sambar, salsa, bowls"
-      },
-      {
-        "item": "Onions",
-        "quantity": "4–5",
-        "use": "Dal, salsa, bhindi, roasted vegetables"
-      },
-      {
-        "item": "Green beans",
-        "quantity": "250–300g",
-        "use": "Sambar vegetable"
-      },
-      {
-        "item": "Pumpkin or butternut squash",
-        "quantity": "1 small piece or 2 cups chopped",
-        "use": "Sambar, digestion-friendly vegetable"
-      },
-      {
-        "item": "Drumsticks / moringa pods",
-        "quantity": "1 pack, optional",
-        "use": "Traditional sambar"
-      },
-      {
-        "item": "Avocados",
-        "quantity": "2",
-        "use": "Mexican bowls, Tuesday WFH breakfast"
-      },
-      {
-        "item": "Ginger",
-        "quantity": "1 large piece",
-        "use": "Dal, sambar, chutney, Thai sauce"
-      },
-      {
-        "item": "Garlic",
-        "quantity": "1 bulb, optional",
-        "use": "Sauces, roasted vegetables, salsa"
-      },
-      {
-        "item": "Green chilies",
-        "quantity": "4–6, optional",
-        "use": "Chutney, salsa, Indian dishes"
-      },
-      {
-        "item": "Lemons / limes",
-        "quantity": "8–10",
-        "use": "Iron absorption, dressings, salsa, chutney"
-      }
-    ],
-    "Fruits": [
-      {
-        "item": "Kiwi",
-        "quantity": "6–7",
-        "use": "Constipation-friendly breakfast/snack"
-      },
-      {
-        "item": "Pears",
-        "quantity": "4–5",
-        "use": "Fiber-rich snack"
-      },
-      {
-        "item": "Apples",
-        "quantity": "3–4",
-        "use": "Easy work snack"
-      },
-      {
-        "item": "Blueberries or mixed berries",
-        "quantity": "1 box",
-        "use": "Overnight oats, skin-friendly breakfast"
-      },
-      {
-        "item": "Pomegranate",
-        "quantity": "1–2",
-        "use": "Snack or bowl topping"
-      },
-      {
-        "item": "Bananas",
-        "quantity": "2–3, optional",
-        "use": "Only if needed for quick breakfast; use moderately"
-      }
-    ],
-    "Lentils, Beans & Vegetarian Protein": [
-      {
-        "item": "Moong dal",
-        "quantity": "500g",
-        "use": "Saturday spinach moong dal"
-      },
-      {
-        "item": "Toor dal",
-        "quantity": "500g",
-        "use": "Tuesday vegetable sambar"
-      },
-      {
-        "item": "Kala chana",
-        "quantity": "500g",
-        "use": "Mexican bowls, Indian bowls"
-      },
-      {
-        "item": "Chickpeas",
-        "quantity": "2 cans or 500g dry",
-        "use": "Mediterranean bowls"
-      },
-      {
-        "item": "Black beans",
-        "quantity": "1–2 cans, optional",
-        "use": "Mexican bowls"
-      },
-      {
-        "item": "Extra-firm tofu",
-        "quantity": "2–3 blocks",
-        "use": "Thai tofu bowl, tofu scramble, protein bowls"
-      },
-      {
-        "item": "Frozen edamame",
-        "quantity": "1 bag, optional",
-        "use": "Extra protein for bowls"
-      },
-      {
-        "item": "Roasted chana dal",
-        "quantity": "1 small pack",
-        "use": "Coconut chutney"
-      }
-    ],
-    "Grains, Batter & Breakfast Items": [
-      {
-        "item": "White rice / basmati rice",
-        "quantity": "Enough for 4 cups uncooked total",
-        "use": "Indian meals, sambar rice, Thai bowls, Mexican bowls"
-      },
-      {
-        "item": "Quinoa",
-        "quantity": "1 small bag",
-        "use": "Mediterranean bowls"
-      },
-      {
-        "item": "Rolled oats",
-        "quantity": "1 bag",
-        "use": "Overnight oats"
-      },
-      {
-        "item": "Idli batter",
-        "quantity": "1 medium tub",
-        "use": "Idli breakfast/dinner with sambar"
-      },
-      {
-        "item": "Whole wheat atta",
-        "quantity": "As needed",
-        "use": "Roti, optional wraps"
-      },
-      {
-        "item": "Besan",
-        "quantity": "1 small bag",
-        "use": "Tuesday WFH besan chilla"
-      },
-      {
-        "item": "Poha",
-        "quantity": "1 small bag, optional",
-        "use": "Quick breakfast backup"
-      }
-    ],
-    "Nuts, Seeds & Healthy Fats": [
-      {
-        "item": "Chia seeds",
-        "quantity": "1 pack",
-        "use": "Overnight oats, fiber"
-      },
-      {
-        "item": "Ground flaxseed",
-        "quantity": "1 pack",
-        "use": "Overnight oats, skin/gut support"
-      },
-      {
-        "item": "Pumpkin seeds",
-        "quantity": "1 pack",
-        "use": "Snack, zinc-rich topping"
-      },
-      {
-        "item": "Walnuts",
-        "quantity": "1 pack",
-        "use": "Overnight oats, snack"
-      },
-      {
-        "item": "Almonds",
-        "quantity": "1 pack, optional",
-        "use": "Snack"
-      },
-      {
-        "item": "Natural peanut butter",
-        "quantity": "1 jar",
-        "use": "Thai peanut sauce"
-      },
-      {
-        "item": "Tahini",
-        "quantity": "1 jar",
-        "use": "Mediterranean tahini-lemon dressing"
-      },
-      {
-        "item": "Fresh or frozen coconut",
-        "quantity": "1 pack",
-        "use": "Coconut chutney"
-      }
-    ],
-    "Dairy-Free / Low-Sugar Items": [
-      {
-        "item": "Unsweetened soy milk",
-        "quantity": "2 cartons",
-        "use": "Overnight oats"
-      },
-      {
-        "item": "Unsweetened almond milk",
-        "quantity": "1 carton, optional",
-        "use": "Breakfast backup"
-      },
-      {
-        "item": "Unsweetened coconut milk",
-        "quantity": "1 can, optional",
-        "use": "Thai-style tofu curry variation"
-      },
-      {
-        "item": "Plain unsweetened plant-based yogurt",
-        "quantity": "Optional",
-        "use": "Only if tolerated; not required"
-      }
-    ],
-    "Sauces, Condiments & Pantry Items": [
-      {
-        "item": "Tamarind paste or tamarind block",
-        "quantity": "1 pack",
-        "use": "Sambar"
-      },
-      {
-        "item": "Sambar powder",
-        "quantity": "1 pack",
-        "use": "Vegetable sambar"
-      },
-      {
-        "item": "Soy sauce or tamari",
-        "quantity": "1 bottle",
-        "use": "Thai peanut sauce"
-      },
-      {
-        "item": "Apple cider vinegar or rice vinegar",
-        "quantity": "1 bottle, optional",
-        "use": "Dressings"
-      },
-      {
-        "item": "Olive oil",
-        "quantity": "As needed",
-        "use": "Roasted vegetables, Mediterranean dressing"
-      },
-      {
-        "item": "Sesame oil",
-        "quantity": "Optional",
-        "use": "Thai-style bowls"
-      },
-      {
-        "item": "Salsa",
-        "quantity": "Optional backup",
-        "use": "Mexican bowls if not making fresh salsa"
-      },
-      {
-        "item": "Corn",
-        "quantity": "1 small frozen bag or 1 can",
-        "use": "Mexican bowls"
-      },
-      {
-        "item": "Pickled jalapeños",
-        "quantity": "Optional",
-        "use": "Mexican bowls"
-      },
-      {
-        "item": "Nutritional yeast",
-        "quantity": "Optional",
-        "use": "Dairy-free savory topping"
-      }
-    ],
-    "Spices": [
-      {
-        "item": "Turmeric",
-        "use": "Dal, sambar, tofu, anti-inflammatory cooking"
-      },
-      {
-        "item": "Cumin seeds",
-        "use": "Dal, roasted vegetables, Mexican bowls"
-      },
-      {
-        "item": "Coriander powder",
-        "use": "Indian dishes, bowls"
-      },
-      {
-        "item": "Mustard seeds",
-        "use": "Sambar, South Indian tempering"
-      },
-      {
-        "item": "Hing",
-        "use": "Dal and sambar; helps reduce gas for many people"
-      },
-      {
-        "item": "Black pepper",
-        "use": "Bowls, roasted vegetables"
-      },
-      {
-        "item": "Red chili powder or paprika",
-        "use": "Mexican bowls, tofu, Indian dishes"
-      },
-      {
-        "item": "Cinnamon",
-        "use": "Overnight oats"
-      },
-      {
-        "item": "Ajwain",
-        "use": "Optional; digestion-friendly for chilla/roti"
-      },
-      {
-        "item": "Methi seeds",
-        "use": "Optional; use very lightly in tempering"
-      },
-      {
-        "item": "Salt",
-        "use": "General cooking"
-      },
-      {
-        "item": "Amchur",
-        "use": "Bhindi, Indian bowls"
-      },
-      {
-        "item": "Oregano",
-        "use": "Optional for Mediterranean bowls"
-      },
-      {
-        "item": "Chili flakes",
-        "use": "Thai sauce, bowls"
-      }
-    ],
-    "Optional Convenience Items": [
-      {
-        "item": "Pre-washed salad greens",
-        "use": "Saves time on work mornings"
-      },
-      {
-        "item": "Frozen broccoli",
-        "use": "Backup if fresh broccoli spoils"
-      },
-      {
-        "item": "Frozen mixed vegetables",
-        "use": "Quick sambar or fried-rice-style bowl"
-      },
-      {
-        "item": "Canned chickpeas",
-        "use": "Useful if dry chickpeas are not soaked"
-      },
-      {
-        "item": "Canned black beans",
-        "use": "Quick Mexican bowls"
-      },
-      {
-        "item": "Store-bought idli batter",
-        "use": "Saves time on Tuesday prep"
-      },
-      {
-        "item": "Pre-cut vegetables",
-        "use": "Useful during busy weeks"
-      },
-      {
-        "item": "Microwave rice packets",
-        "use": "Emergency backup only"
-      }
-    ],
-    "Avoid Buying": [
-      {
-        "item": "Greek yogurt",
-        "reason": "Avoid dairy"
-      },
-      {
-        "item": "Paneer",
-        "reason": "Dairy; may trigger acne"
-      },
-      {
-        "item": "Cheese",
-        "reason": "Dairy; may trigger acne"
-      },
-      {
-        "item": "Milk-based desserts",
-        "reason": "Dairy + sugar"
-      },
-      {
-        "item": "Sweets / mithai",
-        "reason": "Added sugar"
-      },
-      {
-        "item": "Maida products",
-        "reason": "Does not suit body"
-      },
-      {
-        "item": "White bread",
-        "reason": "Maida/refined flour"
-      },
-      {
-        "item": "Bakery snacks",
-        "reason": "Usually maida + sugar + oils"
-      },
-      {
-        "item": "Sweetened plant milk",
-        "reason": "Added sugar"
-      },
-      {
-        "item": "Sugary granola",
-        "reason": "Often high in sugar"
-      },
-      {
-        "item": "Fried namkeen",
-        "reason": "May worsen bloating/acne"
-      }
-    ]
+  "grocery_trips": {
+    "Saturday Main Grocery": {
+      "purpose": "Main grocery trip for pantry, grains, dals/beans, longer-lasting vegetables, fruits, breakfast items, and optional pav bhaji/gravy ingredients.",
+      "categories": [
+        {
+          "category": "Base Grains and Breakfast",
+          "items": [
+            {
+              "item": "White rice / basmati rice",
+              "quantity": "Enough for 4 cups uncooked total per week",
+              "covers": "Dal rice, sambar rice, Mexican bowls, Thai bowls"
+            },
+            {
+              "item": "Quinoa",
+              "quantity": "1 small bag",
+              "covers": "Mediterranean bowls"
+            },
+            {
+              "item": "Rolled oats",
+              "quantity": "1 bag",
+              "covers": "Overnight oats"
+            },
+            {
+              "item": "Whole wheat atta",
+              "quantity": "As needed",
+              "covers": "Roti, wraps, pav bhaji alternative"
+            },
+            {
+              "item": "Besan",
+              "quantity": "1 small bag",
+              "covers": "Tuesday WFH besan chilla"
+            },
+            {
+              "item": "Whole grain bread / sourdough / whole wheat buns",
+              "quantity": "1 pack optional",
+              "covers": "Pav bhaji alternative, tofu scramble toast"
+            }
+          ]
+        },
+        {
+          "category": "Dals, Beans, and Protein",
+          "items": [
+            {
+              "item": "Moong dal",
+              "quantity": "500g",
+              "covers": "Spinach moong dal"
+            },
+            {
+              "item": "Chickpeas",
+              "quantity": "2 cans or 500g dry",
+              "covers": "Mediterranean bowls, chana bowls"
+            },
+            {
+              "item": "Kala chana",
+              "quantity": "500g optional",
+              "covers": "Mexican chana bowl, Indian bowl"
+            },
+            {
+              "item": "Black beans",
+              "quantity": "1–2 cans optional",
+              "covers": "Mexican bowl backup"
+            },
+            {
+              "item": "Extra-firm tofu",
+              "quantity": "2–3 blocks",
+              "covers": "Tofu bowls, tofu scramble, tofu curry"
+            },
+            {
+              "item": "Paneer",
+              "quantity": "Optional small pack",
+              "covers": "Occasional curry variation only"
+            }
+          ]
+        },
+        {
+          "category": "Shared Vegetables",
+          "items": [
+            {
+              "item": "Spinach",
+              "quantity": "2 bunches or 1 large box",
+              "covers": "Spinach moong dal, tofu scramble, bowls"
+            },
+            {
+              "item": "Broccoli",
+              "quantity": "2 heads",
+              "covers": "Roasted veg, Thai bowl"
+            },
+            {
+              "item": "Cauliflower",
+              "quantity": "1 small head",
+              "covers": "Roasted veg, pav bhaji"
+            },
+            {
+              "item": "Carrots",
+              "quantity": "6–8",
+              "covers": "Roasted veg, pav bhaji, sambar"
+            },
+            {
+              "item": "Bell peppers",
+              "quantity": "4–6",
+              "covers": "Roasted veg, pav bhaji, Mexican bowls"
+            },
+            {
+              "item": "Potatoes",
+              "quantity": "2 medium",
+              "covers": "Pav bhaji; keep moderate"
+            },
+            {
+              "item": "Green peas",
+              "quantity": "1 small frozen bag",
+              "covers": "Pav bhaji, curry meals"
+            },
+            {
+              "item": "Beetroot",
+              "quantity": "1 small optional",
+              "covers": "Pav bhaji color and nutrients"
+            },
+            {
+              "item": "Cucumber",
+              "quantity": "2–3",
+              "covers": "Raw topping, salad side"
+            },
+            {
+              "item": "Romaine lettuce",
+              "quantity": "1 head or 1 pack",
+              "covers": "Mexican and Mediterranean bowls"
+            },
+            {
+              "item": "Mixed greens or arugula",
+              "quantity": "1 box",
+              "covers": "Mediterranean bowls"
+            },
+            {
+              "item": "Microgreens",
+              "quantity": "1 small box",
+              "covers": "Bowl topping"
+            },
+            {
+              "item": "Tomatoes",
+              "quantity": "10–12",
+              "covers": "Dal, salsa, pav bhaji, gravy base"
+            },
+            {
+              "item": "Onions",
+              "quantity": "6–7",
+              "covers": "Dal, salsa, pav bhaji, gravy base"
+            },
+            {
+              "item": "Ginger",
+              "quantity": "1 large piece",
+              "covers": "Dal, chutney, gravy, Thai sauce"
+            },
+            {
+              "item": "Garlic",
+              "quantity": "1 bulb",
+              "covers": "Gravy base, sauces"
+            },
+            {
+              "item": "Lemons/limes",
+              "quantity": "8–10",
+              "covers": "Dressings, salsa, iron absorption"
+            }
+          ]
+        },
+        {
+          "category": "Fruits",
+          "items": [
+            {
+              "item": "Kiwi",
+              "quantity": "6–7",
+              "covers": "Constipation-friendly breakfast/snack"
+            },
+            {
+              "item": "Pears",
+              "quantity": "4–5",
+              "covers": "Snack"
+            },
+            {
+              "item": "Apples",
+              "quantity": "3–4",
+              "covers": "Work snack"
+            },
+            {
+              "item": "Blueberries or mixed berries",
+              "quantity": "1 box",
+              "covers": "Overnight oats"
+            },
+            {
+              "item": "Pomegranate",
+              "quantity": "1–2",
+              "covers": "Snack or topping"
+            }
+          ]
+        },
+        {
+          "category": "Seeds, Sauces, Pantry",
+          "items": [
+            {
+              "item": "Chia seeds",
+              "quantity": "1 pack",
+              "covers": "Overnight oats"
+            },
+            {
+              "item": "Ground flaxseed",
+              "quantity": "1 pack",
+              "covers": "Overnight oats"
+            },
+            {
+              "item": "Pumpkin seeds",
+              "quantity": "1 pack",
+              "covers": "Snack and bowl topping"
+            },
+            {
+              "item": "Walnuts",
+              "quantity": "1 pack",
+              "covers": "Breakfast/snack"
+            },
+            {
+              "item": "Natural peanut butter",
+              "quantity": "1 jar",
+              "covers": "Thai peanut sauce"
+            },
+            {
+              "item": "Tahini",
+              "quantity": "1 jar",
+              "covers": "Mediterranean dressing"
+            },
+            {
+              "item": "Unsweetened soy milk",
+              "quantity": "2 cartons",
+              "covers": "Overnight oats"
+            },
+            {
+              "item": "Pav bhaji masala",
+              "quantity": "1 pack",
+              "covers": "Pav bhaji"
+            },
+            {
+              "item": "Kasuri methi",
+              "quantity": "1 pack",
+              "covers": "Gravy base"
+            },
+            {
+              "item": "Tomato paste",
+              "quantity": "Optional",
+              "covers": "Gravy richness without extra oil"
+            },
+            {
+              "item": "Olive oil or avocado oil",
+              "quantity": "As needed",
+              "covers": "Roasting, dressing"
+            },
+            {
+              "item": "Soy sauce or tamari",
+              "quantity": "As needed",
+              "covers": "Thai peanut sauce"
+            }
+          ]
+        }
+      ]
+    },
+    "Tuesday Refresh Grocery": {
+      "purpose": "Small refresh trip for delicate produce, South Indian items, tofu, fresh greens, and Wednesday–Saturday lunch items.",
+      "categories": [
+        {
+          "category": "South Indian Refresh",
+          "items": [
+            {
+              "item": "Toor dal",
+              "quantity": "500g if not already at home",
+              "covers": "Vegetable sambar"
+            },
+            {
+              "item": "Idli batter",
+              "quantity": "1 medium tub",
+              "covers": "Idli breakfast/dinner"
+            },
+            {
+              "item": "Fresh or frozen coconut",
+              "quantity": "1 pack",
+              "covers": "Coconut chutney"
+            },
+            {
+              "item": "Curry leaves",
+              "quantity": "1 small pack",
+              "covers": "Sambar and tempering"
+            },
+            {
+              "item": "Tamarind paste or block",
+              "quantity": "1 pack if not at home",
+              "covers": "Sambar"
+            },
+            {
+              "item": "Sambar powder",
+              "quantity": "1 pack if not at home",
+              "covers": "Sambar"
+            }
+          ]
+        },
+        {
+          "category": "Sambar and Side Vegetables",
+          "items": [
+            {
+              "item": "Lauki / bottle gourd",
+              "quantity": "1 medium",
+              "covers": "Sambar"
+            },
+            {
+              "item": "Green beans",
+              "quantity": "250–300g",
+              "covers": "Sambar or side"
+            },
+            {
+              "item": "Pumpkin/butternut squash",
+              "quantity": "1 small piece or 2 cups chopped",
+              "covers": "Sambar"
+            },
+            {
+              "item": "Drumsticks/moringa pods",
+              "quantity": "1 pack optional",
+              "covers": "Traditional sambar"
+            },
+            {
+              "item": "Bhindi",
+              "quantity": "500g",
+              "covers": "Bhindi sabzi side"
+            },
+            {
+              "item": "Cabbage",
+              "quantity": "1 small",
+              "covers": "Cabbage poriyal or Thai bowl"
+            },
+            {
+              "item": "Broccoli",
+              "quantity": "1 head if needed",
+              "covers": "Thai bowl"
+            }
+          ]
+        },
+        {
+          "category": "Fresh Bowl Refresh",
+          "items": [
+            {
+              "item": "Lettuce",
+              "quantity": "1 pack if Saturday greens are finished",
+              "covers": "Bowls"
+            },
+            {
+              "item": "Cucumber",
+              "quantity": "1–2",
+              "covers": "Fresh topping"
+            },
+            {
+              "item": "Microgreens",
+              "quantity": "1 small box",
+              "covers": "Bowl topping"
+            },
+            {
+              "item": "Cilantro",
+              "quantity": "1 bunch",
+              "covers": "Garnish, chutney"
+            },
+            {
+              "item": "Mint",
+              "quantity": "1 bunch",
+              "covers": "Chutney, garnish"
+            },
+            {
+              "item": "Lemons/limes",
+              "quantity": "2–4 if needed",
+              "covers": "Dressings, iron absorption"
+            }
+          ]
+        },
+        {
+          "category": "Thai / Tofu Refresh",
+          "items": [
+            {
+              "item": "Extra-firm tofu",
+              "quantity": "1–2 blocks if needed",
+              "covers": "Thai tofu bowl, tofu curry, Mexican tofu bowl"
+            },
+            {
+              "item": "Red cabbage",
+              "quantity": "1 small if not already bought",
+              "covers": "Thai bowl, Mexican bowl"
+            },
+            {
+              "item": "Peanuts or crushed peanuts",
+              "quantity": "Optional",
+              "covers": "Thai bowl topping"
+            }
+          ]
+        },
+        {
+          "category": "Fruit Refresh",
+          "items": [
+            {
+              "item": "Kiwi",
+              "quantity": "2–3 if needed",
+              "covers": "Breakfast/snacks"
+            },
+            {
+              "item": "Pears",
+              "quantity": "2–3 if needed",
+              "covers": "Snacks"
+            },
+            {
+              "item": "Berries",
+              "quantity": "1 small box if needed",
+              "covers": "Overnight oats"
+            }
+          ]
+        }
+      ]
+    }
   },
-  "meal_prep": {
+  "prep_framework": {
     "Saturday": {
       "covers": "Saturday dinner through Tuesday dinner",
-      "theme": "Indian + Mediterranean + Mexican",
-      "overview": [
+      "theme": "Indian + Mediterranean + Mexican + optional pav bhaji/gravy",
+      "rule": "Choose 1–2 mains only, plus supporting building blocks. Do not cook every possible option.",
+      "formula": [
+        "1 grain: white rice and/or quinoa",
+        "1 Indian comfort main: spinach moong dal OR high-veg pav bhaji OR gravy-based tofu/chana",
+        "1 protein/bean: chickpeas, kala chana, tofu, or black beans",
+        "1 vegetable batch: roasted vegetables OR pav bhaji vegetables",
+        "1 fresh bowl base: lettuce, cucumber, microgreens",
+        "1–2 sauces: tahini dressing, salsa, mint chutney, or gravy base",
+        "Breakfast prep: overnight oat jars"
+      ],
+      "options": [
         {
-          "item": "White rice",
-          "quantity": "2 cups uncooked",
-          "used_for": "Indian dal-rice, Mexican bowls"
+          "name": "Light Week",
+          "choose_when": "You want something gut-friendly and simple.",
+          "prep": [
+            "Spinach moong dal",
+            "White rice",
+            "Roasted vegetables",
+            "Chickpeas/kala chana",
+            "Greens",
+            "Tahini dressing or salsa",
+            "Overnight oats dry jars"
+          ]
         },
         {
-          "item": "Quinoa",
-          "quantity": "1 cup uncooked",
-          "used_for": "Mediterranean bowls"
+          "name": "Comfort Week",
+          "choose_when": "You want Indian street-food comfort without making the plan too heavy.",
+          "prep": [
+            "High-veg pav bhaji",
+            "Whole grain toast/roti option",
+            "Cucumber/microgreens salad",
+            "White rice or quinoa",
+            "Chickpeas/kala chana",
+            "Overnight oats dry jars"
+          ]
         },
         {
-          "item": "Spinach moong dal",
-          "quantity": "5–6 servings",
-          "used_for": "Indian meals"
+          "name": "Curry Week",
+          "choose_when": "You want flexible Indian curry meals.",
+          "prep": [
+            "Light pyaaz-tamatar-garlic gravy base",
+            "Tofu or chana",
+            "White rice",
+            "Roasted vegetables",
+            "Fresh side greens",
+            "Overnight oats dry jars"
+          ]
         },
         {
-          "item": "Chickpeas or kala chana",
-          "quantity": "5–6 servings",
-          "used_for": "Mediterranean and Mexican bowls"
-        },
-        {
-          "item": "Roasted vegetables",
-          "quantity": "6–8 servings",
-          "used_for": "Bowls, sides, dinner plates"
-        },
-        {
-          "item": "Salad greens box",
-          "quantity": "3–4 days",
-          "used_for": "Fresh bowls and side salads"
-        },
-        {
-          "item": "Tahini-lemon dressing",
-          "quantity": "1 jar",
-          "used_for": "Mediterranean bowls"
-        },
-        {
-          "item": "Fresh salsa-style mix",
-          "quantity": "1 container",
-          "used_for": "Mexican bowls"
-        },
-        {
-          "item": "Overnight oats dry jars",
-          "quantity": "3–4 jars",
-          "used_for": "Fast breakfast"
+          "name": "Balanced Week",
+          "choose_when": "You want both comfort and gut-friendly food.",
+          "prep": [
+            "Small spinach moong dal batch",
+            "Small high-veg pav bhaji batch",
+            "White rice",
+            "Greens",
+            "One sauce: tahini or salsa",
+            "Overnight oats dry jars"
+          ]
         }
       ],
-      "steps": [
-        "Cook chickpeas or kala chana. Use canned beans if dry beans were not soaked.",
-        "Cook 2 cups uncooked white/basmati rice and cool before storing.",
-        "Cook 1 cup quinoa with 2 cups water.",
-        "Make spinach moong dal with moong dal, spinach, tomato, ginger, turmeric, cumin, hing, and lemon added when eating.",
-        "Roast vegetables such as broccoli, cauliflower, bell peppers, carrots, onion, and optional zucchini.",
-        "Prep salad greens box: lettuce, mixed greens/arugula, microgreens, cucumber, cilantro, mint. Keep wet ingredients separate.",
-        "Make tahini-lemon dressing with tahini, lemon, water, cumin, salt, pepper, and optional garlic.",
-        "Make fresh salsa-style mix with tomato, onion, cilantro, lemon/lime, cumin, salt, and optional chili.",
-        "Prepare overnight oats dry jars with oats, chia, flaxseed, cinnamon, and optional pumpkin seeds/walnuts.",
-        "Portion and label all containers. Keep grains, dal/beans, vegetables, greens, and sauces separate."
-      ]
+      "recommended_default": "Balanced Week: small spinach moong dal + small high-veg pav bhaji, plus white rice, greens, and one sauce."
     },
     "Tuesday": {
       "covers": "Wednesday through Saturday lunch",
-      "theme": "South Indian + Thai",
-      "overview": [
+      "theme": "South Indian + Thai + optional gravy refresh",
+      "rule": "Use Tuesday as a freshness reset. Choose 1 South Indian base + 1 protein/vegetable option + 1 sauce/chutney.",
+      "formula": [
+        "1 grain: white rice",
+        "1 South Indian main: sambar OR rasam-style dal",
+        "1 protein: tofu cubes OR tofu curry",
+        "1 side vegetable: bhindi, cabbage poriyal, or broccoli",
+        "1 breakfast item: idli or oats jars",
+        "1 sauce/chutney: coconut chutney or peanut sauce",
+        "Fresh refresh: lettuce, cucumber, herbs, microgreens"
+      ],
+      "options": [
         {
-          "item": "Toor dal vegetable sambar",
-          "quantity": "6–7 servings",
-          "used_for": "Sambar rice, idli-sambar"
+          "name": "South Indian Week",
+          "choose_when": "You want comfort and easy breakfasts.",
+          "prep": [
+            "Vegetable toor dal sambar",
+            "Idli",
+            "Coconut chutney",
+            "White rice",
+            "Cabbage poriyal or bhindi"
+          ]
         },
         {
-          "item": "Idlis",
-          "quantity": "8–12 idlis",
-          "used_for": "Breakfast or dinner"
+          "name": "Thai Week",
+          "choose_when": "You want non-Indian variety.",
+          "prep": [
+            "Tofu cubes",
+            "Thai peanut sauce",
+            "White rice",
+            "Broccoli/cabbage/cucumber",
+            "Fresh herbs"
+          ]
         },
         {
-          "item": "Coconut chutney",
-          "quantity": "2–3 servings",
-          "used_for": "Idli side"
+          "name": "Flexible Curry Week",
+          "choose_when": "You did not make gravy on Saturday and want Indian curry.",
+          "prep": [
+            "Pyaaz-tamatar-garlic gravy",
+            "Tofu or mixed vegetables",
+            "White rice",
+            "Fresh side greens"
+          ]
         },
         {
-          "item": "White rice",
-          "quantity": "2 cups uncooked",
-          "used_for": "Sambar rice, Thai bowls"
-        },
-        {
-          "item": "Tofu cubes",
-          "quantity": "5–6 servings",
-          "used_for": "Thai bowls, Mexican bowls, protein side"
-        },
-        {
-          "item": "Bhindi sabzi or cabbage poriyal",
-          "quantity": "4 servings",
-          "used_for": "South Indian side"
-        },
-        {
-          "item": "Thai peanut sauce",
-          "quantity": "1 jar",
-          "used_for": "Thai tofu bowls"
-        },
-        {
-          "item": "Fresh salad greens",
-          "quantity": "3–4 days",
-          "used_for": "Bowls and sides"
-        },
-        {
-          "item": "Overnight oats dry jars",
-          "quantity": "3–4 jars",
-          "used_for": "Fast breakfast"
+          "name": "Balanced Week",
+          "choose_when": "You want South Indian comfort plus non-Indian variety.",
+          "prep": [
+            "Vegetable sambar",
+            "Idli",
+            "Tofu cubes",
+            "Thai peanut sauce",
+            "White rice",
+            "Fresh greens"
+          ]
         }
       ],
-      "steps": [
-        "Cook 2 cups uncooked white/basmati rice.",
-        "Pressure cook 1.5 cups toor dal with turmeric until very soft.",
-        "Make vegetable sambar using cooked toor dal, lauki, carrot, green beans, pumpkin, tomato, tamarind, sambar powder, mustard seeds, cumin seeds, curry leaves, hing, ginger, and salt.",
-        "Steam 8–12 idlis from idli batter. Cool fully before storing.",
-        "Make a small coconut chutney batch with coconut, roasted chana dal, ginger, mint/cilantro, green chili, lemon, salt, and water.",
-        "Make tofu cubes by pressing tofu, cubing, lightly seasoning, and pan-searing/baking/air-frying.",
-        "Make bhindi sabzi or cabbage poriyal.",
-        "Make Thai peanut sauce with natural peanut butter, soy sauce/tamari, lemon/lime, ginger, water, optional chili flakes, and optional garlic.",
-        "Refresh salad greens: lettuce, cabbage, cucumber, microgreens, cilantro, mint.",
-        "Prepare overnight oats dry jars.",
-        "Label containers and use by Saturday lunch."
-      ]
+      "recommended_default": "Balanced Week: sambar + idli + tofu cubes + peanut sauce."
     }
   },
-  "weekly_menu": [
+  "meal_pools": {
+    "Saturday Batch Meal Pool": [
+      {
+        "meal_name": "Spinach Moong Dal Rice Bowl",
+        "uses": [
+          "Spinach moong dal",
+          "White rice",
+          "Cucumber",
+          "Microgreens",
+          "Lemon"
+        ]
+      },
+      {
+        "meal_name": "Spinach Moong Dal Rice Plate",
+        "uses": [
+          "Spinach moong dal",
+          "White rice",
+          "Roasted vegetables",
+          "Cucumber salad"
+        ]
+      },
+      {
+        "meal_name": "High-Veg Pav Bhaji with Whole Grain Toast/Roti",
+        "uses": [
+          "High-veg pav bhaji",
+          "Whole grain toast/roti",
+          "Cucumber microgreens salad"
+        ]
+      },
+      {
+        "meal_name": "Mexican Chana Rice Bowl",
+        "uses": [
+          "White rice",
+          "Chana/chickpeas",
+          "Lettuce",
+          "Salsa",
+          "Avocado"
+        ]
+      },
+      {
+        "meal_name": "Mediterranean Chickpea Quinoa Bowl",
+        "uses": [
+          "Quinoa",
+          "Chickpeas",
+          "Greens",
+          "Roasted vegetables",
+          "Tahini-lemon dressing"
+        ]
+      },
+      {
+        "meal_name": "Mediterranean Roasted Vegetable Bowl",
+        "uses": [
+          "Quinoa or rice",
+          "Roasted vegetables",
+          "Chickpeas or tofu",
+          "Greens",
+          "Tahini dressing"
+        ]
+      },
+      {
+        "meal_name": "Gravy-Based Tofu/Chana Bowl",
+        "uses": [
+          "Rice",
+          "Tofu or chana",
+          "Pyaaz-tamatar-garlic gravy",
+          "Fresh side"
+        ]
+      }
+    ],
+    "Tuesday Batch Meal Pool": [
+      {
+        "meal_name": "Idli with Sambar and Coconut Chutney",
+        "uses": [
+          "Idli",
+          "Vegetable sambar",
+          "Coconut chutney"
+        ]
+      },
+      {
+        "meal_name": "Sambar Rice Bowl",
+        "uses": [
+          "White rice",
+          "Vegetable sambar",
+          "Cucumber",
+          "Microgreens"
+        ]
+      },
+      {
+        "meal_name": "Sambar Rice Plate",
+        "uses": [
+          "White rice",
+          "Vegetable sambar",
+          "Bhindi or cabbage poriyal",
+          "Fresh side"
+        ]
+      },
+      {
+        "meal_name": "Thai Peanut Tofu Rice Bowl",
+        "uses": [
+          "White rice",
+          "Tofu cubes",
+          "Broccoli",
+          "Cabbage",
+          "Peanut sauce"
+        ]
+      },
+      {
+        "meal_name": "Tofu Curry Rice Bowl using Pyaaz-Tamatar-Garlic Gravy",
+        "uses": [
+          "White rice",
+          "Tofu",
+          "Gravy base",
+          "Fresh side"
+        ]
+      },
+      {
+        "meal_name": "Mexican Tofu Rice Bowl",
+        "uses": [
+          "White rice",
+          "Tofu cubes",
+          "Lettuce",
+          "Salsa",
+          "Avocado"
+        ]
+      },
+      {
+        "meal_name": "Light South Indian Dinner",
+        "uses": [
+          "Idli",
+          "Sambar",
+          "Optional small chutney"
+        ]
+      }
+    ]
+  },
+  "flexible_weekly_template": [
     {
       "day": "Saturday",
-      "breakfast": "Simple breakfast before grocery/meal prep: oats, fruit, or existing leftovers",
-      "lunch": "Simple lunch before meal prep: leftover rice/dal, poha, or quick salad bowl",
+      "breakfast": "Simple or existing leftovers",
+      "lunch": "Simple lunch before prep",
       "snacks": "Kiwi or pear + pumpkin seeds",
-      "dinner": "Spinach Moong Dal Rice Plate"
+      "dinner_options": [
+        "High-Veg Pav Bhaji with Whole Grain Toast/Roti",
+        "Spinach Moong Dal Rice Plate"
+      ]
     },
     {
       "day": "Sunday",
-      "breakfast": "Overnight Oats with Kiwi, Chia & Flaxseed",
-      "lunch": "Mediterranean Chickpea Quinoa Bowl",
-      "snacks": "Pear + walnuts or pumpkin seeds",
-      "dinner": "Mexican Chana Rice Bowl"
+      "breakfast": "Overnight oats",
+      "lunch_options": [
+        "Mediterranean Chickpea Quinoa Bowl",
+        "Spinach Moong Dal Rice Bowl"
+      ],
+      "snacks": "Pear + walnuts/pumpkin seeds",
+      "dinner_options": [
+        "Mexican Chana Rice Bowl",
+        "Leftover High-Veg Pav Bhaji"
+      ]
     },
     {
       "day": "Monday",
-      "breakfast": "Overnight Oats with Berries, Chia & Flaxseed",
-      "lunch": "Spinach Moong Dal Rice Bowl",
+      "breakfast": "Overnight oats",
+      "lunch_options": [
+        "Spinach Moong Dal Rice Bowl",
+        "Mexican Chana Rice Bowl"
+      ],
       "snacks": "Apple or kiwi + pumpkin seeds",
-      "dinner": "Mediterranean Roasted Vegetable Bowl"
+      "dinner_options": [
+        "Mediterranean Roasted Vegetable Bowl",
+        "Gravy-Based Tofu/Chana Bowl"
+      ]
     },
     {
       "day": "Tuesday",
-      "breakfast": "Besan Chilla with Mint-Cilantro Chutney or Tofu Scramble Avocado Toast",
-      "lunch": "Mexican Chana Rice Bowl",
+      "breakfast_options": [
+        "Besan Chilla with Mint-Cilantro Chutney",
+        "Tofu Scramble Avocado Toast"
+      ],
+      "lunch_options": [
+        "Mexican Chana Rice Bowl",
+        "Mediterranean Chickpea Quinoa Bowl"
+      ],
       "snacks": "Pomegranate or pear + walnuts",
-      "dinner": "Finish Saturday prep: Spinach Moong Dal Rice Plate or Mediterranean Chickpea Quinoa Bowl"
+      "dinner_options": [
+        "Finish Saturday batch",
+        "Spinach Moong Dal Rice Plate",
+        "High-Veg Pav Bhaji"
+      ]
     },
     {
       "day": "Wednesday",
-      "breakfast": "Overnight Oats with Kiwi, Chia & Flaxseed",
-      "lunch": "Sambar Rice Bowl",
-      "snacks": "Cucumber sticks + hummus or pumpkin seeds",
-      "dinner": "Thai Peanut Tofu Rice Bowl"
+      "breakfast": "Overnight oats",
+      "lunch_options": [
+        "Sambar Rice Bowl",
+        "Sambar Rice Plate"
+      ],
+      "snacks": "Cucumber + pumpkin seeds",
+      "dinner_options": [
+        "Thai Peanut Tofu Rice Bowl"
+      ]
     },
     {
       "day": "Thursday",
-      "breakfast": "Idli with Sambar and Coconut Chutney",
-      "lunch": "Mediterranean Lentil-Style Sambar Bowl",
+      "breakfast_options": [
+        "Idli with Sambar and Coconut Chutney",
+        "Overnight oats"
+      ],
+      "lunch_options": [
+        "Sambar Rice Plate",
+        "Tofu Curry Rice Bowl using Pyaaz-Tamatar-Garlic Gravy"
+      ],
       "snacks": "Pear or berries + walnuts",
-      "dinner": "Sambar Rice Plate"
+      "dinner_options": [
+        "Idli with Sambar and Coconut Chutney",
+        "Thai Peanut Tofu Rice Bowl"
+      ]
     },
     {
       "day": "Friday",
-      "breakfast": "Overnight Oats with Berries or Pear, Chia & Flaxseed",
-      "lunch": "Mexican Tofu Rice Bowl",
+      "breakfast": "Overnight oats",
+      "lunch_options": [
+        "Mexican Tofu Rice Bowl",
+        "Tofu Curry Rice Bowl using Pyaaz-Tamatar-Garlic Gravy"
+      ],
       "snacks": "Kiwi + pumpkin seeds",
-      "dinner": "Idli Sambar Dinner"
+      "dinner_options": [
+        "Sambar Rice Plate",
+        "Idli with Sambar and Coconut Chutney"
+      ]
     },
     {
       "day": "Saturday",
-      "breakfast": "Overnight Oats or leftover Idli with Sambar",
-      "lunch": "Finish Tuesday prep: Thai Peanut Tofu Rice Bowl or Sambar Rice Bowl",
-      "snacks": "Fruit + nuts/seeds, if needed",
-      "dinner": "New Saturday meal prep cycle begins"
+      "breakfast_options": [
+        "Overnight oats",
+        "Leftover idli-sambar"
+      ],
+      "lunch_options": [
+        "Thai Peanut Tofu Rice Bowl",
+        "Sambar Rice Bowl",
+        "Leftover tofu curry"
+      ],
+      "snacks": "Fruit + nuts/seeds if needed",
+      "dinner": "New Saturday prep cycle begins"
     }
   ],
+  "breakfast_options": {
+    "workday_fast": [
+      "Overnight Oats with Kiwi, Chia & Flaxseed",
+      "Overnight Oats with Berries, Chia & Flaxseed",
+      "Idli with Sambar and Coconut Chutney if already prepped"
+    ],
+    "tuesday_work_from_home": [
+      "Besan Chilla with Mint-Cilantro Chutney",
+      "Tofu Scramble Avocado Toast"
+    ],
+    "weekend": [
+      "Idli with Sambar and Coconut Chutney",
+      "Besan Chilla with Mint-Cilantro Chutney",
+      "Overnight oats",
+      "Poha backup if desired"
+    ]
+  },
+  "vegetable_prep_guide": {
+    "recommendation": "For this gut pattern, use cooked/roasted vegetables as the main base and raw vegetables as toppings. Large raw salads may worsen bloating.",
+    "gut_friendly_bowl_ratio": {
+      "cooked_or_roasted_vegetables": "60–70% of veggie portion",
+      "raw_crunchy_vegetables": "20–30% of veggie portion",
+      "delicate_greens_microgreens": "10–20% of veggie portion"
+    },
+    "method_comparison": [
+      {
+        "method": "Roasting",
+        "best_for": "Broccoli, cauliflower, carrots, bell peppers, zucchini, pumpkin",
+        "fridge_stability": "3–4 days",
+        "gut_friendliness": "Good"
+      },
+      {
+        "method": "Steaming",
+        "best_for": "Broccoli, green beans, carrots, cauliflower, pumpkin",
+        "fridge_stability": "2–3 days",
+        "gut_friendliness": "Very good"
+      },
+      {
+        "method": "Sautéing",
+        "best_for": "Cabbage, bhindi, peppers, zucchini, beans",
+        "fridge_stability": "3 days",
+        "gut_friendliness": "Good"
+      },
+      {
+        "method": "Raw",
+        "best_for": "Cucumber, lettuce, microgreens, small cabbage amount",
+        "fridge_stability": "1–3 days",
+        "gut_friendliness": "Use small amount"
+      }
+    ],
+    "roasting": {
+      "formula_for_6_to_8_cups": [
+        {
+          "ingredient": "Chopped vegetables",
+          "amount": "6–8 cups"
+        },
+        {
+          "ingredient": "Olive oil or avocado oil",
+          "amount": "1.5–2 tbsp total"
+        },
+        {
+          "ingredient": "Salt",
+          "amount": "3/4–1 tsp"
+        },
+        {
+          "ingredient": "Black pepper",
+          "amount": "1/2 tsp"
+        },
+        {
+          "ingredient": "Cumin powder",
+          "amount": "1 tsp"
+        },
+        {
+          "ingredient": "Turmeric",
+          "amount": "1/4 tsp optional"
+        },
+        {
+          "ingredient": "Paprika",
+          "amount": "1/2–1 tsp optional"
+        }
+      ],
+      "steps": [
+        "Preheat oven to 400°F / 200°C.",
+        "Wash vegetables and dry very well.",
+        "Cut into medium-sized pieces; avoid tiny pieces because they get mushy.",
+        "Toss with oil and spices.",
+        "Spread on baking tray in a single layer; do not overcrowd.",
+        "Roast 20–30 minutes, flipping once halfway.",
+        "Roast to about 80–85% cooked for meal prep, not fully mushy.",
+        "Cool completely before storing."
+      ],
+      "neutral_spice_mix": [
+        "Olive oil",
+        "Cumin",
+        "Black pepper",
+        "Small turmeric",
+        "Salt"
+      ],
+      "add_later": "Add lemon/lime, tahini dressing, salsa, or peanut sauce when eating, not before storing."
+    },
+    "steaming": {
+      "times": [
+        {
+          "vegetable": "Broccoli",
+          "time": "3–5 minutes"
+        },
+        {
+          "vegetable": "Carrots",
+          "time": "5–7 minutes"
+        },
+        {
+          "vegetable": "Green beans",
+          "time": "4–6 minutes"
+        },
+        {
+          "vegetable": "Cauliflower",
+          "time": "5–6 minutes"
+        },
+        {
+          "vegetable": "Pumpkin",
+          "time": "7–10 minutes"
+        }
+      ],
+      "steps": [
+        "Boil water in a pot.",
+        "Place vegetables in steamer basket.",
+        "Cover and steam until just tender, not mushy.",
+        "Spread on plate/tray to cool and release steam.",
+        "Store only after fully cool and dry.",
+        "Season lightly when eating."
+      ]
+    },
+    "sauteing": {
+      "best_vegetables": [
+        "Cabbage",
+        "Bhindi",
+        "Bell peppers",
+        "Zucchini",
+        "Green beans",
+        "Mushrooms if tolerated"
+      ],
+      "cabbage_poriyal_steps": [
+        "Heat 1–2 tsp oil.",
+        "Add mustard seeds, cumin seeds, curry leaves, and hing.",
+        "Add shredded cabbage and turmeric.",
+        "Cook on medium until soft but not mushy.",
+        "Add optional 1–2 tbsp coconut at the end.",
+        "Cool before storing."
+      ],
+      "bhindi_sabzi_steps": [
+        "Wash bhindi and dry completely.",
+        "Cut into pieces.",
+        "Heat 1–2 tsp oil.",
+        "Add cumin seeds.",
+        "Add bhindi and cook uncovered on medium.",
+        "Add turmeric, coriander powder, salt once bhindi starts cooking down.",
+        "Add amchur or lemon at the end."
+      ]
+    },
+    "storage_rules": [
+      "Cool cooked vegetables completely before closing lid.",
+      "Use shallow containers.",
+      "Keep sauces separate.",
+      "Keep raw greens separate.",
+      "Do not mix cucumber/tomato into cooked vegetables in advance.",
+      "Store in fridge within 1–2 hours.",
+      "Use a clean spoon every time.",
+      "Reheat only the portion you eat."
+    ]
+  },
   "recipes": [
     {
       "name": "Besan Chilla with Mint-Cilantro Chutney",
-      "best_for": "Fresh Tuesday breakfast, light dinner, or high-protein snack.",
-      "servings": "Makes 2 medium chillas.",
+      "categories": [
+        "Breakfast",
+        "Indian",
+        "Quick Fresh"
+      ],
+      "best_for": "Tuesday work-from-home breakfast, light dinner, or high-protein snack.",
+      "servings": "2 medium chillas",
       "ingredients": {
         "Besan Chilla": [
-          [
-            "Besan / chickpea flour",
-            "1/2 cup"
-          ],
-          [
-            "Water",
-            "1/3 to 1/2 cup, adjust as needed"
-          ],
-          [
-            "Grated carrot",
-            "2 tbsp"
-          ],
-          [
-            "Chopped spinach or methi",
-            "2 tbsp"
-          ],
-          [
-            "Chopped onion",
-            "1–2 tbsp, optional"
-          ],
-          [
-            "Chopped cilantro",
-            "1 tbsp"
-          ],
-          [
-            "Ajwain",
-            "1/4 tsp"
-          ],
-          [
-            "Turmeric",
-            "1/4 tsp"
-          ],
-          [
-            "Cumin powder",
-            "1/4 tsp"
-          ],
-          [
-            "Hing",
-            "Tiny pinch"
-          ],
-          [
-            "Salt",
-            "To taste"
-          ],
-          [
-            "Oil",
-            "1/2–1 tsp total"
-          ]
+          {
+            "item": "Besan / chickpea flour",
+            "quantity": "1/2 cup"
+          },
+          {
+            "item": "Water",
+            "quantity": "1/3 to 1/2 cup"
+          },
+          {
+            "item": "Grated carrot",
+            "quantity": "2 tbsp"
+          },
+          {
+            "item": "Chopped spinach or methi",
+            "quantity": "2 tbsp"
+          },
+          {
+            "item": "Chopped onion",
+            "quantity": "1–2 tbsp optional"
+          },
+          {
+            "item": "Chopped cilantro",
+            "quantity": "1 tbsp"
+          },
+          {
+            "item": "Ajwain",
+            "quantity": "1/4 tsp"
+          },
+          {
+            "item": "Turmeric",
+            "quantity": "1/4 tsp"
+          },
+          {
+            "item": "Cumin powder",
+            "quantity": "1/4 tsp"
+          },
+          {
+            "item": "Hing",
+            "quantity": "Tiny pinch"
+          },
+          {
+            "item": "Salt",
+            "quantity": "To taste"
+          },
+          {
+            "item": "Oil",
+            "quantity": "1/2–1 tsp total"
+          }
         ],
         "Mint-Cilantro Chutney": [
-          [
-            "Cilantro",
-            "1 cup"
-          ],
-          [
-            "Mint",
-            "1/2 cup"
-          ],
-          [
-            "Ginger",
-            "Small piece"
-          ],
-          [
-            "Green chili",
-            "Optional"
-          ],
-          [
-            "Lemon juice",
-            "1–2 tsp"
-          ],
-          [
-            "Roasted chana dal",
-            "1 tbsp, optional"
-          ],
-          [
-            "Salt",
-            "To taste"
-          ],
-          [
-            "Water",
-            "As needed"
-          ]
+          {
+            "item": "Cilantro",
+            "quantity": "1 cup"
+          },
+          {
+            "item": "Mint",
+            "quantity": "1/2 cup"
+          },
+          {
+            "item": "Ginger",
+            "quantity": "Small piece"
+          },
+          {
+            "item": "Green chili",
+            "quantity": "Optional"
+          },
+          {
+            "item": "Lemon juice",
+            "quantity": "1–2 tsp"
+          },
+          {
+            "item": "Roasted chana dal",
+            "quantity": "1 tbsp optional"
+          },
+          {
+            "item": "Salt",
+            "quantity": "To taste"
+          },
+          {
+            "item": "Water",
+            "quantity": "As needed"
+          }
         ]
       },
       "steps": [
-        "Add besan, turmeric, cumin, ajwain, hing, and salt to a bowl.",
-        "Slowly add water and whisk until smooth and pourable.",
-        "Add grated carrot, spinach/methi, onion, and cilantro.",
-        "Rest batter for 5–10 minutes if possible.",
-        "Heat a nonstick pan and lightly grease.",
-        "Pour batter and spread like a thin pancake.",
-        "Cook on medium heat until the bottom is golden.",
-        "Flip and cook the other side.",
-        "Blend chutney ingredients with enough water to make a smooth chutney.",
+        "Mix besan, turmeric, cumin, ajwain, hing, and salt.",
+        "Add water slowly and whisk into smooth pourable batter.",
+        "Add carrot, spinach/methi, onion, and cilantro.",
+        "Rest 5–10 minutes if possible.",
+        "Cook on a lightly greased nonstick pan like a thin pancake.",
+        "Blend chutney ingredients with enough water until smooth.",
         "Serve hot with chutney."
       ],
       "meal_prep_notes": [
-        "Chilla batter is best fresh; can refrigerate up to 1 day.",
-        "Mint-cilantro chutney keeps 2–3 days.",
-        "Cooked chilla is best fresh but can be refrigerated 1 day."
+        "Best fresh.",
+        "Chutney keeps 2–3 days.",
+        "Batter can be refrigerated up to 1 day."
       ],
       "health_notes": [
+        "Dairy-free, no maida, no added sugar.",
         "Besan gives protein and fiber.",
-        "Ajwain, hing, ginger, and mint support digestion.",
-        "Dairy-free, no maida, no added sugar."
-      ]
+        "Ajwain, hing, ginger, and mint are digestion-friendly."
+      ],
+      "slug": "besan-chilla-with-mint-cilantro-chutney"
     },
     {
-      "name": "Idli with Sambar and Coconut Chutney",
-      "best_for": "Fast breakfast, light dinner, or South Indian comfort meal.",
-      "servings": "2 meals if using 6–8 idlis and 3–4 cups sambar.",
+      "name": "Gravy-Based Tofu/Chana Bowl",
+      "categories": [
+        "Lunch",
+        "Dinner",
+        "Indian",
+        "Flexible"
+      ],
+      "best_for": "A flexible Indian bowl when pyaaz-tamatar-garlic gravy is prepped.",
+      "servings": "1 bowl",
       "ingredients": {
-        "Idli": [
-          [
-            "Idli batter",
-            "Enough for 8–12 idlis"
-          ],
-          [
-            "Oil",
-            "Few drops for greasing moulds"
-          ]
-        ],
-        "Vegetable Sambar": [
-          [
-            "Toor dal",
-            "1 cup dry"
-          ],
-          [
-            "Water",
-            "As needed"
-          ],
-          [
-            "Turmeric",
-            "1/2 tsp"
-          ],
-          [
-            "Lauki",
-            "1 cup chopped"
-          ],
-          [
-            "Carrot",
-            "1 chopped"
-          ],
-          [
-            "Green beans",
-            "1/2–1 cup"
-          ],
-          [
-            "Pumpkin/butternut squash",
-            "1 cup"
-          ],
-          [
-            "Tomato",
-            "1–2 chopped"
-          ],
-          [
-            "Drumstick/moringa pods",
-            "Optional"
-          ],
-          [
-            "Tamarind paste",
-            "1–2 tsp, adjust"
-          ],
-          [
-            "Sambar powder",
-            "2 tbsp"
-          ],
-          [
-            "Mustard seeds",
-            "1 tsp"
-          ],
-          [
-            "Cumin seeds",
-            "1/2 tsp"
-          ],
-          [
-            "Curry leaves",
-            "8–10"
-          ],
-          [
-            "Hing",
-            "Generous pinch"
-          ],
-          [
-            "Ginger",
-            "1 tsp grated"
-          ],
-          [
-            "Salt",
-            "To taste"
-          ],
-          [
-            "Oil",
-            "1–2 tsp"
-          ]
-        ],
-        "Coconut Chutney": [
-          [
-            "Fresh or frozen coconut",
-            "1/2 cup"
-          ],
-          [
-            "Roasted chana dal",
-            "2 tbsp"
-          ],
-          [
-            "Ginger",
-            "Small piece"
-          ],
-          [
-            "Mint or cilantro",
-            "2 tbsp, optional"
-          ],
-          [
-            "Green chili",
-            "Optional"
-          ],
-          [
-            "Lemon juice",
-            "1 tsp, optional"
-          ],
-          [
-            "Salt",
-            "To taste"
-          ],
-          [
-            "Water",
-            "As needed"
-          ]
+        "Main": [
+          {
+            "item": "Cooked white rice",
+            "quantity": "3/4–1 cup"
+          },
+          {
+            "item": "Tofu or cooked chana/chickpeas",
+            "quantity": "1/2–3/4 cup"
+          },
+          {
+            "item": "Pyaaz-tamatar-garlic gravy",
+            "quantity": "1/2–3/4 cup"
+          },
+          {
+            "item": "Roasted vegetables or cooked mixed vegetables",
+            "quantity": "1/2–1 cup"
+          },
+          {
+            "item": "Cucumber/microgreens",
+            "quantity": "Small side"
+          },
+          {
+            "item": "Lemon",
+            "quantity": "Optional squeeze"
+          }
         ]
       },
       "steps": [
-        "Pressure cook toor dal with turmeric and water until very soft; mash lightly.",
-        "Cook chopped vegetables with water until soft but not mushy.",
-        "Add cooked dal, tamarind, sambar powder, salt, and water as needed.",
-        "Simmer for 10–15 minutes.",
-        "Temper mustard seeds, cumin seeds, curry leaves, hing, and ginger in oil; pour into sambar.",
-        "Grease idli moulds, pour batter, and steam 10–12 minutes.",
-        "Blend coconut chutney ingredients until smooth.",
-        "Serve idli with sambar and 2–3 tbsp coconut chutney."
+        "Warm rice.",
+        "Warm tofu or chana with gravy.",
+        "Add roasted or cooked vegetables if desired.",
+        "Serve as a bowl with cucumber/microgreens on the side.",
+        "Add lemon before eating."
+      ],
+      "meal_prep_notes": [
+        "Keep gravy separate from rice.",
+        "Use tofu most often; use chana if tolerated.",
+        "Paneer can be an occasional swap, not default."
+      ],
+      "health_notes": [
+        "Good flexible meal.",
+        "Watch onion/garlic quantity if bloating occurs.",
+        "Tofu is preferred over paneer for acne-friendly routine."
+      ],
+      "slug": "gravy-based-tofu-chana-bowl"
+    },
+    {
+      "name": "High-Veg Pav Bhaji with Whole Grain Toast/Roti",
+      "categories": [
+        "Lunch",
+        "Dinner",
+        "Indian",
+        "Comfort"
+      ],
+      "best_for": "Comfort meal variation without relying on dairy or maida.",
+      "servings": "4 servings",
+      "ingredients": {
+        "Bhaji": [
+          {
+            "item": "Potatoes",
+            "quantity": "2 medium"
+          },
+          {
+            "item": "Cauliflower",
+            "quantity": "1.5–2 cups chopped"
+          },
+          {
+            "item": "Carrots",
+            "quantity": "2 chopped"
+          },
+          {
+            "item": "Bell pepper",
+            "quantity": "1–2 chopped"
+          },
+          {
+            "item": "Green peas",
+            "quantity": "1/2–1 cup"
+          },
+          {
+            "item": "Lauki or cabbage",
+            "quantity": "1 cup optional"
+          },
+          {
+            "item": "Tomatoes",
+            "quantity": "3–4 chopped"
+          },
+          {
+            "item": "Onion",
+            "quantity": "1 medium chopped"
+          },
+          {
+            "item": "Ginger-garlic",
+            "quantity": "1 tbsp"
+          },
+          {
+            "item": "Pav bhaji masala",
+            "quantity": "1.5–2 tbsp"
+          },
+          {
+            "item": "Turmeric",
+            "quantity": "1/4 tsp"
+          },
+          {
+            "item": "Salt",
+            "quantity": "To taste"
+          },
+          {
+            "item": "Oil or vegan butter",
+            "quantity": "1–2 tbsp total"
+          },
+          {
+            "item": "Lemon",
+            "quantity": "To serve"
+          },
+          {
+            "item": "Cilantro",
+            "quantity": "To garnish"
+          }
+        ],
+        "Serve With": [
+          {
+            "item": "Whole grain toast, sourdough, whole wheat bun, or roti",
+            "quantity": "1 serving"
+          },
+          {
+            "item": "Cucumber/microgreens salad",
+            "quantity": "1 small side"
+          }
+        ]
+      },
+      "steps": [
+        "Boil or pressure cook potatoes, cauliflower, carrots, peas, and optional lauki/cabbage until soft.",
+        "Heat oil or small amount of vegan butter.",
+        "Cook onion until soft, then add ginger-garlic.",
+        "Add tomatoes, turmeric, pav bhaji masala, and salt.",
+        "Cook until tomatoes break down.",
+        "Add cooked vegetables and mash well.",
+        "Simmer 10–15 minutes, adding water as needed.",
+        "Finish with lemon and cilantro.",
+        "Serve with whole grain toast/roti instead of regular maida pav."
+      ],
+      "meal_prep_notes": [
+        "Stores 3–4 days.",
+        "Use small potato amount and more vegetables.",
+        "Add lemon when eating.",
+        "Do not make it butter-heavy."
+      ],
+      "health_notes": [
+        "High vegetable volume.",
+        "Comfort food without dairy/maida if served correctly.",
+        "Can be heavy if too much potato, butter, or regular pav is used."
+      ],
+      "slug": "high-veg-pav-bhaji-with-whole-grain-toast-roti"
+    },
+    {
+      "name": "Idli with Sambar and Coconut Chutney",
+      "categories": [
+        "Breakfast",
+        "Dinner",
+        "South Indian"
+      ],
+      "best_for": "Fast breakfast, light dinner, or South Indian comfort meal.",
+      "servings": "2 meals if using 6–8 idlis and 3–4 cups sambar",
+      "ingredients": {
+        "Idli": [
+          {
+            "item": "Idli batter",
+            "quantity": "Enough for 8–12 idlis"
+          },
+          {
+            "item": "Oil",
+            "quantity": "Few drops for moulds"
+          }
+        ],
+        "Vegetable Sambar": [
+          {
+            "item": "Toor dal",
+            "quantity": "1 cup dry"
+          },
+          {
+            "item": "Turmeric",
+            "quantity": "1/2 tsp"
+          },
+          {
+            "item": "Lauki",
+            "quantity": "1 cup"
+          },
+          {
+            "item": "Carrot",
+            "quantity": "1"
+          },
+          {
+            "item": "Green beans",
+            "quantity": "1/2–1 cup"
+          },
+          {
+            "item": "Pumpkin/butternut squash",
+            "quantity": "1 cup"
+          },
+          {
+            "item": "Tomato",
+            "quantity": "1–2"
+          },
+          {
+            "item": "Tamarind paste",
+            "quantity": "1–2 tsp"
+          },
+          {
+            "item": "Sambar powder",
+            "quantity": "2 tbsp"
+          },
+          {
+            "item": "Mustard seeds",
+            "quantity": "1 tsp"
+          },
+          {
+            "item": "Cumin seeds",
+            "quantity": "1/2 tsp"
+          },
+          {
+            "item": "Curry leaves",
+            "quantity": "8–10"
+          },
+          {
+            "item": "Hing",
+            "quantity": "Generous pinch"
+          },
+          {
+            "item": "Ginger",
+            "quantity": "1 tsp grated"
+          },
+          {
+            "item": "Salt",
+            "quantity": "To taste"
+          },
+          {
+            "item": "Oil",
+            "quantity": "1–2 tsp"
+          }
+        ],
+        "Coconut Chutney": [
+          {
+            "item": "Fresh/frozen coconut",
+            "quantity": "1/2 cup"
+          },
+          {
+            "item": "Roasted chana dal",
+            "quantity": "2 tbsp"
+          },
+          {
+            "item": "Ginger",
+            "quantity": "Small piece"
+          },
+          {
+            "item": "Mint or cilantro",
+            "quantity": "2 tbsp optional"
+          },
+          {
+            "item": "Green chili",
+            "quantity": "Optional"
+          },
+          {
+            "item": "Salt",
+            "quantity": "To taste"
+          },
+          {
+            "item": "Water",
+            "quantity": "As needed"
+          }
+        ]
+      },
+      "steps": [
+        "Pressure cook toor dal with turmeric until very soft and mash lightly.",
+        "Cook chopped sambar vegetables until soft.",
+        "Add dal, tamarind, sambar powder, salt, and water; simmer 10–15 minutes.",
+        "Temper mustard seeds, cumin, curry leaves, hing, and ginger; add to sambar.",
+        "Steam idlis 10–12 minutes.",
+        "Blend coconut chutney ingredients.",
+        "Serve idli with sambar and 2–3 tbsp chutney."
       ],
       "meal_prep_notes": [
         "Sambar keeps 3–4 days.",
-        "Idli keeps 2–3 days in fridge and freezes well.",
+        "Idli keeps 2–3 days in fridge or can be frozen.",
         "Coconut chutney is best within 1–2 days."
       ],
       "health_notes": [
-        "Idli is fermented, light, dairy-free, and maida-free.",
-        "Sambar adds protein, fiber, and vegetables.",
+        "Dairy-free and maida-free.",
+        "Sambar adds dal and vegetables.",
         "Keep coconut chutney moderate."
-      ]
+      ],
+      "slug": "idli-with-sambar-and-coconut-chutney"
     },
     {
       "name": "Mediterranean Chickpea Quinoa Bowl",
+      "categories": [
+        "Lunch",
+        "Mediterranean",
+        "Bowl"
+      ],
       "best_for": "Sunday lunch or Monday dinner.",
-      "servings": "1 large bowl.",
+      "servings": "1 large bowl",
       "ingredients": {
         "Main": [
           {
@@ -1012,12 +1525,12 @@
             "quantity": "1 cup"
           },
           {
-            "item": "Romaine lettuce or mixed greens",
+            "item": "Romaine or mixed greens",
             "quantity": "1–2 cups"
           },
           {
             "item": "Cucumber",
-            "quantity": "1/2 cup chopped"
+            "quantity": "1/2 cup"
           },
           {
             "item": "Microgreens",
@@ -1028,34 +1541,38 @@
             "quantity": "1 tbsp"
           },
           {
-            "item": "Lemon juice",
-            "quantity": "1–2 tsp"
-          },
-          {
             "item": "Tahini-lemon dressing",
             "quantity": "1–2 tbsp"
           }
         ]
       },
       "steps": [
-        "Add quinoa, chickpeas, and roasted vegetables to a bowl.",
-        "Add lettuce/mixed greens, cucumber, and microgreens.",
-        "Pour tahini-lemon dressing right before eating.",
-        "Top with pumpkin seeds and lemon."
+        "Add quinoa, chickpeas, and roasted vegetables to bowl.",
+        "Add greens, cucumber, and microgreens.",
+        "Drizzle tahini-lemon dressing right before eating.",
+        "Top with pumpkin seeds."
       ],
       "meal_prep_notes": [
-        "Quinoa, chickpeas, greens, and dressing should be stored separately.",
+        "Store quinoa, chickpeas, greens, and dressing separately.",
         "Chop cucumber 1–2 days at a time."
       ],
       "health_notes": [
-        "Chickpeas and quinoa provide protein and fiber.",
-        "Lemon supports plant-based iron absorption."
-      ]
+        "Good fiber/protein meal.",
+        "Lemon supports plant-based iron absorption.",
+        "Uses roasted vegetables as gut-friendlier base."
+      ],
+      "slug": "mediterranean-chickpea-quinoa-bowl"
     },
     {
       "name": "Mediterranean Roasted Vegetable Bowl",
+      "categories": [
+        "Lunch",
+        "Dinner",
+        "Mediterranean",
+        "Bowl"
+      ],
       "best_for": "Monday dinner or light work lunch.",
-      "servings": "1 bowl.",
+      "servings": "1 bowl",
       "ingredients": {
         "Main": [
           {
@@ -1096,20 +1613,30 @@
         "Add quinoa/rice to bowl.",
         "Warm roasted vegetables and chickpeas/tofu if desired.",
         "Add greens, cucumber, and microgreens.",
-        "Drizzle tahini-lemon dressing and add pumpkin seeds."
+        "Drizzle tahini-lemon dressing.",
+        "Top with pumpkin seeds."
       ],
       "meal_prep_notes": [
         "Keep dressing separate.",
-        "Warm only grains/protein/vegetables; keep greens fresh."
+        "Add microgreens at the end.",
+        "Warm only grain/protein/vegetables."
       ],
       "health_notes": [
-        "Good non-Indian option with cooked vegetables and fresh greens."
-      ]
+        "Good non-Indian variety.",
+        "Cooked vegetables make it more gut-friendly than all-raw salad."
+      ],
+      "slug": "mediterranean-roasted-vegetable-bowl"
     },
     {
       "name": "Mexican Chana Rice Bowl",
+      "categories": [
+        "Lunch",
+        "Dinner",
+        "Mexican",
+        "Bowl"
+      ],
       "best_for": "Sunday dinner or Tuesday lunch.",
-      "servings": "1 bowl.",
+      "servings": "1 bowl",
       "ingredients": {
         "Main": [
           {
@@ -1138,14 +1665,14 @@
           },
           {
             "item": "Corn",
-            "quantity": "2–3 tbsp, optional"
+            "quantity": "2–3 tbsp optional"
           },
           {
             "item": "Cilantro",
             "quantity": "1 tbsp"
           },
           {
-            "item": "Lemon/lime juice",
+            "item": "Lemon/lime",
             "quantity": "1–2 tsp"
           },
           {
@@ -1155,24 +1682,31 @@
         ]
       },
       "steps": [
-        "Add cooked rice and chana/chickpeas to bowl.",
+        "Add rice and chana/chickpeas to bowl.",
         "Add lettuce, cucumber, salsa, corn, and avocado.",
-        "Top with cilantro, lemon/lime, and pumpkin seeds.",
-        "Mix right before eating."
+        "Top with cilantro, lime/lemon, and pumpkin seeds.",
+        "Mix before eating."
       ],
       "meal_prep_notes": [
-        "Store rice, chana, greens, salsa, and avocado separately.",
-        "Cut avocado fresh if possible."
+        "Store components separately.",
+        "Cut avocado fresh if possible.",
+        "Use canned beans if dry beans were not soaked."
       ],
       "health_notes": [
-        "Chana adds iron, protein, and fiber.",
-        "Lettuce/cucumber make it lighter."
-      ]
+        "Chana provides iron, protein, and fiber.",
+        "Raw lettuce/cucumber are toppings, not the whole meal."
+      ],
+      "slug": "mexican-chana-rice-bowl"
     },
     {
       "name": "Mexican Tofu Rice Bowl",
+      "categories": [
+        "Lunch",
+        "Mexican",
+        "Bowl"
+      ],
       "best_for": "Friday lunch or quick high-protein meal.",
-      "servings": "1 bowl.",
+      "servings": "1 bowl",
       "ingredients": {
         "Main": [
           {
@@ -1205,10 +1739,10 @@
           },
           {
             "item": "Corn",
-            "quantity": "2–3 tbsp, optional"
+            "quantity": "2–3 tbsp optional"
           },
           {
-            "item": "Lemon/lime juice",
+            "item": "Lemon/lime",
             "quantity": "1–2 tsp"
           },
           {
@@ -1218,10 +1752,10 @@
         ]
       },
       "steps": [
-        "Warm tofu cubes with cumin, paprika, black pepper, and a few drops of water.",
+        "Warm tofu with cumin, paprika, black pepper, and a few drops of water.",
         "Add rice and tofu to bowl.",
         "Add lettuce, cabbage, cucumber, salsa, corn, and avocado.",
-        "Finish with lemon/lime and cilantro."
+        "Finish with lime/lemon and cilantro."
       ],
       "meal_prep_notes": [
         "Keep tofu mildly seasoned during prep.",
@@ -1229,14 +1763,76 @@
         "Add avocado fresh."
       ],
       "health_notes": [
-        "Tofu adds vegetarian protein and iron.",
-        "Dairy-free and sugar-free."
-      ]
+        "Tofu provides vegetarian protein and iron.",
+        "Dairy-free and low sugar."
+      ],
+      "slug": "mexican-tofu-rice-bowl"
+    },
+    {
+      "name": "Mixed Vegetable Curry using Pyaaz-Tamatar-Garlic Gravy",
+      "categories": [
+        "Lunch",
+        "Dinner",
+        "Indian",
+        "Variation"
+      ],
+      "best_for": "Using leftover gravy with cooked or roasted vegetables.",
+      "servings": "1–2 servings",
+      "ingredients": {
+        "Main": [
+          {
+            "item": "Pyaaz-tamatar-garlic gravy",
+            "quantity": "3/4–1 cup"
+          },
+          {
+            "item": "Cooked/roasted mixed vegetables",
+            "quantity": "1.5–2 cups"
+          },
+          {
+            "item": "Water",
+            "quantity": "As needed"
+          },
+          {
+            "item": "Kasuri methi",
+            "quantity": "Pinch optional"
+          },
+          {
+            "item": "Lemon",
+            "quantity": "Optional"
+          },
+          {
+            "item": "Rice or roti",
+            "quantity": "To serve"
+          }
+        ]
+      },
+      "steps": [
+        "Warm gravy in pan.",
+        "Add cooked/roasted vegetables.",
+        "Add water to adjust consistency.",
+        "Simmer 5–8 minutes.",
+        "Finish with kasuri methi and lemon if desired.",
+        "Serve with rice or roti."
+      ],
+      "meal_prep_notes": [
+        "Use already-cooked vegetables for quick assembly.",
+        "Do not overcook if vegetables were already roasted."
+      ],
+      "health_notes": [
+        "Good way to use cooked vegetables.",
+        "May be bloating-sensitive if onion/garlic gravy is used heavily."
+      ],
+      "slug": "mixed-vegetable-curry-using-pyaaz-tamatar-garlic-gravy"
     },
     {
       "name": "Overnight Oats with Berries, Chia & Flaxseed",
+      "categories": [
+        "Breakfast",
+        "Quick",
+        "No Cook"
+      ],
       "best_for": "Fast workday breakfast.",
-      "servings": "1 jar.",
+      "servings": "1 jar",
       "ingredients": {
         "Main": [
           {
@@ -1266,18 +1862,14 @@
           {
             "item": "Walnuts or pumpkin seeds",
             "quantity": "1 tbsp"
-          },
-          {
-            "item": "Vanilla extract",
-            "quantity": "Optional few drops"
           }
         ]
       },
       "steps": [
         "Add oats, chia, flaxseed, and cinnamon to jar.",
-        "Add soy milk and mix well.",
+        "Add soy milk and mix.",
         "Refrigerate overnight.",
-        "Top with berries and walnuts/pumpkin seeds in the morning."
+        "Top with berries and nuts/seeds in morning."
       ],
       "meal_prep_notes": [
         "Prep dry jars in advance.",
@@ -1285,15 +1877,20 @@
         "Add berries in the morning."
       ],
       "health_notes": [
-        "Chia/flax support fiber intake.",
-        "Berries are lower sugar and skin-friendly.",
-        "Soy milk adds protein without dairy."
-      ]
+        "Fiber-rich and dairy-free.",
+        "Berries are lower sugar than many fruits."
+      ],
+      "slug": "overnight-oats-with-berries-chia-flaxseed"
     },
     {
       "name": "Overnight Oats with Kiwi, Chia & Flaxseed",
+      "categories": [
+        "Breakfast",
+        "Quick",
+        "No Cook"
+      ],
       "best_for": "Constipation-friendly fast breakfast.",
-      "servings": "1 jar.",
+      "servings": "1 jar",
       "ingredients": {
         "Main": [
           {
@@ -1339,13 +1936,158 @@
       ],
       "health_notes": [
         "Kiwi supports bowel movement.",
-        "Oats, chia, and flax provide soluble fiber."
-      ]
+        "Oats/chia/flax add soluble fiber."
+      ],
+      "slug": "overnight-oats-with-kiwi-chia-flaxseed"
+    },
+    {
+      "name": "Paneer Curry using Pyaaz-Tamatar-Garlic Gravy",
+      "categories": [
+        "Dinner",
+        "Indian",
+        "Optional",
+        "Occasional"
+      ],
+      "best_for": "Occasional dairy-based variation only if tolerated.",
+      "servings": "1–2 servings",
+      "ingredients": {
+        "Main": [
+          {
+            "item": "Pyaaz-tamatar-garlic gravy",
+            "quantity": "3/4–1 cup"
+          },
+          {
+            "item": "Paneer",
+            "quantity": "1/2–1 cup cubed"
+          },
+          {
+            "item": "Water",
+            "quantity": "As needed"
+          },
+          {
+            "item": "Kasuri methi",
+            "quantity": "Pinch"
+          },
+          {
+            "item": "Rice or roti",
+            "quantity": "To serve"
+          }
+        ]
+      },
+      "steps": [
+        "Warm gravy.",
+        "Add paneer cubes and a little water.",
+        "Simmer gently 3–5 minutes.",
+        "Finish with kasuri methi.",
+        "Serve with rice or roti."
+      ],
+      "meal_prep_notes": [
+        "Keep paneer occasional because dairy may trigger acne.",
+        "Tofu is the default preferred protein."
+      ],
+      "health_notes": [
+        "Not the default option for this plan due to dairy sensitivity.",
+        "Use only when truly wanted and observe skin response."
+      ],
+      "slug": "paneer-curry-using-pyaaz-tamatar-garlic-gravy"
+    },
+    {
+      "name": "Pyaaz-Tamatar-Garlic Gravy Base",
+      "categories": [
+        "Prep Base",
+        "Indian",
+        "Flexible"
+      ],
+      "best_for": "A flexible curry base for tofu, chana, mixed vegetables, bhindi, or occasional paneer.",
+      "servings": "4–5 curry portions",
+      "ingredients": {
+        "Main": [
+          {
+            "item": "Onions",
+            "quantity": "2 medium"
+          },
+          {
+            "item": "Tomatoes",
+            "quantity": "4–5 medium"
+          },
+          {
+            "item": "Garlic",
+            "quantity": "4–6 cloves"
+          },
+          {
+            "item": "Ginger",
+            "quantity": "1 inch"
+          },
+          {
+            "item": "Cumin seeds",
+            "quantity": "1 tsp"
+          },
+          {
+            "item": "Turmeric",
+            "quantity": "1/2 tsp"
+          },
+          {
+            "item": "Coriander powder",
+            "quantity": "1–1.5 tsp"
+          },
+          {
+            "item": "Red chili powder or paprika",
+            "quantity": "To taste"
+          },
+          {
+            "item": "Hing",
+            "quantity": "Pinch"
+          },
+          {
+            "item": "Kasuri methi",
+            "quantity": "1 tsp optional"
+          },
+          {
+            "item": "Oil",
+            "quantity": "1–2 tbsp total"
+          },
+          {
+            "item": "Salt",
+            "quantity": "To taste"
+          },
+          {
+            "item": "Tomato paste",
+            "quantity": "1 tbsp optional"
+          }
+        ]
+      },
+      "steps": [
+        "Heat oil and add cumin seeds.",
+        "Add onions and cook until soft and lightly golden.",
+        "Add ginger-garlic and cook until raw smell is gone.",
+        "Add tomatoes, turmeric, coriander powder, chili/paprika, hing, salt, and optional tomato paste.",
+        "Cook until tomatoes break down and mixture thickens.",
+        "Cool slightly and blend if a smooth gravy is desired.",
+        "Add kasuri methi at the end.",
+        "Store in small portions."
+      ],
+      "meal_prep_notes": [
+        "Can refrigerate 3–4 days or freeze in small portions.",
+        "Use 1/2–3/4 cup per curry serving.",
+        "Do not make it too oily.",
+        "Make a lower onion/garlic version if bloating occurs."
+      ],
+      "health_notes": [
+        "Useful but can be bloating-sensitive due to onion/garlic.",
+        "Best with tofu, mixed vegetables, or chickpeas.",
+        "Paneer should remain occasional."
+      ],
+      "slug": "pyaaz-tamatar-garlic-gravy-base"
     },
     {
       "name": "Sambar Rice Bowl",
+      "categories": [
+        "Lunch",
+        "South Indian",
+        "Bowl"
+      ],
       "best_for": "Wednesday lunch or Saturday lunch.",
-      "servings": "1 bowl.",
+      "servings": "1 bowl",
       "ingredients": {
         "Main": [
           {
@@ -1377,24 +2119,29 @@
       "steps": [
         "Warm rice and sambar separately.",
         "Add rice to bowl and pour sambar over it.",
-        "Add bhindi/cabbage on the side or top.",
+        "Add bhindi/cabbage on side or top.",
         "Add cucumber and microgreens after heating.",
         "Add lemon if desired."
       ],
       "meal_prep_notes": [
         "Keep rice and sambar separate until eating.",
-        "Add cucumber fresh.",
-        "Use medium-thin sambar."
+        "Use medium-thin sambar.",
+        "Add cucumber fresh."
       ],
       "health_notes": [
-        "Toor dal sambar gives protein and comfort.",
-        "Vegetables in sambar increase fiber."
-      ]
+        "Toor dal sambar gives comfort and protein.",
+        "Vegetables increase fiber."
+      ],
+      "slug": "sambar-rice-bowl"
     },
     {
       "name": "Sambar Rice Plate",
-      "best_for": "Comfort dinner when craving South Indian food.",
-      "servings": "1 plate.",
+      "categories": [
+        "Dinner",
+        "South Indian"
+      ],
+      "best_for": "Comfort dinner when wanting South Indian food.",
+      "servings": "1 plate",
       "ingredients": {
         "Main": [
           {
@@ -1411,11 +2158,11 @@
           },
           {
             "item": "Idli",
-            "quantity": "1–2, optional"
+            "quantity": "1–2 optional"
           },
           {
             "item": "Coconut chutney",
-            "quantity": "1–2 tbsp, optional"
+            "quantity": "1–2 tbsp optional"
           },
           {
             "item": "Cucumber/microgreens",
@@ -1425,25 +2172,31 @@
       },
       "steps": [
         "Warm rice, sambar, and side vegetable.",
-        "Serve rice on a plate with sambar over it or on side.",
+        "Serve rice with sambar over it or on the side.",
         "Add bhindi/cabbage poriyal.",
-        "Add cucumber and microgreens.",
+        "Add cucumber/microgreens.",
         "Add small coconut chutney if eating with idli."
       ],
       "meal_prep_notes": [
-        "Plate version is better for dinner.",
+        "Plate version is satisfying for dinner.",
         "Keep chutney portion small.",
         "Add fresh cucumber/microgreens."
       ],
       "health_notes": [
-        "Comforting but balanced.",
+        "Balanced comfort meal.",
         "Best with lauki, carrot, pumpkin, beans, and tomato in sambar."
-      ]
+      ],
+      "slug": "sambar-rice-plate"
     },
     {
       "name": "Spinach Moong Dal Rice Bowl",
+      "categories": [
+        "Lunch",
+        "Indian",
+        "Bowl"
+      ],
       "best_for": "Monday lunch or quick work lunch.",
-      "servings": "1 bowl.",
+      "servings": "1 bowl",
       "ingredients": {
         "Main": [
           {
@@ -1472,7 +2225,7 @@
           },
           {
             "item": "Pumpkin seeds",
-            "quantity": "1 tbsp, optional"
+            "quantity": "1 tbsp optional"
           }
         ]
       },
@@ -1492,12 +2245,17 @@
         "Moong dal is usually gentle.",
         "Spinach supports iron intake.",
         "Lemon supports plant-based iron absorption."
-      ]
+      ],
+      "slug": "spinach-moong-dal-rice-bowl"
     },
     {
       "name": "Spinach Moong Dal Rice Plate",
+      "categories": [
+        "Dinner",
+        "Indian"
+      ],
       "best_for": "Saturday dinner or Tuesday dinner.",
-      "servings": "1 plate.",
+      "servings": "1 plate",
       "ingredients": {
         "Main": [
           {
@@ -1523,34 +2281,38 @@
           {
             "item": "Lemon wedge",
             "quantity": "1"
-          },
-          {
-            "item": "Pickle",
-            "quantity": "Optional, very small amount"
           }
         ]
       },
       "steps": [
         "Warm rice and spinach moong dal.",
-        "Warm roasted vegetables separately.",
+        "Warm roasted vegetables.",
         "Place rice, dal, and vegetables on plate.",
         "Add cucumber salad and microgreens.",
         "Squeeze lemon over dal or salad."
       ],
       "meal_prep_notes": [
         "Plate version is best for dinner.",
-        "Add fresh salad on the side.",
-        "Keep rice moderate."
+        "Add fresh salad on side.",
+        "Keep rice portion moderate."
       ],
       "health_notes": [
         "Light comfort meal.",
-        "Better for bloating than rajma/chole-heavy meals."
-      ]
+        "Better for bloating than heavy rajma/chole meals.",
+        "Dairy-free, no sugar, no maida."
+      ],
+      "slug": "spinach-moong-dal-rice-plate"
     },
     {
       "name": "Thai Peanut Tofu Rice Bowl",
+      "categories": [
+        "Dinner",
+        "Lunch",
+        "Thai",
+        "Bowl"
+      ],
       "best_for": "Wednesday dinner or Saturday lunch.",
-      "servings": "1 bowl.",
+      "servings": "1 bowl",
       "ingredients": {
         "Main": [
           {
@@ -1591,7 +2353,33 @@
           },
           {
             "item": "Crushed peanuts",
-            "quantity": "1 tbsp, optional"
+            "quantity": "1 tbsp optional"
+          }
+        ],
+        "Thai Peanut Sauce": [
+          {
+            "item": "Natural peanut butter",
+            "quantity": "2 tbsp"
+          },
+          {
+            "item": "Soy sauce/tamari",
+            "quantity": "1 tbsp"
+          },
+          {
+            "item": "Lemon/lime juice",
+            "quantity": "1 tbsp"
+          },
+          {
+            "item": "Ginger",
+            "quantity": "1/2 tsp grated"
+          },
+          {
+            "item": "Water",
+            "quantity": "2–4 tbsp"
+          },
+          {
+            "item": "Chili flakes",
+            "quantity": "Optional"
           }
         ]
       },
@@ -1601,22 +2389,84 @@
         "Add rice to bowl.",
         "Add tofu, broccoli, cabbage, carrot, and cucumber.",
         "Drizzle peanut sauce.",
-        "Add cilantro/mint and crushed peanuts if using."
+        "Add herbs and crushed peanuts if using."
       ],
       "meal_prep_notes": [
         "Keep peanut sauce separate.",
-        "Add cucumber/herbs fresh.",
-        "Use natural peanut butter with no added sugar."
+        "Use natural peanut butter.",
+        "Add cucumber and herbs fresh."
       ],
       "health_notes": [
         "Tofu adds protein and iron.",
-        "Broccoli/cabbage add fiber and crunch."
-      ]
+        "Broccoli/cabbage add fiber and crunch.",
+        "Different flavor profile reduces monotony."
+      ],
+      "slug": "thai-peanut-tofu-rice-bowl"
+    },
+    {
+      "name": "Tofu Curry Rice Bowl using Pyaaz-Tamatar-Garlic Gravy",
+      "categories": [
+        "Lunch",
+        "Dinner",
+        "Indian",
+        "Bowl"
+      ],
+      "best_for": "Friday lunch or flexible curry meal.",
+      "servings": "1 bowl",
+      "ingredients": {
+        "Main": [
+          {
+            "item": "Cooked white rice",
+            "quantity": "3/4–1 cup"
+          },
+          {
+            "item": "Extra-firm tofu cubes",
+            "quantity": "1/2–3/4 cup"
+          },
+          {
+            "item": "Pyaaz-tamatar-garlic gravy",
+            "quantity": "1/2–3/4 cup"
+          },
+          {
+            "item": "Roasted vegetables or spinach",
+            "quantity": "1/2 cup optional"
+          },
+          {
+            "item": "Cucumber/microgreens",
+            "quantity": "Small side"
+          },
+          {
+            "item": "Lemon",
+            "quantity": "Optional"
+          }
+        ]
+      },
+      "steps": [
+        "Warm gravy in a pan.",
+        "Add tofu cubes and a splash of water.",
+        "Simmer 5–8 minutes.",
+        "Add optional spinach/roasted vegetables.",
+        "Serve over rice with cucumber/microgreens.",
+        "Add lemon if desired."
+      ],
+      "meal_prep_notes": [
+        "Keep tofu and gravy separate until assembling if possible.",
+        "Works well with frozen portions of gravy."
+      ],
+      "health_notes": [
+        "Tofu is preferred over paneer for regular use.",
+        "Watch onion/garlic if bloating occurs."
+      ],
+      "slug": "tofu-curry-rice-bowl-using-pyaaz-tamatar-garlic-gravy"
     },
     {
       "name": "Tofu Scramble Avocado Toast",
+      "categories": [
+        "Breakfast",
+        "Tuesday WFH"
+      ],
       "best_for": "Tuesday work-from-home breakfast.",
-      "servings": "1 serving.",
+      "servings": "1 serving",
       "ingredients": {
         "Main": [
           {
@@ -1657,7 +2507,7 @@
           },
           {
             "item": "Nutritional yeast",
-            "quantity": "1 tbsp, optional"
+            "quantity": "1 tbsp optional"
           },
           {
             "item": "Lemon juice",
@@ -1675,25 +2525,25 @@
       },
       "steps": [
         "Press tofu lightly and crumble.",
-        "Heat oil in pan.",
-        "Add bell pepper and tomato; cook 2–3 minutes.",
+        "Heat oil and cook bell pepper and tomato.",
         "Add spinach and wilt.",
-        "Add tofu, turmeric, cumin, black pepper, and salt.",
+        "Add tofu, turmeric, cumin, pepper, and salt.",
         "Cook 4–5 minutes.",
         "Toast whole grain bread.",
         "Mash avocado with lemon and salt.",
-        "Spread avocado on toast and top with tofu scramble or serve on side."
+        "Assemble toast with tofu scramble."
       ],
       "meal_prep_notes": [
         "Best fresh.",
         "Chopped vegetables can be prepped the night before.",
-        "Use whole grain bread, not white bread or maida-based bread."
+        "Use whole grain bread, not white bread/maida bread."
       ],
       "health_notes": [
         "Tofu adds protein and iron.",
         "Avocado adds healthy fats.",
-        "Dairy-free, low-sugar."
-      ]
+        "Dairy-free and low sugar."
+      ],
+      "slug": "tofu-scramble-avocado-toast"
     }
   ]
 }

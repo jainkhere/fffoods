@@ -4,97 +4,87 @@ import { Fragment, useMemo, useState } from "react";
 import data from "../../../data/weekly_meal_prep_seed_data.json";
 import styles from "./page.module.css";
 
-type GroceryItem = { item: string; quantity: string; use: string };
-type AvoidBuyingItem = { item: string; reason: string };
-type PrepOverview = { item: string; quantity: string; used_for: string };
-type PrepDay = { covers: string; theme: string; overview: PrepOverview[]; steps: string[] };
+type GroceryItem = { item: string; quantity: string; covers: string };
+type GroceryCategory = { category: string; items: GroceryItem[] };
+type GroceryTrip = { purpose: string; categories: GroceryCategory[] };
+type PrepOption = { name: string; choose_when: string; prep: string[] };
+type PrepDay = {
+  covers: string;
+  theme: string;
+  rule: string;
+  formula: string[];
+  options: PrepOption[];
+  recommended_default: string;
+};
 type Recipe = (typeof data.recipes)[number];
+type MealType = "breakfast" | "lunch" | "snacks" | "dinner";
+type FlexibleMenuDay = {
+  day: string;
+  breakfast?: string;
+  breakfast_options?: string[];
+  lunch?: string;
+  lunch_options?: string[];
+  snacks?: string;
+  snacks_options?: string[];
+  dinner?: string;
+  dinner_options?: string[];
+};
 
 const sectionLinks = [
   ["groceries", "Grocery list"],
   ["meal-prep", "Meal prep"],
   ["weekly-menu", "Weekly menu"],
+  ["veggie-prep", "Veg prep"],
   ["recipes", "Recipes"],
 ] as const;
 
 const groceryIcons: Record<string, string> = {
-  "Leafy Greens, Lettuce & Fresh Herbs": "🥬",
-  Vegetables: "🥕",
+  "Base Grains and Breakfast": "🌾",
+  "Dals, Beans, and Protein": "🫘",
+  "Shared Vegetables": "🥕",
   Fruits: "🥝",
-  "Lentils, Beans & Vegetarian Protein": "🫘",
-  "Grains, Batter & Breakfast Items": "🌾",
-  "Nuts, Seeds & Healthy Fats": "🌰",
-  "Dairy-Free / Low-Sugar Items": "🥛",
-  "Sauces, Condiments & Pantry Items": "🫙",
-  Spices: "✨",
-  "Optional Convenience Items": "⏱️",
-  "Avoid Buying": "✋",
+  "Seeds, Sauces, Pantry": "🫙",
+  "South Indian Refresh": "🥥",
+  "Sambar and Side Vegetables": "🎃",
+  "Fresh Bowl Refresh": "🥬",
+  "Thai / Tofu Refresh": "🥜",
+  "Fruit Refresh": "🍐",
 };
-
-const saturdayOnlyItems = new Set([
-  "Spinach", "Cauliflower", "Avocados", "Moong dal", "Kala chana", "Chickpeas",
-  "Black beans", "Quinoa", "Whole wheat atta", "Besan", "Tahini", "Salsa", "Corn",
-  "Pickled jalapeños", "Olive oil", "Nutritional yeast", "Amchur", "Oregano",
-  "Canned chickpeas", "Canned black beans",
-]);
-
-const tuesdayOnlyItems = new Set([
-  "Curry leaves", "Lauki / bottle gourd", "Bhindi / okra", "Green beans",
-  "Pumpkin or butternut squash", "Drumsticks / moringa pods", "Toor dal",
-  "Extra-firm tofu", "Frozen edamame", "Roasted chana dal", "Idli batter",
-  "Natural peanut butter", "Fresh or frozen coconut", "Unsweetened coconut milk",
-  "Tamarind paste or tamarind block", "Sambar powder", "Soy sauce or tamari",
-  "Sesame oil", "Mustard seeds", "Methi seeds", "Chili flakes",
-  "Frozen mixed vegetables", "Store-bought idli batter",
-]);
-
-type PrepBucket = "Saturday prep" | "Tuesday prep" | "Shared staples";
-
-function getPrepBucket(item: string): PrepBucket {
-  if (saturdayOnlyItems.has(item)) return "Saturday prep";
-  if (tuesdayOnlyItems.has(item)) return "Tuesday prep";
-  return "Shared staples";
-}
-
-function slugify(value: string) {
-  return value.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-}
 
 function ingredientPairs(value: unknown): [string, string][] {
   if (!Array.isArray(value)) return [];
-
   return value.flatMap((entry): [string, string][] => {
-    if (Array.isArray(entry) && typeof entry[0] === "string" && typeof entry[1] === "string") {
-      return [[entry[0], entry[1]]];
-    }
-
+    if (Array.isArray(entry) && typeof entry[0] === "string" && typeof entry[1] === "string") return [[entry[0], entry[1]]];
     if (entry && typeof entry === "object" && "item" in entry && "quantity" in entry) {
-      const item = (entry as { item: unknown }).item;
-      const quantity = (entry as { quantity: unknown }).quantity;
+      const { item, quantity } = entry as { item: unknown; quantity: unknown };
       return typeof item === "string" && typeof quantity === "string" ? [[item, quantity]] : [];
     }
-
     return [];
   });
 }
 
+function optionsForMeal(day: FlexibleMenuDay, mealType: MealType) {
+  const single = day[mealType];
+  const options = day[`${mealType}_options` as keyof FlexibleMenuDay];
+  if (Array.isArray(options)) return options;
+  return typeof single === "string" ? [single] : [];
+}
+
 function recipesForMeal(meal: string, recipes: Recipe[]) {
-  const matches = recipes.filter((recipe) => meal.toLowerCase().includes(recipe.name.toLowerCase()));
+  const normalized = meal.toLowerCase();
+  const matches = recipes.filter((recipe) => normalized.includes(recipe.name.toLowerCase()));
   const add = (name: string) => {
     const recipe = recipes.find((candidate) => candidate.name === name);
     if (recipe && !matches.includes(recipe)) matches.push(recipe);
   };
 
+  if (/pav bhaji/i.test(meal)) add("High-Veg Pav Bhaji with Whole Grain Toast/Roti");
   if (/idli.*sambar/i.test(meal)) add("Idli with Sambar and Coconut Chutney");
   if (/overnight oats/i.test(meal)) {
     add(/kiwi/i.test(meal) ? "Overnight Oats with Kiwi, Chia & Flaxseed" : "Overnight Oats with Berries, Chia & Flaxseed");
   }
-  if (/sambar rice plate/i.test(meal)) add("Sambar Rice Plate");
-  if (/sambar rice bowl/i.test(meal)) add("Sambar Rice Bowl");
-  if (/spinach moong dal rice plate/i.test(meal)) add("Spinach Moong Dal Rice Plate");
-  if (/spinach moong dal rice bowl/i.test(meal)) add("Spinach Moong Dal Rice Bowl");
-  if (/thai peanut tofu rice bowl/i.test(meal)) add("Thai Peanut Tofu Rice Bowl");
-
+  if (/tofu curry/i.test(meal)) add("Tofu Curry Rice Bowl using Pyaaz-Tamatar-Garlic Gravy");
+  if (/gravy-based tofu|chana bowl/i.test(meal)) add("Gravy-Based Tofu/Chana Bowl");
   return matches;
 }
 
@@ -102,58 +92,46 @@ export function MealPrepPlan() {
   const [query, setQuery] = useState("");
   const [checkedGroceries, setCheckedGroceries] = useState<Set<string>>(() => new Set());
   const [whatsAppNumber, setWhatsAppNumber] = useState("");
+  const [prepModes, setPrepModes] = useState<Record<string, string>>({ Saturday: "Balanced Week", Tuesday: "Balanced Week" });
   const normalizedQuery = query.trim().toLowerCase();
   const recipes = useMemo(() => [...data.recipes].sort((a, b) => a.name.localeCompare(b.name)), []);
 
-  const grocerySections = useMemo(() => {
-    const buckets: PrepBucket[] = ["Saturday prep", "Tuesday prep", "Shared staples"];
-
-    return buckets.map((bucket) => ({
-      bucket,
-      groups: Object.entries(data.grocery_list)
-        .filter(([group]) => group !== "Avoid Buying")
-        .map(([group, items]) => [
-          group,
-          (items as GroceryItem[]).filter((item) =>
-            getPrepBucket(item.item) === bucket &&
-            (!normalizedQuery || `${item.item} ${item.quantity} ${item.use} ${group} ${bucket}`.toLowerCase().includes(normalizedQuery)),
-          ),
-        ] as const)
-        .filter(([, items]) => items.length > 0),
-    })).filter(({ groups }) => groups.length > 0);
+  const groceryTrips = useMemo(() => {
+    return Object.entries(data.grocery_trips).map(([tripName, trip]) => {
+      const typedTrip = trip as GroceryTrip;
+      return {
+        tripName,
+        purpose: typedTrip.purpose,
+        categories: typedTrip.categories
+          .map((category) => ({
+            ...category,
+            items: category.items.filter((item) =>
+              !normalizedQuery || `${item.item} ${item.quantity} ${item.covers} ${category.category} ${tripName}`.toLowerCase().includes(normalizedQuery),
+            ),
+          }))
+          .filter((category) => category.items.length > 0),
+      };
+    }).filter((trip) => trip.categories.length > 0);
   }, [normalizedQuery]);
 
-  const avoidBuyingItems = useMemo(() => {
-    return (data.grocery_list["Avoid Buying"] as AvoidBuyingItem[]).filter((item) =>
-      !normalizedQuery || `${item.item} ${item.reason} avoid buying`.toLowerCase().includes(normalizedQuery),
-    );
-  }, [normalizedQuery]);
+  const allUncheckedTrips = useMemo(() => Object.entries(data.grocery_trips).map(([tripName, trip]) => ({
+    tripName,
+    categories: (trip as GroceryTrip).categories.map((category) => ({
+      category: category.category,
+      items: category.items.filter((item) => !checkedGroceries.has(`${tripName}::${category.category}::${item.item}`)),
+    })).filter((category) => category.items.length > 0),
+  })).filter((trip) => trip.categories.length > 0), [checkedGroceries]);
 
-  const filteredRecipes = useMemo(() => recipes.filter((recipe) =>
-    !normalizedQuery || `${recipe.name} ${recipe.best_for} ${Object.keys(recipe.ingredients).join(" ")}`.toLowerCase().includes(normalizedQuery),
-  ), [normalizedQuery, recipes]);
-
-  const uncheckedGroceryGroups = useMemo(() => {
-    const buckets: PrepBucket[] = ["Saturday prep", "Tuesday prep", "Shared staples"];
-
-    return buckets.map((bucket) => ({
-      group: bucket,
-      items: Object.entries(data.grocery_list)
-        .filter(([group]) => group !== "Avoid Buying")
-        .flatMap(([category, items]) => (items as GroceryItem[]).map((item) => ({ ...item, category })))
-        .filter((item) => getPrepBucket(item.item) === bucket && !checkedGroceries.has(`${item.category}::${item.item}`)),
-    }))
-      .filter(({ items }) => items.length > 0);
-  }, [checkedGroceries]);
-
-  const uncheckedGroceryCount = uncheckedGroceryGroups.reduce((total, group) => total + group.items.length, 0);
+  const uncheckedGroceryCount = allUncheckedTrips.reduce((total, trip) => total + trip.categories.reduce((sum, category) => sum + category.items.length, 0), 0);
   const whatsAppDigits = whatsAppNumber.replace(/\D/g, "");
   const whatsAppMessage = [
-    "Minsi's weekly grocery list",
-    "",
-    ...uncheckedGroceryGroups.flatMap(({ group, items }) => [
-      `*${group}*`,
-      ...items.map((item) => `• ${item.item}${item.quantity ? ` — ${item.quantity}` : ""}`),
+    "Minsi's flexible weekly grocery list", "",
+    ...allUncheckedTrips.flatMap((trip) => [
+      `*${trip.tripName}*`,
+      ...trip.categories.flatMap((category) => [
+        `_${category.category}_`,
+        ...category.items.map((item) => `• ${item.item} — ${item.quantity}`),
+      ]),
       "",
     ]),
   ].join("\n").trim();
@@ -161,60 +139,45 @@ export function MealPrepPlan() {
     ? `https://wa.me/${whatsAppDigits}?text=${encodeURIComponent(whatsAppMessage)}`
     : null;
 
+  const weeklyMenu = useMemo(() => {
+    const combined: Array<{ day: string; meals: Record<MealType, string[]> }> = [];
+    (data.flexible_weekly_template as FlexibleMenuDay[]).forEach((entry) => {
+      let target = combined.find((day) => day.day === entry.day);
+      if (!target) {
+        target = { day: entry.day, meals: { breakfast: [], lunch: [], snacks: [], dinner: [] } };
+        combined.push(target);
+      }
+      (["breakfast", "lunch", "snacks", "dinner"] as MealType[]).forEach((mealType) => {
+        optionsForMeal(entry, mealType).forEach((meal) => {
+          if (!target?.meals[mealType].includes(meal)) target?.meals[mealType].push(meal);
+        });
+      });
+    });
+    return combined;
+  }, []);
+
+  const filteredRecipes = useMemo(() => recipes.filter((recipe) =>
+    !normalizedQuery || `${recipe.name} ${recipe.best_for} ${recipe.categories.join(" ")} ${Object.keys(recipe.ingredients).join(" ")}`.toLowerCase().includes(normalizedQuery),
+  ), [normalizedQuery, recipes]);
+
   function toggleGroceryItem(key: string) {
     setCheckedGroceries((current) => {
       const next = new Set(current);
-      if (next.has(key)) next.delete(key);
-      else next.add(key);
+      if (next.has(key)) next.delete(key); else next.add(key);
       return next;
     });
   }
 
-  const weeklyMenu = useMemo(() => {
-    const combined: Array<{
-      day: string;
-      breakfast: string[];
-      lunch: string[];
-      snacks: string[];
-      dinner: string[];
-    }> = [];
-
-    data.weekly_menu.forEach((entry) => {
-      const existing = combined.find((day) => day.day === entry.day);
-
-      if (!existing) {
-        combined.push({
-          day: entry.day,
-          breakfast: [entry.breakfast],
-          lunch: [entry.lunch],
-          snacks: [entry.snacks],
-          dinner: [entry.dinner],
-        });
-        return;
-      }
-
-      (["breakfast", "lunch", "snacks", "dinner"] as const).forEach((mealType) => {
-        if (!existing[mealType].includes(entry[mealType])) existing[mealType].push(entry[mealType]);
-      });
-    });
-
-    return combined;
-  }, []);
-
-  function openRecipe(recipeName: string) {
-    const recipeId = `recipe-${slugify(recipeName)}`;
+  function openRecipe(recipe: Recipe) {
+    const recipeId = `recipe-${recipe.slug}`;
     setQuery("");
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const target = document.getElementById(recipeId);
-        if (!(target instanceof HTMLDetailsElement)) return;
-
-        target.open = true;
-        window.history.replaceState(null, "", `#${recipeId}`);
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const target = document.getElementById(recipeId);
+      if (!(target instanceof HTMLDetailsElement)) return;
+      target.open = true;
+      window.history.replaceState(null, "", `#${recipeId}`);
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }));
   }
 
   return (
@@ -222,220 +185,102 @@ export function MealPrepPlan() {
       <main className={styles.main}>
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>Indian vegetarian · mostly dairy-free</p>
+            <p className={styles.eyebrow}>Flexible · Indian vegetarian · mostly dairy-free</p>
             <h1>Minsi&apos;s weekly meal prep plan</h1>
-            <p className={styles.summary}>
-              A practical Saturday-to-Saturday plan built around quick workday breakfasts,
-              balanced bowls, and two manageable prep sessions.
-            </p>
-            <div className={styles.profileChips}>
-              <span>No maida</span><span>Low added sugar</span><span>Fiber-forward</span><span>Iron-conscious</span>
-            </div>
+            <p className={styles.summary}>Choose a prep mode based on your mood, then mix building blocks into meals throughout the week—less rigidity, less waste.</p>
+            <div className={styles.profileChips}><span>No maida default</span><span>Low added sugar</span><span>Cooked-veg forward</span><span>Iron-conscious</span></div>
           </div>
-          <div className={styles.heroStats}>
-            <div><strong>2</strong><span>prep days</span></div>
-            <div><strong>14</strong><span>recipes</span></div>
-            <div><strong>7</strong><span>menu days</span></div>
-          </div>
+          <div className={styles.heroStats}><div><strong>2</strong><span>grocery trips</span></div><div><strong>20</strong><span>recipes</span></div><div><strong>4</strong><span>prep modes</span></div></div>
         </section>
 
         <nav className={styles.sectionNav} aria-label="Meal plan sections">
-          <div className={styles.navLinks}>
-            {sectionLinks.map(([href, label]) => <a href={`#${href}`} key={href}>{label}</a>)}
-          </div>
-          <label className={styles.search}>
-            <span aria-hidden="true">⌕</span>
-            <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search food or recipe" />
-          </label>
+          <div className={styles.navLinks}>{sectionLinks.map(([href, label]) => <a href={`#${href}`} key={href}>{label}</a>)}</div>
+          <label className={styles.search}><span aria-hidden="true">⌕</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search food or recipe" /></label>
         </nav>
 
         <section id="groceries" className={styles.section}>
-          <div className={styles.sectionHeading}>
-            <div><p className={styles.kicker}>Shop on Saturday</p><h2>Grocery list</h2></div>
-            <p>{normalizedQuery ? `${grocerySections.reduce((sum, section) => sum + section.groups.reduce((groupSum, [, items]) => groupSum + items.length, 0), 0) + avoidBuyingItems.length} matching items` : "Organized by the prep session each ingredient supports."}</p>
-          </div>
+          <div className={styles.sectionHeading}><div><p className={styles.kicker}>Two smaller trips</p><h2>Grocery list</h2></div><p>Saturday is the main shop; Tuesday refreshes delicate produce and South Indian ingredients.</p></div>
           <div className={styles.prepGroceryLists}>
-            {grocerySections.map(({ bucket, groups }) => (
-              <section className={styles.prepGrocerySection} key={bucket}>
-                <header className={styles.prepGroceryHeader}>
-                  <span>{bucket === "Saturday prep" ? "SAT" : bucket === "Tuesday prep" ? "TUE" : "BOTH"}</span>
-                  <div>
-                    <h3>{bucket}</h3>
-                    <p>{bucket === "Saturday prep" ? "Indian · Mediterranean · Mexican" : bucket === "Tuesday prep" ? "South Indian · Thai" : "Used across both prep sessions"}</p>
-                  </div>
-                </header>
+            {groceryTrips.map((trip, tripIndex) => (
+              <section className={styles.prepGrocerySection} key={trip.tripName}>
+                <header className={styles.prepGroceryHeader}><span>{tripIndex === 0 ? "SAT" : "TUE"}</span><div><h3>{trip.tripName}</h3><p>{trip.purpose}</p></div></header>
                 <div className={styles.groceryGrid}>
-                  {groups.map(([group, items]) => (
-                    <article className={styles.groceryCard} key={`${bucket}-${group}`}>
-                      <header><span>{groceryIcons[group] ?? "•"}</span><div><h3>{group}</h3><p>{items.length} items</p></div></header>
-                      <ul>
-                        {items.map((item) => (
-                          <li key={item.item}>
-                            <label>
-                              <input
-                                type="checkbox"
-                                checked={checkedGroceries.has(`${group}::${item.item}`)}
-                                onChange={() => toggleGroceryItem(`${group}::${item.item}`)}
-                              />
-                              <span><strong>{item.item}</strong><small>{item.quantity}</small><em>{item.use}</em></span>
-                            </label>
-                          </li>
-                        ))}
-                      </ul>
+                  {trip.categories.map((category) => (
+                    <article className={styles.groceryCard} key={`${trip.tripName}-${category.category}`}>
+                      <header><span>{groceryIcons[category.category] ?? "•"}</span><div><h3>{category.category}</h3><p>{category.items.length} items</p></div></header>
+                      <ul>{category.items.map((item) => {
+                        const key = `${trip.tripName}::${category.category}::${item.item}`;
+                        return <li key={item.item}><label><input type="checkbox" checked={checkedGroceries.has(key)} onChange={() => toggleGroceryItem(key)} /><span><strong>{item.item}</strong><small>{item.quantity}</small><em>{item.covers}</em></span></label></li>;
+                      })}</ul>
                     </article>
                   ))}
                 </div>
               </section>
             ))}
-            {avoidBuyingItems.length > 0 && (
-              <section className={styles.prepGrocerySection}>
-                <header className={styles.prepGroceryHeader}>
-                  <span>SKIP</span><div><h3>Avoid buying</h3><p>Dairy, added sugar, maida, and trigger foods</p></div>
-                </header>
-                <div className={styles.groceryGrid}>
-                  <article className={`${styles.groceryCard} ${styles.avoidCard}`}>
-                    <header><span>{groceryIcons["Avoid Buying"]}</span><div><h3>Keep off the list</h3><p>{avoidBuyingItems.length} items</p></div></header>
-                    <ul>{avoidBuyingItems.map((item) => <li key={item.item}><span className={styles.avoidItem}><strong>{item.item}</strong><em>{item.reason}</em></span></li>)}</ul>
-                  </article>
-                </div>
-              </section>
-            )}
           </div>
-          {grocerySections.length === 0 && avoidBuyingItems.length === 0 && <p className={styles.empty}>No grocery items match “{query}”.</p>}
+          {groceryTrips.length === 0 && <p className={styles.empty}>No grocery items match “{query}”.</p>}
           <aside className={styles.whatsAppPanel}>
-            <div className={styles.whatsAppCopy}>
-              <span aria-hidden="true">✓</span>
-              <div>
-                <p className={styles.kicker}>Shop what&apos;s missing</p>
-                <h3>Send unchecked items to WhatsApp</h3>
-                <p>
-                  {uncheckedGroceryCount > 0
-                    ? `${uncheckedGroceryCount} item${uncheckedGroceryCount === 1 ? "" : "s"} still on your list.`
-                    : "Everything on the shopping list is checked."}
-                </p>
-              </div>
-            </div>
-            <div className={styles.whatsAppControls}>
-              <label>
-                <span>WhatsApp number</span>
-                <input
-                  type="tel"
-                  inputMode="tel"
-                  value={whatsAppNumber}
-                  onChange={(event) => setWhatsAppNumber(event.target.value)}
-                  placeholder="Country code + number"
-                  aria-describedby="whatsapp-number-help"
-                />
-                <small id="whatsapp-number-help">Include country code, without spaces or symbols.</small>
-              </label>
-              {whatsAppHref ? (
-                <a href={whatsAppHref} target="_blank" rel="noreferrer">Send on WhatsApp ↗</a>
-              ) : (
-                <button type="button" disabled>
-                  {uncheckedGroceryCount === 0 ? "All items checked" : "Enter number to send"}
-                </button>
-              )}
-            </div>
+            <div className={styles.whatsAppCopy}><span aria-hidden="true">✓</span><div><p className={styles.kicker}>Shop what&apos;s missing</p><h3>Send unchecked items to WhatsApp</h3><p>{uncheckedGroceryCount} item{uncheckedGroceryCount === 1 ? "" : "s"} still on your two-trip list.</p></div></div>
+            <div className={styles.whatsAppControls}><label><span>WhatsApp number</span><input type="tel" inputMode="tel" value={whatsAppNumber} onChange={(event) => setWhatsAppNumber(event.target.value)} placeholder="Country code + number" aria-describedby="whatsapp-number-help" /><small id="whatsapp-number-help">Include country code, without spaces or symbols.</small></label>{whatsAppHref ? <a href={whatsAppHref} target="_blank" rel="noreferrer">Send on WhatsApp ↗</a> : <button type="button" disabled>{uncheckedGroceryCount === 0 ? "All items checked" : "Enter number to send"}</button>}</div>
           </aside>
         </section>
 
         <section id="meal-prep" className={styles.section}>
-          <div className={styles.sectionHeading}>
-            <div><p className={styles.kicker}>Two lighter sessions</p><h2>Meal prep plan</h2></div>
-            <p>Store grains, proteins, vegetables, greens, and sauces separately for better texture.</p>
-          </div>
+          <div className={styles.sectionHeading}><div><p className={styles.kicker}>Choose, don&apos;t overcook</p><h2>Flexible meal prep</h2></div><p>Pick one mode for each prep day. Each mode makes 1–2 mains plus reusable building blocks.</p></div>
           <div className={styles.prepGrid}>
-            {Object.entries(data.meal_prep).map(([day, prep]) => {
+            {Object.entries(data.prep_framework).map(([day, prep]) => {
               const typedPrep = prep as PrepDay;
-              return (
-                <article className={styles.prepCard} key={day}>
-                  <header><div><p>{typedPrep.theme}</p><h3>{day} prep</h3></div><span>{typedPrep.covers}</span></header>
-                  <div className={styles.batchOverview}>
-                    {typedPrep.overview.map((item) => <div key={item.item}><strong>{item.item}</strong><span>{item.quantity}</span><small>{item.used_for}</small></div>)}
-                  </div>
-                  <h4>Prep steps</h4>
-                  <ol className={styles.prepSteps}>
-                    {typedPrep.steps.map((step, index) => <li key={step}><label><input type="checkbox" /><span><b>{String(index + 1).padStart(2, "0")}</b>{step}</span></label></li>)}
-                  </ol>
-                </article>
-              );
+              const selected = typedPrep.options.find((option) => option.name === prepModes[day]) ?? typedPrep.options[0];
+              return <article className={styles.prepCard} key={day}>
+                <header><div><p>{typedPrep.theme}</p><h3>{day} prep</h3></div><span>{typedPrep.covers}</span></header>
+                <p className={styles.prepRule}>{typedPrep.rule}</p>
+                <div className={styles.optionChooser} aria-label={`${day} prep mode`}>
+                  {typedPrep.options.map((option) => <button type="button" aria-pressed={selected.name === option.name} key={option.name} onClick={() => setPrepModes((current) => ({ ...current, [day]: option.name }))}>{option.name}</button>)}
+                </div>
+                <div className={styles.selectedPrep}><p>{selected.choose_when}</p><h4>{selected.name} checklist</h4><ul>{selected.prep.map((item) => <li key={item}><label><input type="checkbox" /><span>{item}</span></label></li>)}</ul></div>
+                <details className={styles.formula}><summary>See the flexible formula</summary><ul>{typedPrep.formula.map((item) => <li key={item}>{item}</li>)}</ul></details>
+              </article>;
             })}
+          </div>
+          <div className={styles.mealPools}>
+            {Object.entries(data.meal_pools).map(([poolName, meals]) => <article className={styles.poolCard} key={poolName}><p className={styles.kicker}>Mix-and-match meals</p><h3>{poolName}</h3><div>{meals.map((meal) => {
+              const recipe = recipes.find((candidate) => candidate.name === meal.meal_name);
+              return <section key={meal.meal_name}><h4>{meal.meal_name}</h4><p>{meal.uses.join(" · ")}</p>{recipe && <button type="button" onClick={() => openRecipe(recipe)}>View recipe ↘</button>}</section>;
+            })}</div></article>)}
           </div>
         </section>
 
         <section id="weekly-menu" className={styles.section}>
-          <div className={styles.sectionHeading}>
-            <div><p className={styles.kicker}>Saturday to Saturday</p><h2>Weekly menu</h2></div>
-            <p>Tuesday is the flexible work-from-home breakfast; other mornings stay fast.</p>
+          <div className={styles.sectionHeading}><div><p className={styles.kicker}>Options, not obligations</p><h2>Flexible weekly menu</h2></div><p>Choose one option in each meal slot based on what you prepped and what sounds good.</p></div>
+          <div className={styles.menuTableWrap}><table className={styles.menuTable}><thead><tr><th>Day</th><th>Breakfast</th><th>Lunch options</th><th>Snacks</th><th>Dinner options</th></tr></thead><tbody>
+            {weeklyMenu.map((day, index) => <tr key={day.day}><th><span>{String(index + 1).padStart(2, "0")}</span>{day.day}</th>{(["breakfast", "lunch", "snacks", "dinner"] as MealType[]).map((mealType) => <td key={mealType} data-label={mealType.charAt(0).toUpperCase() + mealType.slice(1)}><div className={styles.menuEntries}>{day.meals[mealType].map((meal) => {
+              const linkedRecipes = recipesForMeal(meal, recipes);
+              return <div className={styles.menuEntry} key={meal}><p>{meal}</p>{linkedRecipes.length > 0 && <div className={styles.recipeLinks}>{linkedRecipes.map((recipe) => <button type="button" key={recipe.name} onClick={() => openRecipe(recipe)}>View recipe ↘</button>)}</div>}</div>;
+            })}</div></td>)}</tr>)}
+          </tbody></table></div>
+        </section>
+
+        <section id="veggie-prep" className={styles.section}>
+          <div className={styles.sectionHeading}><div><p className={styles.kicker}>Gut-friendly vegetable guide</p><h2>Cook the base, top with crunch</h2></div><p>{data.vegetable_prep_guide.recommendation}</p></div>
+          <div className={styles.ratioGrid}>{Object.entries(data.vegetable_prep_guide.gut_friendly_bowl_ratio).map(([label, amount]) => <article key={label}><strong>{amount}</strong><span>{label.replaceAll("_", " ")}</span></article>)}</div>
+          <div className={styles.methodTable}><table><thead><tr><th>Method</th><th>Best for</th><th>Fridge</th><th>Gut fit</th></tr></thead><tbody>{data.vegetable_prep_guide.method_comparison.map((method) => <tr key={method.method}><th>{method.method}</th><td>{method.best_for}</td><td>{method.fridge_stability}</td><td>{method.gut_friendliness}</td></tr>)}</tbody></table></div>
+          <div className={styles.vegMethodGrid}>
+            <article><h3>Roasting</h3><p>{data.vegetable_prep_guide.roasting.add_later}</p><ol>{data.vegetable_prep_guide.roasting.steps.map((step) => <li key={step}>{step}</li>)}</ol></article>
+            <article><h3>Steaming</h3><div className={styles.steamTimes}>{data.vegetable_prep_guide.steaming.times.map((item) => <span key={item.vegetable}><b>{item.vegetable}</b>{item.time}</span>)}</div><ol>{data.vegetable_prep_guide.steaming.steps.map((step) => <li key={step}>{step}</li>)}</ol></article>
+            <article><h3>Sautéing</h3><p>Best for {data.vegetable_prep_guide.sauteing.best_vegetables.join(", ")}.</p><h4>Cabbage poriyal</h4><ol>{data.vegetable_prep_guide.sauteing.cabbage_poriyal_steps.map((step) => <li key={step}>{step}</li>)}</ol><h4>Bhindi sabzi</h4><ol>{data.vegetable_prep_guide.sauteing.bhindi_sabzi_steps.map((step) => <li key={step}>{step}</li>)}</ol></article>
           </div>
-          <div className={styles.menuTableWrap}>
-            <table className={styles.menuTable}>
-              <thead><tr><th>Day</th><th>Breakfast</th><th>Lunch</th><th>Snacks</th><th>Dinner</th></tr></thead>
-              <tbody>
-                {weeklyMenu.map((day, index) => (
-                  <tr key={day.day}>
-                    <th><span>{String(index + 1).padStart(2, "0")}</span>{day.day}</th>
-                    {(["breakfast", "lunch", "snacks", "dinner"] as const).map((mealType) => {
-                      const meals = day[mealType];
-                      return (
-                        <td key={mealType} data-label={mealType.charAt(0).toUpperCase() + mealType.slice(1)}>
-                          <div className={styles.menuEntries}>
-                            {meals.map((meal, mealIndex) => {
-                              const linkedRecipes = recipesForMeal(meal, recipes);
-                              return (
-                                <div className={styles.menuEntry} key={meal}>
-                                  {meals.length > 1 && <span>{mealIndex === 0 ? "Week start" : "Next cycle"}</span>}
-                                  <p>{meal}</p>
-                                  {linkedRecipes.length > 0 && (
-                                    <div className={styles.recipeLinks}>
-                                      {linkedRecipes.map((recipe) => (
-                                        <button type="button" key={recipe.name} onClick={() => openRecipe(recipe.name)}>
-                                          View recipe ↘
-                                        </button>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <aside className={styles.storageRules}><h3>Storage rules</h3><ul>{data.vegetable_prep_guide.storage_rules.map((rule) => <li key={rule}>{rule}</li>)}</ul></aside>
         </section>
 
         <section id="recipes" className={styles.section}>
-          <div className={styles.sectionHeading}>
-            <div><p className={styles.kicker}>A–Z collection</p><h2>Recipes</h2></div>
-            <p>{filteredRecipes.length} of {recipes.length} recipes</p>
-          </div>
-          <div className={styles.recipeIndex}>
-            {filteredRecipes.map((recipe) => <a href={`#recipe-${slugify(recipe.name)}`} key={recipe.name}>{recipe.name}<span>↘</span></a>)}
-          </div>
-          <div className={styles.recipeList}>
-            {filteredRecipes.map((recipe, index) => (
-              <details className={styles.recipeCard} id={`recipe-${slugify(recipe.name)}`} key={recipe.name} open={index === 0 && !normalizedQuery}>
-                <summary><span>{recipe.name.charAt(0)}</span><div><h3>{recipe.name}</h3><p>{recipe.best_for}</p></div><b>+</b></summary>
-                <div className={styles.recipeBody}>
-                  <div className={styles.recipeMeta}><span>Servings</span><strong>{recipe.servings}</strong></div>
-                  <div className={styles.ingredientColumns}>
-                    {Object.entries(recipe.ingredients).map(([group, ingredients]) => (
-                      <div key={group}><h4>{group}</h4><dl>{ingredientPairs(ingredients).map(([ingredient, quantity]) => <Fragment key={ingredient}><dt>{ingredient}</dt><dd>{quantity}</dd></Fragment>)}</dl></div>
-                    ))}
-                  </div>
-                  <div className={styles.recipeDetails}>
-                    <div><h4>Method</h4><ol>{recipe.steps.map((step) => <li key={step}>{step}</li>)}</ol></div>
-                    <aside><h4>Meal prep notes</h4><ul>{recipe.meal_prep_notes.map((note) => <li key={note}>{note}</li>)}</ul><h4>Health notes</h4><ul>{recipe.health_notes.map((note) => <li key={note}>{note}</li>)}</ul></aside>
-                  </div>
-                </div>
-              </details>
-            ))}
-          </div>
+          <div className={styles.sectionHeading}><div><p className={styles.kicker}>A–Z collection</p><h2>Recipes</h2></div><p>{filteredRecipes.length} of {recipes.length} recipes</p></div>
+          <div className={styles.recipeIndex}>{filteredRecipes.map((recipe) => <a href={`#recipe-${recipe.slug}`} key={recipe.name}>{recipe.name}<span>↘</span></a>)}</div>
+          <div className={styles.recipeList}>{filteredRecipes.map((recipe, index) => <details className={styles.recipeCard} id={`recipe-${recipe.slug}`} key={recipe.name} open={index === 0 && !normalizedQuery}><summary><span>{recipe.name.charAt(0)}</span><div><h3>{recipe.name}</h3><p>{recipe.best_for}</p></div><b>+</b></summary><div className={styles.recipeBody}>
+            <div className={styles.recipeTags}>{recipe.categories.map((category) => <span key={category}>{category}</span>)}</div>
+            <div className={styles.recipeMeta}><span>Servings</span><strong>{recipe.servings}</strong></div>
+            <div className={styles.ingredientColumns}>{Object.entries(recipe.ingredients).map(([group, ingredients]) => <div key={group}><h4>{group}</h4><dl>{ingredientPairs(ingredients).map(([ingredient, quantity]) => <Fragment key={ingredient}><dt>{ingredient}</dt><dd>{quantity}</dd></Fragment>)}</dl></div>)}</div>
+            <div className={styles.recipeDetails}><div><h4>Method</h4><ol>{recipe.steps.map((step) => <li key={step}>{step}</li>)}</ol></div><aside><h4>Meal prep notes</h4><ul>{recipe.meal_prep_notes.map((note) => <li key={note}>{note}</li>)}</ul><h4>Health notes</h4><ul>{recipe.health_notes.map((note) => <li key={note}>{note}</li>)}</ul></aside></div>
+          </div></details>)}</div>
           {filteredRecipes.length === 0 && <p className={styles.empty}>No recipes match “{query}”.</p>}
         </section>
       </main>

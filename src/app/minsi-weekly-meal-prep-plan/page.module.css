@@ -67,6 +67,29 @@
 .prepCard header p { color: #66865d; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .prepCard header h3 { margin-top: 5px; font-size: 1.7rem; }
 .prepCard header > span { max-width: 145px; color: var(--text-muted); font-size: .82rem; line-height: 1.4; text-align: right; }
+.prepRule { margin-bottom:18px; color:var(--text-muted); font-size:.9rem; line-height:1.55; }
+.optionChooser { margin-bottom:20px; display:grid; grid-template-columns:repeat(2,1fr); gap:7px; }
+.optionChooser button { min-height:42px; padding:8px 10px; border:1px solid var(--border); border-radius:12px; background:var(--surface-strong); color:var(--text-muted); font:inherit; font-size:.78rem; font-weight:750; cursor:pointer; }
+.optionChooser button[aria-pressed="true"] { border-color:#66865d; background:#66865d; color:#fff; }
+.selectedPrep { padding:20px; border-radius:18px; background:var(--surface-strong); }
+.selectedPrep > p { margin-bottom:16px; color:var(--text-muted); font-size:.85rem; line-height:1.5; }
+.selectedPrep ul { list-style:none; }
+.selectedPrep li { border-top:1px solid var(--border); }
+.selectedPrep label { padding:11px 0; display:flex; align-items:flex-start; gap:10px; cursor:pointer; }
+.selectedPrep label span { color:var(--text-muted); font-size:.86rem; }
+.selectedPrep input { margin-top:2px; accent-color:#66865d; }
+.selectedPrep input:checked + span { opacity:.42; text-decoration:line-through; }
+.formula { margin-top:14px; }
+.formula summary { color:var(--text-accent); font-size:.82rem; font-weight:800; cursor:pointer; }
+.formula ul { margin-top:12px; padding-left:19px; }
+.formula li { margin-bottom:7px; color:var(--text-muted); font-size:.83rem; line-height:1.45; }
+.mealPools { margin-top:18px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.poolCard { padding:clamp(22px,3vw,30px); border:1px solid var(--border); border-radius:26px; background:var(--surface); box-shadow:var(--shadow-card); }
+.poolCard > h3 { margin-bottom:18px; font-size:1.35rem; }
+.poolCard section { padding:14px 0; border-top:1px solid var(--border); }
+.poolCard section h4 { font-size:.95rem; }
+.poolCard section p { margin-top:6px; color:var(--text-soft); font-size:.8rem; line-height:1.45; }
+.poolCard section button { margin-top:9px; padding:0; border:0; background:transparent; color:var(--text-accent); font:inherit; font-size:.72rem; font-weight:800; cursor:pointer; }
 .batchOverview { margin-bottom: 28px; display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; }
 .batchOverview div { padding: 13px; border-radius: 14px; display: grid; gap: 3px; background: var(--surface-strong); }
 .batchOverview strong { font-size: .82rem; }
@@ -94,6 +117,30 @@
 .recipeLinks { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; }
 .recipeLinks button { padding: 0; border: 0; background: transparent; color: var(--text-accent); font: inherit; font-size: .7rem; font-weight: 800; cursor: pointer; }
 .recipeLinks button:hover { text-decoration: underline; text-underline-offset: 3px; }
+.ratioGrid { margin-bottom:18px; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.ratioGrid article { padding:22px; border:1px solid var(--border); border-radius:20px; display:grid; gap:8px; background:var(--surface); box-shadow:var(--shadow-card); }
+.ratioGrid strong { color:#66865d; font-size:1.55rem; }
+.ratioGrid span { color:var(--text-muted); font-size:.76rem; font-weight:750; text-transform:capitalize; }
+.methodTable { margin-bottom:18px; overflow-x:auto; border:1px solid var(--border); border-radius:20px; background:var(--surface); }
+.methodTable table { width:100%; min-width:680px; border-collapse:collapse; }
+.methodTable th,.methodTable td { padding:14px 16px; border-right:1px solid var(--border); border-bottom:1px solid var(--border); text-align:left; font-size:.83rem; }
+.methodTable tr:last-child > * { border-bottom:0; }
+.methodTable tr > *:last-child { border-right:0; }
+.methodTable thead th { color:var(--text-soft); background:var(--surface-strong); font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; }
+.vegMethodGrid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.vegMethodGrid article { padding:24px; border:1px solid var(--border); border-radius:22px; background:var(--surface); box-shadow:var(--shadow-card); }
+.vegMethodGrid h3 { margin-bottom:10px; font-size:1.25rem; }
+.vegMethodGrid h4 { margin:20px 0 9px; font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; }
+.vegMethodGrid p,.vegMethodGrid li { color:var(--text-muted); font-size:.82rem; line-height:1.5; }
+.vegMethodGrid ol { padding-left:18px; }
+.vegMethodGrid li { margin-bottom:7px; }
+.steamTimes { margin:14px 0; display:grid; grid-template-columns:repeat(2,1fr); gap:6px; }
+.steamTimes span { padding:8px; border-radius:10px; display:grid; gap:2px; background:var(--surface-strong); color:var(--text-soft); font-size:.72rem; }
+.steamTimes b { color:var(--foreground); }
+.storageRules { margin-top:18px; padding:24px; border-radius:22px; color:#eff8e9; background:#203d2c; }
+.storageRules h3 { margin-bottom:14px; }
+.storageRules ul { display:grid; grid-template-columns:repeat(2,1fr); gap:8px 28px; padding-left:18px; }
+.storageRules li { color:rgba(239,248,233,.74); font-size:.82rem; line-height:1.45; }
 .recipeIndex { margin-bottom: 20px; display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
 .recipeIndex a { padding: 13px 15px; border: 1px solid var(--border); border-radius: 14px; display: flex; justify-content: space-between; gap: 8px; background: var(--surface); font-size: .82rem; font-weight: 700; }
 .recipeIndex a:hover { border-color: var(--border-strong); color: var(--text-accent); }
@@ -107,6 +154,8 @@
 .recipeCard summary b { font-size: 1.4rem; transition: transform .2s ease; }
 .recipeCard[open] summary b { transform: rotate(45deg); }
 .recipeBody { padding: 0 24px 28px 80px; }
+.recipeTags { margin-bottom:12px; display:flex; flex-wrap:wrap; gap:6px; }
+.recipeTags span { padding:5px 9px; border-radius:99px; background:var(--pill-bg); color:var(--pill-text); font-size:.68rem; font-weight:800; }
 .recipeMeta { margin-bottom: 24px; padding: 13px 16px; border-radius: 14px; display: flex; justify-content: space-between; gap: 16px; background: var(--pill-bg); font-size: .84rem; }
 .recipeMeta span { color: var(--pill-text); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
 .ingredientColumns { margin-bottom: 30px; display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 24px; }
@@ -121,7 +170,7 @@
 .recipeDetails aside ul { padding-left: 17px; }
 .empty { padding: 36px; border: 1px dashed var(--border-strong); border-radius: 20px; color: var(--text-muted); text-align: center; }
 @media print { .sectionNav,.heroStats,.profileChips { display:none; } .page { padding:0; } .main { gap:32px; } .hero { min-height:0; color:#000; background:none; box-shadow:none; padding:20px 0; } .groceryGrid { columns:2; } .recipeCard { break-inside:avoid; } }
-@media (max-width:900px) { .prepGrid { grid-template-columns:1fr; } .recipeIndex { grid-template-columns:repeat(2,1fr); } .heroStats { display:none; } }
+@media (max-width:900px) { .prepGrid,.mealPools { grid-template-columns:1fr; } .vegMethodGrid { grid-template-columns:1fr; } .recipeIndex { grid-template-columns:repeat(2,1fr); } .heroStats { display:none; } }
 @media (max-width:720px) {
   .page { padding:24px 14px 48px; }
   .main { gap:44px; }
@@ -133,6 +182,8 @@
   .section { scroll-margin-top:210px; }
   .sectionHeading { align-items:flex-start; flex-direction:column; gap:10px; }
   .groceryGrid { columns:1; }
+  .ratioGrid { grid-template-columns:1fr; }
+  .storageRules ul { grid-template-columns:1fr; }
   .whatsAppPanel { align-items:stretch; flex-direction:column; }
   .whatsAppControls { width:100%; align-items:stretch; flex-direction:column; }
   .menuTableWrap { overflow:visible; border:0; background:transparent; box-shadow:none; }
